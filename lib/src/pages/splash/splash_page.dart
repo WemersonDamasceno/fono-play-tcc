@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -43,7 +44,12 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
+      body: Container(
+        height: size.height,
+        width: size.width,
+        decoration: const BoxDecoration(
+          gradient: ConstantColor.linearColors,
+        ),
         child: Center(
           child: SizedBox(
             width: size.width * .6,
