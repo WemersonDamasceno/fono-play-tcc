@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Poppins",
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.green,
       ),
       home: const SplashPage(),
       initialRoute: '/',

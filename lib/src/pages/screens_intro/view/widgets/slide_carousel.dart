@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class SlideCarousel extends StatelessWidget {
   final int paginaEscolhida;
@@ -47,7 +48,7 @@ class PageSlide extends StatelessWidget {
   Widget build(BuildContext context) {
     final double top = paginaEmDestaque ? 30 : 100;
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 300),
       margin: EdgeInsets.fromLTRB(0, top, 0, 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,13 +60,14 @@ class PageSlide extends StatelessWidget {
           Text(
             titulo,
             style: const TextStyle(
-              color: Color(0xFF202020),
+              color: ConstantColor.titlesColor,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             descricao,
+            style: const TextStyle(color: ConstantColor.descricaoColor),
             textAlign: TextAlign.center,
           ),
         ],

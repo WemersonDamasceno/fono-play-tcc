@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class BolinhasLinhas extends StatelessWidget {
   final int paginaEmDestaque;
@@ -23,7 +24,7 @@ class BolinhasLinhas extends StatelessWidget {
                 height: 10,
                 decoration: BoxDecoration(
                   color: paginaEmDestaque == index
-                      ? const Color(0xFF207B5B)
+                      ? ConstantColor.primaryColor
                       : Colors.grey,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(20),
