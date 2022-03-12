@@ -33,10 +33,6 @@ class InputTextWidget extends StatelessWidget {
     return TextFormField(
       obscureText: mostrarSenha ?? false,
       controller: entradaController,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: size.height * 0.02,
-      ),
       keyboardType: entradaTipo,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(right: -size.width * 0.05),
@@ -47,7 +43,7 @@ class InputTextWidget extends StatelessWidget {
         alignLabelWithHint: true,
         border: const OutlineInputBorder(
           borderSide: BorderSide(
-            color: ConstantColor.primaryColor,
+            color: ConstantColor.startGradiente,
           ),
           borderRadius: BorderRadius.all(
             Radius.circular(7),
@@ -55,7 +51,16 @@ class InputTextWidget extends StatelessWidget {
         ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
-            color: ConstantColor.primaryColor,
+            color: ConstantColor.startGradiente,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(7),
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 2,
+            color: ConstantColor.startGradiente,
           ),
           borderRadius: BorderRadius.all(
             Radius.circular(7),
