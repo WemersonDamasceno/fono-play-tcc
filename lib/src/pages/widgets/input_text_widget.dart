@@ -34,6 +34,7 @@ class InputTextWidget extends StatelessWidget {
       obscureText: mostrarSenha ?? false,
       controller: entradaController,
       keyboardType: entradaTipo,
+      cursorColor: ConstantColor.primaryColor,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(right: -size.width * 0.05),
         labelText: labelInput,

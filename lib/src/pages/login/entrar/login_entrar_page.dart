@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/pages/login/criar_conta/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/login/entrar/widgets/button_icon_widget.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -75,7 +76,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                           labelInput: "Email",
                           entradaController: usuarioController,
                           prefixIcon: const Icon(
-                            Icons.person,
+                            Icons.email_outlined,
                             color: ConstantColor.primaryColor,
                           ),
                           entradaTipo: TextInputType.emailAddress,
@@ -88,7 +89,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                             labelInput: "Senha",
                             entradaController: senhaController,
                             prefixIcon: const Icon(
-                              Icons.lock,
+                              Icons.lock_outline,
                               color: ConstantColor.primaryColor,
                             ),
                             sufixIcon: mostrarSenha
@@ -103,9 +104,12 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                             mostrarSenha: mostrarSenha,
                           ),
                         ),
-                        ButtonGradienteWidget(
-                          texto: "Entrar",
-                          onPressed: () {},
+                        Hero(
+                          tag: "btn_entrar",
+                          child: ButtonGradienteWidget(
+                            texto: "Entrar",
+                            onPressed: () {},
+                          ),
                         ),
                       ],
                     ),
@@ -158,7 +162,15 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              transitionDuration: const Duration(seconds: 1),
+                              pageBuilder: (_, __, ___) =>
+                                  const LoginCriarContaPage()),
+                        );
+                      },
                       child: const Text(
                         "Crie aqui!",
                         style: TextStyle(
