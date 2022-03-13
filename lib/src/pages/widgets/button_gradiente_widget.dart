@@ -3,7 +3,7 @@ import '/src/constants/constants_colors.dart';
 
 class ButtonGradienteWidget extends StatelessWidget {
   final String texto;
-  final Function onPressed;
+  final Function() onPressed;
   const ButtonGradienteWidget({
     Key? key,
     required this.texto,
@@ -24,7 +24,7 @@ class ButtonGradienteWidget extends StatelessWidget {
           gradient: ConstantColor.linearColors,
         ),
         child: ElevatedButton(
-          onPressed: () => onPressed,
+          onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0,
             primary: Colors.transparent,

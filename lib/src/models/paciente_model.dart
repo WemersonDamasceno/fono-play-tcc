@@ -2,7 +2,7 @@ class PacienteModel {
   String? nomeCrianca;
   String? dataNascimento;
   String? possuiAlgumSintoma;
-  String? avatarCrianca;
+  int? avatarCrianca;
 
   PacienteModel({
     required this.nomeCrianca,

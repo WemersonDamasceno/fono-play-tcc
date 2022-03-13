@@ -4,6 +4,7 @@ import 'package:fonoplay/src/pages/login/entrar/login_entrar_page.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
+import '../dados_da_crianca/dados_da_crianca_page.dart';
 
 class LoginCriarContaPage extends StatefulWidget {
   const LoginCriarContaPage({Key? key}) : super(key: key);
@@ -202,7 +203,22 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                     tag: "btn_entrar",
                     child: ButtonGradienteWidget(
                       texto: "Continuar",
-                      onPressed: () {},
+                      onPressed: () {
+                        if (checkTermosUso) {
+                          Navigator.pop(
+                            context,
+                            PageRouteBuilder(
+                                transitionDuration: const Duration(seconds: 1),
+                                pageBuilder: (_, __, ___) =>
+                                    const DadosDaCriancaPage()),
+                          );
+                        } else {
+                          showSnackBar(
+                            "Aceite os termos para continuar!",
+                            Icons.warning_amber_rounded,
+                          );
+                        }
+                      },
                     ),
                   ),
                 ),
@@ -212,6 +228,28 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
         ),
       ),
     );
+  }
+
+  void showSnackBar(String mensagem, IconData icon) {
+    final snackBar = SnackBar(
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+          ),
+          Text(
+            mensagem,
+          ),
+        ],
+      ),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(7),
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

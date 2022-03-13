@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/login/criar_conta/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/login/entrar/widgets/button_icon_widget.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
