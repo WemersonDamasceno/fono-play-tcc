@@ -19,7 +19,6 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
   final _formKey = GlobalKey<FormState>();
   final nomeCriancaController = TextEditingController();
   final dataNascimentoController = TextEditingController();
-
   String sintomasDropMenu = "Nenhum desses sintomas";
 
   @override

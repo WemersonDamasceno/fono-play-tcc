@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("pt", "BR"),
       ],
-      home: const DadosDaCriancaPage(),
+      home: const SplashPage(),
       initialRoute: '/',
       routes: {
         '/splash': (context) => const SplashPage(),

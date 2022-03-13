@@ -33,6 +33,7 @@ class ButtonGradienteWidget extends StatelessWidget {
             texto,
             style: const TextStyle(
               color: Colors.white,
+              fontSize: 16,
               fontWeight: FontWeight.w900,
             ),
           ),

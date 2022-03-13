@@ -205,7 +205,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                       texto: "Continuar",
                       onPressed: () {
                         if (checkTermosUso) {
-                          Navigator.pop(
+                          Navigator.push(
                             context,
                             PageRouteBuilder(
                                 transitionDuration: const Duration(seconds: 1),
