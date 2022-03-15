@@ -4,10 +4,12 @@ import '/src/constants/constants_colors.dart';
 class ButtonIconWidget extends StatelessWidget {
   final String pathImagem;
   final String texto;
+  final Function() onPressed;
   const ButtonIconWidget({
     Key? key,
     required this.pathImagem,
     required this.texto,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class ButtonIconWidget extends StatelessWidget {
           onPrimary: ConstantColor.primaryColor,
           alignment: Alignment.centerLeft,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Image.asset(
           pathImagem,
           width: size.width * 0.1,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/login/entrar/entrar_fonoaudiologo/entrar_fonoaudilogo_page.dart';
 import 'package:fonoplay/src/pages/login/entrar/widgets/button_icon_widget.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -53,7 +54,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                   alignment: Alignment.topCenter,
                   child: Image.asset(
                     "assets/images/logo_sem_texto.png",
-                    width: size.width * .53,
+                    width: size.width * 0.46,
                   ),
                 ),
                 const Text(
@@ -141,16 +142,26 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                     ],
                   ),
                 ),
-                const ButtonIconWidget(
-                  pathImagem: "assets/images/logo_google.png",
-                  texto: "Entrar com o Google",
-                ),
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * 0.02),
-                  child: const ButtonIconWidget(
-                    pathImagem: "assets/images/logo_profissional.png",
-                    texto: "Entrar como um profissional",
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: ButtonIconWidget(
+                    pathImagem: "assets/images/logo_google.png",
+                    texto: "Entrar com o Google",
+                    onPressed: () {},
                   ),
+                ),
+                ButtonIconWidget(
+                  pathImagem: "assets/images/logo_profissional.png",
+                  texto: "Entrar como um profissional",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: const Duration(seconds: 1),
+                          pageBuilder: (_, __, ___) =>
+                              const EntrarFonoaudiologoPage()),
+                    );
+                  },
                 ),
                 Row(
                   children: [

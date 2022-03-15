@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/login/entrar/login_entrar_page.dart';
+import 'package:fonoplay/src/pages/login/entrar/paciente/login_entrar_page.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -76,7 +76,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                       alignment: Alignment.topCenter,
                       child: Image.asset(
                         "assets/images/logo_sem_texto.png",
-                        width: size.width * .53,
+                        width: size.width * 0.46,
                       ),
                     ),
                     const Text(
