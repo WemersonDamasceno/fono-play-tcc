@@ -87,6 +87,18 @@ class InputTextWidget extends StatelessWidget {
           return "A senha deve ter no minimo 6 digitos!";
         }
 
+        //Se for email, verificar se o formato é valido!
+        if (entradaTipo.toString() == TextInputType.emailAddress.toString()) {
+          String pattern =
+              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+          RegExp regExp = RegExp(pattern);
+          if (!regExp.hasMatch(value)) {
+            return "Este formato de email é inválido!";
+          } else {
+            return null;
+          }
+        }
+
         return null;
       },
     );

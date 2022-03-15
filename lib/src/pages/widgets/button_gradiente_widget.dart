@@ -4,10 +4,12 @@ import '/src/constants/constants_colors.dart';
 class ButtonGradienteWidget extends StatelessWidget {
   final String texto;
   final Function() onPressed;
+  final bool habilitarBotao;
   const ButtonGradienteWidget({
     Key? key,
     required this.texto,
     required this.onPressed,
+    required this.habilitarBotao,
   }) : super(key: key);
 
   @override
@@ -29,14 +31,35 @@ class ButtonGradienteWidget extends StatelessWidget {
             elevation: 0,
             primary: Colors.transparent,
           ),
-          child: Text(
-            texto,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
+          child: habilitarBotao
+              ? Text(
+                  texto,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                  ),
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(top: 6, bottom: 6, right: 10),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 4,
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    ),
+                    Text(
+                      "Carregando...",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
+                ),
         ),
       ),
     );

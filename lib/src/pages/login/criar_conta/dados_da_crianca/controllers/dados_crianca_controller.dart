@@ -6,7 +6,7 @@ class ControllerDadosCrianca = _ControllerDadosCrianca
 
 abstract class _ControllerDadosCrianca with Store {
   @observable
-  int avatar = 0;
+  int avatar = 1;
 
   @observable
   String pathImage = "assets/images/avatar_01.png";

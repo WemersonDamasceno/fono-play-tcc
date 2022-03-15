@@ -4,6 +4,7 @@ import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/input_text_widget.dart';
+import 'package:fonoplay/src/pages/widgets/snackbar_widget.dart';
 import 'controllers/dados_crianca_controller.dart';
 import 'widgets/escolha_avatars_widget.dart';
 
@@ -216,8 +217,23 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
                   child: Hero(
                     tag: "btn_entrar",
                     child: ButtonGradienteWidget(
+                      habilitarBotao: true,
                       texto: "Criar conta",
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          if (dataNascimentoController.text !=
+                              "Data de nascimento") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Processing Data')),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBarWidget.snackBarWidget(
+                                    "Escolha uma data de nascimento.",
+                                    Icons.warning_amber_rounded));
+                          }
+                        }
+                      },
                     ),
                   ),
                 ),

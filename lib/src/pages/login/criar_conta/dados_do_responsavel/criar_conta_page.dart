@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/login/entrar/paciente/login_entrar_page.dart';
+import 'package:fonoplay/src/pages/widgets/snackbar_widget.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -15,8 +16,10 @@ class LoginCriarContaPage extends StatefulWidget {
 
 class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
   final _formKey = GlobalKey<FormState>();
-  final usuarioController = TextEditingController();
-  final senhaController = TextEditingController();
+  final emailPacienteController = TextEditingController();
+  final senhaPacienteController = TextEditingController();
+  final nomePacienteController = TextEditingController();
+
   bool mostrarSenha = true;
   bool checkTermosUso = false;
 
@@ -28,8 +31,9 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
   @override
   void dispose() {
     super.dispose();
-    usuarioController.dispose();
-    senhaController.dispose();
+    emailPacienteController.dispose();
+    senhaPacienteController.dispose();
+    nomePacienteController.dispose();
   }
 
   @override
@@ -96,7 +100,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                           children: [
                             InputTextWidget(
                               labelInput: "Nome",
-                              entradaController: usuarioController,
+                              entradaController: nomePacienteController,
                               prefixIcon: const Icon(
                                 Icons.person_outline,
                                 color: ConstantColor.primaryColor,
@@ -109,7 +113,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                                   vertical: size.height * 0.02),
                               child: InputTextWidget(
                                 labelInput: "Email",
-                                entradaController: usuarioController,
+                                entradaController: emailPacienteController,
                                 prefixIcon: const Icon(
                                   Icons.email_outlined,
                                   color: ConstantColor.primaryColor,
@@ -120,7 +124,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                             ),
                             InputTextWidget(
                               labelInput: "Senha",
-                              entradaController: senhaController,
+                              entradaController: senhaPacienteController,
                               prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: ConstantColor.primaryColor,
@@ -202,21 +206,24 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                   child: Hero(
                     tag: "btn_entrar",
                     child: ButtonGradienteWidget(
+                      habilitarBotao: true,
                       texto: "Continuar",
                       onPressed: () {
                         if (checkTermosUso) {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                                transitionDuration: const Duration(seconds: 1),
-                                pageBuilder: (_, __, ___) =>
-                                    const DadosDaCriancaPage()),
-                          );
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    transitionDuration:
+                                        const Duration(seconds: 1),
+                                    pageBuilder: (_, __, ___) =>
+                                        const DadosDaCriancaPage()));
+                          }
                         } else {
-                          showSnackBar(
-                            "Aceite os termos para continuar!",
-                            Icons.warning_amber_rounded,
-                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBarWidget.snackBarWidget(
+                                  "Aceite os termos para continuar!",
+                                  Icons.warning_amber_rounded));
                         }
                       },
                     ),
@@ -228,28 +235,6 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
         ),
       ),
     );
-  }
-
-  void showSnackBar(String mensagem, IconData icon) {
-    final snackBar = SnackBar(
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-          ),
-          Text(
-            mensagem,
-          ),
-        ],
-      ),
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(7),
-      ),
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

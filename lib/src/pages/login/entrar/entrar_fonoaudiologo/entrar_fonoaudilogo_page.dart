@@ -16,7 +16,7 @@ class EntrarFonoaudiologoPage extends StatefulWidget {
 class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
   final _formKey = GlobalKey<FormState>();
   final userFonoController = TextEditingController();
-  final senhaController = TextEditingController();
+  final senhaFonoController = TextEditingController();
   final chaveSegurancaController = TextEditingController();
   bool mostrarSenha = true;
 
@@ -29,7 +29,8 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
   void dispose() {
     super.dispose();
     userFonoController.dispose();
-    senhaController.dispose();
+    senhaFonoController.dispose();
+    chaveSegurancaController.dispose();
   }
 
   @override
@@ -130,7 +131,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                             EdgeInsets.symmetric(vertical: size.height * 0.02),
                         child: InputTextWidget(
                           labelInput: "Senha",
-                          entradaController: senhaController,
+                          entradaController: senhaFonoController,
                           prefixIcon: const Icon(
                             Icons.lock_outline,
                             color: ConstantColor.primaryColor,
@@ -154,10 +155,13 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                         children: [
                           SizedBox(
                             width: size.width * .53,
-                            child: TextField(
+                            child: TextFormField(
                               controller: chaveSegurancaController,
                               maxLengthEnforcement: MaxLengthEnforcement.none,
                               keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
                               onChanged: (value) {
                                 if (chaveSegurancaController.text.length >= 3) {
                                   chaveSegurancaController.text =
@@ -184,6 +188,11 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                                 ),
                                 border: InputBorder.none,
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Preencha este campo!";
+                                }
+                              },
                             ),
                           ),
                           SizedBox(
@@ -243,8 +252,15 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                   child: Hero(
                     tag: "btn_entrar",
                     child: ButtonGradienteWidget(
+                      habilitarBotao: true,
                       texto: "Continuar",
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+                        }
+                      },
                     ),
                   ),
                 ),

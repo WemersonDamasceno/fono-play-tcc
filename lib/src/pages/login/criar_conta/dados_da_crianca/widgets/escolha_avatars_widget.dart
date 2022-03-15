@@ -75,8 +75,10 @@ class _EscolherAvatarWidgetState extends State<EscolherAvatarWidget> {
             padding:
                 EdgeInsets.only(top: size.height * 0.07, left: 20, right: 20),
             child: ButtonGradienteWidget(
+              habilitarBotao: true,
               texto: "Escolher avatar",
               onPressed: () {
+                controllerCrianca.mudarImage(controllerCrianca.avatar);
                 Navigator.pop(context);
               },
             ),
@@ -95,7 +97,7 @@ class _EscolherAvatarWidgetState extends State<EscolherAvatarWidget> {
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(100)),
       onTap: () {
-        controllerCrianca.mudarImage(avatarPosition);
+        controllerCrianca.avatar = avatarPosition;
       },
       child: Observer(
         builder: (_) => Container(

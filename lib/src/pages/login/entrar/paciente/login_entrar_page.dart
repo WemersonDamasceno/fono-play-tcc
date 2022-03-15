@@ -108,8 +108,16 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                         Hero(
                           tag: "btn_entrar",
                           child: ButtonGradienteWidget(
+                            habilitarBotao: true,
                             texto: "Entrar",
-                            onPressed: () {},
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Processing Data')),
+                                );
+                              }
+                            },
                           ),
                         ),
                       ],
