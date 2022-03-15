@@ -68,7 +68,7 @@ class _IntroducaoPageState extends State<IntroducaoPage> {
                 onPressed: () {
                   _currentPage++;
                   if (_currentPage >= slideList.listImagens.length) {
-                    //Navigator.of(context).popAndPushNamed('/singin');
+                    Navigator.of(context).popAndPushNamed('/login_entrar');
                   }
                   _pageController.nextPage(
                       duration: const Duration(milliseconds: 300),
