@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SnackBarWidget {
+class ConstantsSnackBar {
   static snackBarWidget(String mensagem, IconData icon) {
     return SnackBar(
       content: Row(

@@ -4,7 +4,7 @@ import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/input_text_widget.dart';
-import 'package:fonoplay/src/pages/widgets/snackbar_widget.dart';
+import 'package:fonoplay/src/constants/constants_snackbar.dart';
 import 'controllers/dados_crianca_controller.dart';
 import 'widgets/escolha_avatars_widget.dart';
 
@@ -228,7 +228,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
                             );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBarWidget.snackBarWidget(
+                                ConstantsSnackBar.snackBarWidget(
                                     "Escolha uma data de nascimento.",
                                     Icons.warning_amber_rounded));
                           }

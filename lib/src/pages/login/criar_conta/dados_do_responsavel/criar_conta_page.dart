@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/login/entrar/paciente/login_entrar_page.dart';
-import 'package:fonoplay/src/pages/widgets/snackbar_widget.dart';
+import 'package:fonoplay/src/constants/constants_snackbar.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -221,7 +221,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBarWidget.snackBarWidget(
+                              ConstantsSnackBar.snackBarWidget(
                                   "Aceite os termos para continuar!",
                                   Icons.warning_amber_rounded));
                         }
