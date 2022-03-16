@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:fonoplay/src/constants/constants_colors.dart';
-import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import '/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/input_text_widget.dart';
 import 'package:fonoplay/src/constants/constants_snackbar.dart';
@@ -42,14 +43,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Positioned(
-              child: Container(
-                height: size.height * 0.2,
-                decoration: const BoxDecoration(
-                  gradient: ConstantColor.linearColors,
-                ),
-              ),
-            ),
+            const ContainerGradienteWidget(),
             Padding(
               padding: EdgeInsets.only(top: size.height * 0.03),
               child: IconButton(

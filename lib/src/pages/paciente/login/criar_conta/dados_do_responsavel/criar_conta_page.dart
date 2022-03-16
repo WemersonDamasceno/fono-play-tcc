@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/login/entrar/paciente/login_entrar_page.dart';
 import 'package:fonoplay/src/constants/constants_snackbar.dart';
+import 'package:fonoplay/src/pages/paciente/login/entrar/login_entrar_page.dart';
+import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -43,14 +44,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Positioned(
-              child: Container(
-                height: size.height * 0.2,
-                decoration: const BoxDecoration(
-                  gradient: ConstantColor.linearColors,
-                ),
-              ),
-            ),
+            const ContainerGradienteWidget(),
             Padding(
               padding: EdgeInsets.only(top: size.height * 0.03),
               child: IconButton(

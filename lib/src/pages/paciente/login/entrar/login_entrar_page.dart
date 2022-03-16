@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
-import 'package:fonoplay/src/pages/login/entrar/entrar_fonoaudiologo/entrar_fonoaudilogo_page.dart';
-import 'package:fonoplay/src/pages/login/entrar/widgets/button_icon_widget.dart';
+import 'package:fonoplay/src/pages/fonoaudiologo/login/entrar_fonoaudilogo_page.dart';
+import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
 import '/src/constants/constants_colors.dart';
+import 'widgets/button_icon_widget.dart';
 
 class LoginEntrarPage extends StatefulWidget {
   const LoginEntrarPage({Key? key}) : super(key: key);
@@ -37,14 +38,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(children: [
-          Positioned(
-            child: Container(
-              height: size.height * 0.2,
-              decoration: const BoxDecoration(
-                gradient: ConstantColor.linearColors,
-              ),
-            ),
-          ),
+          const ContainerGradienteWidget(),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
             child: Column(
@@ -155,7 +149,9 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                   child: ButtonIconWidget(
                     pathImagem: "assets/images/logo_google.png",
                     texto: "Entrar com o Google",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.popAndPushNamed(context, "/home");
+                    },
                   ),
                 ),
                 ButtonIconWidget(
