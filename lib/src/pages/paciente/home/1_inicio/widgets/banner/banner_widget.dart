@@ -51,7 +51,7 @@ class _BannerWidgetState extends State<BannerWidget> {
             left: size.width * 0.6,
             child: Image.asset(
               "assets/images/fono_explica.png",
-              width: 120,
+              width: size.width * .35,
             ),
           ),
           Positioned(

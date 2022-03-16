@@ -72,7 +72,7 @@ class PageSlide extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: size.width * 0.6,
+                          width: size.width * 0.65,
                           child: Text(
                             descricao,
                             style: const TextStyle(

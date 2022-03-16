@@ -3,7 +3,7 @@ import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
-import 'widgets/banner/banner_carousel_widget.dart';
+import 'widgets/card/card_inicial_widget.dart';
 
 class InicioPacientePage extends StatelessWidget {
   const InicioPacientePage({Key? key}) : super(key: key);
@@ -31,6 +31,31 @@ class InicioPacientePage extends StatelessWidget {
           left: 0,
           child: const BannerWidget(),
         ),
+        Positioned(
+          top: size.height * .37,
+          right: 0,
+          left: 0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              children: [
+                CardInicialWidget(
+                  imagePath: "assets/images/image_play.png",
+                  onPressed: () {},
+                  textoBotao: "Jogar",
+                  tituloCard: "Meus jogos",
+                ),
+                const SizedBox(height: 10),
+                CardInicialWidget(
+                  imagePath: "assets/images/image_fala_alto.png",
+                  onPressed: () {},
+                  textoBotao: "Abrir",
+                  tituloCard: "Fala alto",
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
