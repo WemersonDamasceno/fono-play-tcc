@@ -48,46 +48,42 @@ class PageSlide extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       margin: EdgeInsets.fromLTRB(0, top, 0, 30),
-      child: Stack(
-        children: [
-          SizedBox(
-            width: size.width,
-            height: size.height * 0.18,
-            child: Card(
-              color: Colors.white,
-              elevation: 10,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Stack(
+      child: SizedBox(
+        width: size.width,
+        height: size.height * 0.18,
+        child: Card(
+          color: Colors.white,
+          elevation: 10,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Stack(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          titulo,
-                          style: const TextStyle(
-                            color: ConstantColor.titlesColor,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: size.width * 0.65,
-                          child: Text(
-                            descricao,
-                            style: const TextStyle(
-                                color: ConstantColor.descricaoColor),
-                            textAlign: TextAlign.start,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      titulo,
+                      style: const TextStyle(
+                        color: ConstantColor.titlesColor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: size.width * 0.65,
+                      child: Text(
+                        descricao,
+                        style: const TextStyle(
+                            color: ConstantColor.descricaoColor),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_carousel_widget.dart';
 import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/item_banner_model.dart';
 import 'package:fonoplay/src/pages/screens_intro/view/widgets/bolinhas_row.dart';
-import '/src/constants/constants_colors.dart';
 
 class BannerWidget extends StatefulWidget {
   const BannerWidget({Key? key}) : super(key: key);
