@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_da_crianca/dados_da_crianca_page.dart';
 import 'src/pages/paciente/home/navigation/home_navigation.dart';
 import 'src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'src/pages/paciente/login/entrar/login_entrar_page.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("pt", "BR"),
       ],
-      home: const NavigationHomePage(),
+      home: const DadosDaCriancaPage(),
       initialRoute: '/',
       routes: {
         '/introducao_pages': (context) => const IntroducaoPage(),

@@ -22,12 +22,12 @@ class InicioPacientePage extends StatelessWidget {
             child: const CabecalhoWidget(
               imagemPerfil: "assets/images/avatar_01.png",
               nomeCrianca: "Joãozinho",
-              titulo: "Seja bem vindo!",
+              titulo: "",
             ),
           ),
         ),
         Positioned(
-          top: size.height * 0.21,
+          top: size.height * 0.17,
           right: 0,
           left: 0,
           child: Padding(
@@ -65,16 +65,16 @@ class InicioPacientePage extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: size.height * 0.15,
+          top: size.height * 0.12,
           right: 0,
-          left: size.width * 0.56,
+          left: size.width * 0.57,
           child: Image.asset(
             "assets/images/brincando_com_a_lingua.png",
             width: size.width * 0.45,
           ),
         ),
         Positioned(
-          top: size.height * .38,
+          top: size.height * .36,
           right: 0,
           left: 0,
           child: Padding(

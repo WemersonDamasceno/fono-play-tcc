@@ -218,8 +218,15 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
                           if (dataNascimentoController.text !=
                               "Data de nascimento") {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Processing Data')),
+                              const SnackBar(
+                                content: Text('Processing Data'),
+                                duration: Duration(seconds: 2),
+                              ),
                             );
+                            Future.delayed(
+                                const Duration(seconds: 2),
+                                () => Navigator.popAndPushNamed(
+                                    context, "/home"));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 ConstantsSnackBar.snackBarWidget(
