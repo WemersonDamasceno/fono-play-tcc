@@ -36,14 +36,17 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.menu_book_rounded),
+            backgroundColor: ConstantColor.startGradiente,
             label: "Artigos",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications_rounded),
+            backgroundColor: ConstantColor.startGradiente,
             label: "Notificações",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
+            backgroundColor: ConstantColor.startGradiente,
             label: "Perfil",
           ),
         ],

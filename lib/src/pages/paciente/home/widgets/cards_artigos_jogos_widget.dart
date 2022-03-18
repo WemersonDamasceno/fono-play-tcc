@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class CardArtigosJogosWidget extends StatelessWidget {
-  const CardArtigosJogosWidget({Key? key}) : super(key: key);
+  final String pathImage;
+  final String titulo;
+  final String descricao;
+  const CardArtigosJogosWidget({
+    Key? key,
+    required this.pathImage,
+    required this.titulo,
+    required this.descricao,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +24,32 @@ class CardArtigosJogosWidget extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                "assets/images/fono_explica.png",
+                pathImage,
                 width: size.width * 0.3,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    "O que é apraxia?",
-                    style: TextStyle(
-                        color: ConstantColor.titlesColor, fontSize: 17),
+                    titulo,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: ConstantColor.titlesColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  Text(
-                    "DESCRIÇÃO",
+                  const Text(
+                    "Descrição",
                     style: TextStyle(
                       color: ConstantColor.descricaoColor,
                       fontSize: 13,
                     ),
                   ),
                   Text(
-                    "A apraxia de fala na infância \n(AFI) é um disturbio que \nafeta a produção motora de \nsons da fala.",
-                    style: TextStyle(
+                    descricao,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
                       color: ConstantColor.cinzaTextColor,
                       fontSize: 12,
                     ),

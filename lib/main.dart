@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("pt", "BR"),
       ],
-      home: const DadosDaCriancaPage(),
+      home: const NavigationHomePage(),
       initialRoute: '/',
       routes: {
         '/introducao_pages': (context) => const IntroducaoPage(),

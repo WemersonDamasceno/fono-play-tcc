@@ -52,7 +52,7 @@ class NotificacoesPacientePage extends StatelessWidget {
         shrinkWrap: true,
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
-          return const CardArtigosJogosWidget();
+          return const Text("Notificacoes");
         },
       ),
     );

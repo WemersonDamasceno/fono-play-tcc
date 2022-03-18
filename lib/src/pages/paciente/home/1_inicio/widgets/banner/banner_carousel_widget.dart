@@ -53,7 +53,6 @@ class PageSlide extends StatelessWidget {
         height: size.height * 0.18,
         child: Card(
           color: Colors.white,
-          elevation: 10,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Stack(

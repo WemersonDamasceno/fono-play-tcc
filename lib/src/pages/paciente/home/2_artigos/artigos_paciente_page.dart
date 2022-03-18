@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_widget.dart';
 import 'package:fonoplay/src/pages/paciente/home/2_artigos/models/item_list_model.dart';
-import 'package:fonoplay/src/pages/paciente/home/3_notificacoes/notificacoes_paciente_page.dart';
+import 'package:fonoplay/src/pages/paciente/home/widgets/cards_artigos_jogos_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
@@ -14,31 +14,24 @@ class ArtigosPacientePage extends StatelessWidget {
       ItemListModel(
         titulo: "O que é apraxia de fala?",
         descricao:
-            "A apraxia de fala na infância (AFI) é um disturbio que afeta a produção motora de sons da fala.",
+            "A apraxia de fala na infância \n(AFI) é um disturbio que \nafeta a produção motora\nde sons da fala.",
         pathImage: "assets/images/fono_explica.png",
       ),
       ItemListModel(
-        titulo: "O que é apraxia de fala?",
+        titulo: "Como identificar a AFI?",
         descricao:
-            "A apraxia de fala na infância (AFI) é um disturbio que afeta a produção motora de sons da fala.",
-        pathImage: "assets/images/fono_explica.png",
+            "Existe uma grande variedade\nde caracteristicas envolvidas\nnos quadros de AFI, variando\n de criança para criança.",
+        pathImage: "assets/images/intro_2_pai_crianca.png",
       ),
       ItemListModel(
-        titulo: "O que é apraxia de fala?",
+        titulo: "Como tratar?",
         descricao:
-            "A apraxia de fala na infância (AFI) é um disturbio que afeta a produção motora de sons da fala.",
-        pathImage: "assets/images/fono_explica.png",
-      ),
-      ItemListModel(
-        titulo: "O que é apraxia de fala?",
-        descricao:
-            "A apraxia de fala na infância (AFI) é um disturbio que afeta a produção motora de sons da fala.",
-        pathImage: "assets/images/fono_explica.png",
+            "É importante ressaltar que\nnem toda criança que\napresenta dificuldade em\nfalar tem AFI, por isso é mui...",
+        pathImage: "assets/images/intro_1_fono_crianca.png",
       ),
     ];
     Size size = MediaQuery.of(context).size;
     return Stack(
-      clipBehavior: Clip.none,
       children: [
         const ContainerGradienteWidget(),
         SafeArea(
@@ -59,12 +52,26 @@ class ArtigosPacientePage extends StatelessWidget {
           child: const BannerWidget(),
         ),
         Positioned(
-          top: size.height * .36,
+          top: size.height * .37,
           right: 0,
           left: 0,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: NotificacoesPacientePage(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SizedBox(
+              height: size.height * 0.55,
+              child: ListView.builder(
+                shrinkWrap: false,
+                itemCount: items.length,
+                itemBuilder: (BuildContext context, int index) {
+                  ItemListModel item = items[index];
+                  return CardArtigosJogosWidget(
+                    titulo: item.titulo,
+                    descricao: item.descricao,
+                    pathImage: item.pathImage,
+                  );
+                },
+              ),
+            ),
           ),
         ),
       ],
