@@ -18,32 +18,47 @@ class CabecalhoWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: size.height * 0.1,
-              width: size.width * 0.2,
-              child: Card(
-                elevation: 10,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
+            Row(
+              children: [
+                SizedBox(
+                  height: size.height * 0.1,
+                  width: size.width * 0.2,
+                  child: Card(
+                    elevation: 10,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Hero(
+                      tag: "avatar",
+                      child: Image.asset(imagemPerfil),
+                    ),
+                  ),
                 ),
-                child: Hero(
-                  tag: "avatar",
-                  child: Image.asset(imagemPerfil),
+                const SizedBox(
+                  width: 10,
                 ),
-              ),
+                Text(
+                  "Olá, $nomeCrianca!",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Olá, $nomeCrianca!",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 17,
-              ),
-            ),
+            IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: const Icon(
+                  Icons.clear_all,
+                  color: Colors.white,
+                  size: 40,
+                ))
           ],
         ),
         Text(

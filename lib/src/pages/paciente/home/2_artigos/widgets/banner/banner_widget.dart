@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_carousel_widget.dart';
-import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/item_banner_model.dart';
 import 'package:fonoplay/src/pages/screens_intro/view/widgets/bolinhas_row.dart';
+
+import 'banner_carousel_widget.dart';
+import 'item_banner_model.dart';
 
 class BannerWidget extends StatefulWidget {
   const BannerWidget({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _BannerWidgetState extends State<BannerWidget> {
         alignment: Alignment.center,
         children: [
           SizedBox(
-            height: size.height * .22,
+            height: size.height * .2,
             width: size.width * .85,
             child: BannerCarousel(
               listImagens: bannerList.listImagens,
@@ -46,7 +47,7 @@ class _BannerWidgetState extends State<BannerWidget> {
             ),
           ),
           Positioned(
-            bottom: size.height * .128,
+            bottom: size.height * .136,
             left: size.width * 0.6,
             child: Image.asset(
               "assets/images/fono_explica.png",
@@ -54,7 +55,7 @@ class _BannerWidgetState extends State<BannerWidget> {
             ),
           ),
           Positioned(
-            top: size.height * .24,
+            top: size.height * .23,
             child: BolinhasLinhas(
               paginaEmDestaque: _currentPage,
               tamanhoDaLista: bannerList.listImagens.length,

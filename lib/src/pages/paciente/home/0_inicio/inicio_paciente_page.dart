@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
-import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_widget.dart';
+import 'package:fonoplay/src/constants/constants_paginas.dart';
+import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
@@ -83,11 +84,12 @@ class InicioPacientePage extends StatelessWidget {
               children: [
                 CardInicialWidget(
                   imagePath: "assets/images/image_play.png",
-                  onPressed: () {},
+                  onPressed: () =>
+                      homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
                   textoBotao: "Jogar",
                   tituloCard: "Meus jogos",
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 CardInicialWidget(
                   imagePath: "assets/images/image_fala_alto.png",
                   onPressed: () {},

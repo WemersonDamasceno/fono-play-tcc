@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '/src/constants/constants_colors.dart';
+import 'package:fonoplay/src/pages/widgets/button_floating_widget.dart';
+
 import '/src/pages/screens_intro/model/slide_list.dart';
 import 'widgets/bolinhas_row.dart';
 import 'widgets/slide_carousel.dart';
@@ -55,41 +56,19 @@ class _IntroducaoPageState extends State<IntroducaoPage> {
           Positioned(
             top: size.height * .87,
             left: size.width * .7,
-            child: Container(
-              height: size.height * 0.07,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  bottomLeft: Radius.circular(24),
-                ),
-                gradient: ConstantColor.linearColors,
-              ),
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  _currentPage++;
-                  if (_currentPage >= slideList.listImagens.length) {
-                    Navigator.of(context).popAndPushNamed('/login_entrar');
-                  }
-                  _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.decelerate);
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  primary: Colors.transparent,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24),
-                      bottomLeft: Radius.circular(24),
-                    ),
-                  ),
-                ),
-                icon: const Text(
-                  "Avançar",
-                  style: TextStyle(color: Colors.white),
-                ),
-                label: const Icon(Icons.arrow_forward, color: Colors.white),
-              ),
+            child: ButtonFloatingWidget(
+              onPressed: () {
+                _currentPage++;
+                if (_currentPage >= slideList.listImagens.length) {
+                  Navigator.of(context).popAndPushNamed('/login_entrar');
+                }
+                _pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.decelerate);
+              },
+              icon: Icons.arrow_forward_rounded,
+              size: size,
+              texto: "Avançar",
             ),
           ),
         ],

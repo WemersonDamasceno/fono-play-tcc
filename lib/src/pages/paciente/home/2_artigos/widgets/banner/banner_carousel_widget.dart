@@ -44,7 +44,7 @@ class PageSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final double top = paginaEmDestaque ? 10 : 30;
+    final double top = paginaEmDestaque ? 5 : 20;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       margin: EdgeInsets.fromLTRB(0, top, 0, 30),
@@ -73,7 +73,7 @@ class PageSlide extends StatelessWidget {
                       child: Text(
                         descricao,
                         style: const TextStyle(
-                            color: ConstantColor.descricaoColor),
+                            color: ConstantColor.descricaoColor, fontSize: 12),
                         textAlign: TextAlign.start,
                       ),
                     ),

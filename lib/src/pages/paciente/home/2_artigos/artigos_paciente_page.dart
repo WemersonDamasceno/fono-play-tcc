@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/paciente/home/1_inicio/widgets/banner/banner_widget.dart';
 import 'package:fonoplay/src/pages/paciente/home/2_artigos/models/item_list_model.dart';
 import 'package:fonoplay/src/pages/paciente/home/widgets/cards_artigos_jogos_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+
+import 'widgets/banner/banner_widget.dart';
 
 class ArtigosPacientePage extends StatelessWidget {
   const ArtigosPacientePage({Key? key}) : super(key: key);
@@ -52,13 +53,13 @@ class ArtigosPacientePage extends StatelessWidget {
           child: const BannerWidget(),
         ),
         Positioned(
-          top: size.height * .37,
+          top: size.height * .33,
           right: 0,
           left: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
-              height: size.height * 0.55,
+              height: size.height * 0.65,
               child: ListView.builder(
                 shrinkWrap: false,
                 itemCount: items.length,
