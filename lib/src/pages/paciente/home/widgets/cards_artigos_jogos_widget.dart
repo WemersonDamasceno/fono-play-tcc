@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constant_identificadores.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class CardArtigosJogosWidget extends StatelessWidget {
   final String pathImage;
   final String titulo;
   final String descricao;
+  final String id;
   const CardArtigosJogosWidget({
     Key? key,
     required this.pathImage,
     required this.titulo,
     required this.descricao,
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -20,7 +23,19 @@ class CardArtigosJogosWidget extends StatelessWidget {
       child: Card(
         elevation: 2,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            switch (id) {
+              case ConstantesIdentificadores.JOGO_DA_MEMORIA:
+                Navigator.pushNamed(context, "/jogo_da_memoria");
+                break;
+              case ConstantesIdentificadores.JOGO_CONSEGUE_IMITAR:
+                print("JOGO CONSEGUE ME IMITAR");
+                break;
+              case ConstantesIdentificadores.JOGO_BRINCANDO_COM_LINGUA:
+                print("JOGO BRINCANDO COM A LINGUA");
+                break;
+            }
+          },
           child: Row(
             children: [
               Image.asset(

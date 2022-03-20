@@ -33,6 +33,7 @@ class CardInicialWidget extends StatelessWidget {
           children: [
             Image.asset(
               imagePath,
+              fit: BoxFit.cover,
               width: size.width * .45,
             ),
             Column(

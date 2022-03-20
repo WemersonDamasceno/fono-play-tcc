@@ -83,7 +83,7 @@ class InicioPacientePage extends StatelessWidget {
             child: Column(
               children: [
                 CardInicialWidget(
-                  imagePath: "assets/images/image_play.png",
+                  imagePath: "assets/images/astronauto.gif",
                   onPressed: () =>
                       homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
                   textoBotao: "Jogar",
@@ -91,7 +91,7 @@ class InicioPacientePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 CardInicialWidget(
-                  imagePath: "assets/images/image_fala_alto.png",
+                  imagePath: "assets/images/menina_alto.gif",
                   onPressed: () {},
                   textoBotao: "Abrir",
                   tituloCard: "Fala alto",

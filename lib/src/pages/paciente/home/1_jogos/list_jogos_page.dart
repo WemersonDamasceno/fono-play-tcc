@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constant_identificadores.dart';
 import 'package:fonoplay/src/constants/constants_paginas.dart';
 import 'package:fonoplay/src/pages/paciente/home/2_artigos/models/item_list_model.dart';
 import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
@@ -14,18 +15,21 @@ class ListaDosJogosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ItemListModel> items = [
       ItemListModel(
+        identificador: ConstantesIdentificadores.JOGO_DA_MEMORIA,
         titulo: "Jogo da memória",
         descricao:
             "Além de exercitar a memória\neste jogos vai ajudar na \nmemória muscular.",
         pathImage: "assets/images/jogo_da_memoria.png",
       ),
       ItemListModel(
+        identificador: ConstantesIdentificadores.JOGO_CONSEGUE_IMITAR,
         titulo: "Consegue me imitar?",
         descricao:
             "Este jogo é ótimo para a \nfamilia toda brincar junto e\n se divertir.",
         pathImage: "assets/images/consegue_me_imitar.png",
       ),
       ItemListModel(
+        identificador: ConstantesIdentificadores.JOGO_BRINCANDO_COM_LINGUA,
         titulo: "Brincando com a língua",
         descricao:
             "Este jogo também fortalece\na musculatura da lingua\ne da mandibula.",
@@ -63,6 +67,7 @@ class ListaDosJogosPage extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: CardArtigosJogosWidget(
+                      id: item.identificador,
                       titulo: item.titulo,
                       descricao: item.descricao,
                       pathImage: item.pathImage,
