@@ -22,6 +22,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
   @override
   void initState() {
     super.initState();
+    gameController.initGame();
     gameController.listaDeCartas.shuffle();
   }
 
@@ -186,7 +187,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
                 habilitarBotao: true,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    pontos = 0;
+                    Navigator.pop(context);
+                    gameController.initGame();
+                  });
+                },
                 child: const Text(
                   "Jogar novamente",
                   style: TextStyle(
