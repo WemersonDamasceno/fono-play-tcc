@@ -13,62 +13,62 @@ class GameController {
     listaDeCartas = [];
     listaDeCartas.addAll([
       CartaMemoriaModel(
-        pathImage: "assets/images/macaco.png",
+        pathImage: "assets/jogo_memoria/macaco.png",
         isEscondida: true,
         valor: "macaco",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/girafa.png",
+        pathImage: "assets/jogo_memoria/girafa.png",
         isEscondida: true,
         valor: "girafa",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/macaco.png",
+        pathImage: "assets/jogo_memoria/macaco.png",
         isEscondida: true,
         valor: "macaco",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/cachorro.png",
+        pathImage: "assets/jogo_memoria/cachorro.png",
         isEscondida: true,
         valor: "cachorro",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/leao.png",
+        pathImage: "assets/jogo_memoria/leao.png",
         isEscondida: true,
         valor: "leao",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/girafa.png",
+        pathImage: "assets/jogo_memoria/girafa.png",
         isEscondida: true,
         valor: "girafa",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/leao.png",
+        pathImage: "assets/jogo_memoria/leao.png",
         isEscondida: true,
         valor: "leao",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/cachorro.png",
+        pathImage: "assets/jogo_memoria/cachorro.png",
         isEscondida: true,
         valor: "cachorro",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/cobra.png",
+        pathImage: "assets/jogo_memoria/cobra.png",
         isEscondida: true,
         valor: "cobra",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/elefante.png",
+        pathImage: "assets/jogo_memoria/elefante.png",
         isEscondida: true,
         valor: "elefante",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/cobra.png",
+        pathImage: "assets/jogo_memoria/cobra.png",
         isEscondida: true,
         valor: "cobra",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/images/elefante.png",
+        pathImage: "assets/jogo_memoria/elefante.png",
         isEscondida: true,
         valor: "elefante",
       ),
