@@ -29,7 +29,7 @@ class CardArtigosJogosWidget extends StatelessWidget {
                 Navigator.pushNamed(context, "/jogo_da_memoria");
                 break;
               case ConstantesIdentificadores.JOGO_CONSEGUE_IMITAR:
-                print("JOGO CONSEGUE ME IMITAR");
+                Navigator.pushNamed(context, "/jogo_da_imitacao");
                 break;
               case ConstantesIdentificadores.JOGO_BRINCANDO_COM_LINGUA:
                 print("JOGO BRINCANDO COM A LINGUA");

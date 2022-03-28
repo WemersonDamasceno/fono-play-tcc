@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
 
 import 'src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'src/pages/paciente/home/navigation/home_navigation.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         '/login_criar_conta': (context) => const LoginCriarContaPage(),
         '/home': (context) => const NavigationHomePage(),
         '/jogo_da_memoria': (context) => const JogoDaMemoriaPage(),
+        '/jogo_da_imitacao': (context) => const JogoDaImitacaoPage(),
       },
     );
   }

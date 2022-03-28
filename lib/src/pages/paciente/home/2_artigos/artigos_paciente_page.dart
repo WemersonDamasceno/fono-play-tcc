@@ -44,6 +44,7 @@ class ArtigosPacientePage extends StatelessWidget {
             padding:
                 EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
             child: const CabecalhoWidget(
+              isGame: false,
               imagemPerfil: "assets/images/avatar_01.png",
               nomeCrianca: "Joãozinho",
               titulo: "Artigos para ler",

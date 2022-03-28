@@ -43,6 +43,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
               padding:
                   EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
               child: const CabecalhoWidget(
+                isGame: true,
                 imagemPerfil: "assets/images/avatar_01.png",
                 nomeCrianca: "Joãozinho",
                 titulo: "Jogo da memória",

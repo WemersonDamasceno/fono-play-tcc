@@ -18,6 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   mobx: ^2.0.6+1
   flutter_mobx: ^2.0.4
+  audioplayers: ^0.20.1
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +35,10 @@ flutter:
     - assets/images/
     - assets/images/animations/
     - assets/fonts/
+    - assets/jogo_memoria/
+    - assets/jogo_imitacao/
+    - assets/jogo_imitacao/animais/
+    - assets/jogo_imitacao/audios/
 
   fonts:
     - family: Poppins

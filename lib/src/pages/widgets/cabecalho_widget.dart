@@ -4,11 +4,13 @@ class CabecalhoWidget extends StatelessWidget {
   final String imagemPerfil;
   final String nomeCrianca;
   final String titulo;
+  final bool isGame;
   const CabecalhoWidget({
     Key? key,
     required this.imagemPerfil,
     required this.nomeCrianca,
     required this.titulo,
+    required this.isGame,
   }) : super(key: key);
 
   @override
@@ -52,10 +54,14 @@ class CabecalhoWidget extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {
-                  Scaffold.of(context).openEndDrawer();
+                  if (isGame) {
+                    Navigator.pop(context);
+                  } else {
+                    Scaffold.of(context).openEndDrawer();
+                  }
                 },
-                icon: const Icon(
-                  Icons.clear_all,
+                icon: Icon(
+                  isGame ? Icons.close_rounded : Icons.clear_all,
                   color: Colors.white,
                   size: 40,
                 ))
