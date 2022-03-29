@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/components/animal_item_widget.dart';
 import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/models/animal_item_model.dart';
-import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/widgets/animal_item_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 

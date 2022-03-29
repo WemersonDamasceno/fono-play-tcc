@@ -36,7 +36,7 @@ class _CardGameWidgetState extends State<CardGameWidget> {
             borderRadius: BorderRadius.circular(7),
             image: DecorationImage(
               image: widget.isEscondida
-                  ? AssetImage("assets/images/hidden.png")
+                  ? const AssetImage("assets/jogo_memoria/hidden.png")
                   : AssetImage(widget.pathImage),
               fit: BoxFit.cover,
             ),
