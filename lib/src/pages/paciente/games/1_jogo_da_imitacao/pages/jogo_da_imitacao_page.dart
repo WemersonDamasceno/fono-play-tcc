@@ -15,7 +15,7 @@ class JogoDaImitacaoPage extends StatefulWidget {
 class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
   bool playing = false;
   late AudioPlayer _player;
-  late AudioCache cache;
+  // late AudioCache cache;
   IconData iconPlay = Icons.play_circle_outline_rounded;
 
   AnimalItemModel animalFoco = AnimalItemModel(
@@ -27,7 +27,7 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    cache = AudioCache(fixedPlayer: _player);
+    // cache = AudioCache(fixedPlayer: _player);
   }
 
   escolhaAnimalReproduzirFonema(String animalSom) {
@@ -51,10 +51,10 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
   }
 
   tocarSom(String fonemaEscolhido) {
-    setState(() {
+    setState(() async {
       if (!playing) {
         iconPlay = Icons.pause_circle_outline_rounded;
-        cache.play("jogo_imitacao/audios/$fonemaEscolhido");
+        _player.play(AssetSource("jogo_imitacao/audios/$fonemaEscolhido"));
         playing = true;
         Future.delayed(const Duration(milliseconds: 2500)).then((value) {
           setState(() {

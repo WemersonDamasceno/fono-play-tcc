@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/fonoaudiologo/login/entrar_fonoaudilogo_page.dart';
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import 'package:fonoplay/src/services/auth-service.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
 import '/src/constants/constants_colors.dart';
 import 'widgets/button_icon_widget.dart';
+import 'package:provider/provider.dart';
 
 class LoginEntrarPage extends StatefulWidget {
   const LoginEntrarPage({Key? key}) : super(key: key);
@@ -104,12 +106,22 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                           child: ButtonGradienteWidget(
                             habilitarBotao: true,
                             texto: "Entrar",
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Processing Data')),
-                                );
+                            onPressed: () async {
+                              if (!_formKey.currentState!.validate()) return;
+                              // ScaffoldMessenger.of(context).showSnackBar(
+                              //   const SnackBar(
+                              //       content: Text('Processing Data')),
+                              // );
+
+                              if (await Provider.of<AuthServiceNotifier>(
+                                      context,
+                                      listen: false)
+                                  .loginWithEmailAndPassword(
+                                      email: usuarioController.text,
+                                      password: senhaController.text,
+                                      context: context)) {
+                                Navigator.of(context).pushReplacementNamed(
+                                    '/navigation_home_page');
                               }
                             },
                           ),
@@ -149,8 +161,12 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                   child: ButtonIconWidget(
                     pathImagem: "assets/images/logo_google.png",
                     texto: "Entrar com o Google",
-                    onPressed: () {
-                      Navigator.popAndPushNamed(context, "/home");
+                    onPressed: () async {
+                      if (await Provider.of<AuthServiceNotifier>(context,
+                              listen: false)
+                          .loginWithGoogle(context: context)) {
+                        Navigator.popAndPushNamed(context, "/home");
+                      }
                     },
                   ),
                 ),

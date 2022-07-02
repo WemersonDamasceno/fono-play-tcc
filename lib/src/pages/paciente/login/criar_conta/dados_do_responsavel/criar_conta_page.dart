@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_snackbar.dart';
 import 'package:fonoplay/src/pages/paciente/login/entrar/login_entrar_page.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import 'package:fonoplay/src/services/auth-service.dart';
+import 'package:provider/provider.dart';
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
@@ -202,23 +204,34 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                     child: ButtonGradienteWidget(
                       habilitarBotao: true,
                       texto: "Continuar",
-                      onPressed: () {
-                        if (checkTermosUso) {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                    transitionDuration:
-                                        const Duration(seconds: 1),
-                                    pageBuilder: (_, __, ___) =>
-                                        const DadosDaCriancaPage()));
-                          }
-                        } else {
+                      onPressed: () async {
+                        if (!checkTermosUso) {
                           ScaffoldMessenger.of(context).showSnackBar(
                               ConstantsSnackBar.snackBarWidget(
                                   "Aceite os termos para continuar!",
                                   Icons.warning_amber_rounded));
+                          return;
                         }
+                        if (!_formKey.currentState!.validate()) return;
+
+                        try {
+                          if (await Provider.of<AuthServiceNotifier>(context,
+                                  listen: false)
+                              .signUpUserWithEmailAndPassword(
+                                  email: emailPacienteController.text,
+                                  password: senhaPacienteController.text,
+                                  fullname: nomePacienteController.text,
+                                  context: context)) {
+                            Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration:
+                                      const Duration(seconds: 1),
+                                  pageBuilder: (_, __, ___) =>
+                                      const DadosDaCriancaPage(),
+                                ));
+                          }
+                        } catch (e) {}
                       },
                     ),
                   ),

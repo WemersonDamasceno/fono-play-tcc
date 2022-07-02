@@ -3,6 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/constants/constants_paginas.dart';
 import 'package:fonoplay/src/pages/paciente/home/navigation/controllers/home_controller.dart';
+import 'package:fonoplay/src/services/auth-service.dart';
+import 'package:provider/provider.dart';
 
 final homeController = HomeController();
 
@@ -132,8 +134,9 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 color: ConstantColor.startGradiente,
               ),
               title: const Text("Sair"),
-              onTap: () {
-                Navigator.pop(context);
+              onTap: () async{
+                await Provider.of<AuthServiceNotifier>(context, listen: false).logout(context: context);
+                Navigator.of(context).pushReplacementNamed('/login_entrar');
                 //Navegar para outra página
               },
             ),
