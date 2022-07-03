@@ -5,13 +5,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthServiceNotifier extends ChangeNotifier {
   final FirebaseAuth _auth;
 
-  AuthServiceNotifier(this._auth){
-    _auth.userChanges().listen((event) {
-      print(event);
-    });
+  AuthServiceNotifier(this._auth) {
+    _auth.userChanges().listen(onUserChange);
+  }
+
+  void onUserChange(User? user) {
+    notifyListeners();
+    print(user);
   }
 
   Stream<User?> get currentUser => _auth.authStateChanges();
+  User? get user => _auth.currentUser;
 
   Future<bool> signUpUserWithEmailAndPassword(
       {required String email,
@@ -20,10 +24,9 @@ class AuthServiceNotifier extends ChangeNotifier {
       String? photoURL,
       required BuildContext context}) async {
     try {
-      final credential = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      await credential.user?.updatePhotoURL(photoURL);
-      await credential.user?.updateDisplayName(fullname);
+      await changePerfil(displayName: fullname, photoURL: photoURL);
       return true;
       // return await _sendEmailVerification(context: context);
     } on FirebaseAuthException catch (e) {
@@ -80,9 +83,9 @@ class AuthServiceNotifier extends ChangeNotifier {
       // Once signed in, return the UserCredential
       await FirebaseAuth.instance.signInWithCredential(credential);
       return true;
-    }on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       await showSnackBar(context, e.message!);
-    }catch(e){
+    } catch (e) {
       await showSnackBar(context, "A operação foi mal sucedida");
       print(e);
     }
@@ -93,17 +96,22 @@ class AuthServiceNotifier extends ChangeNotifier {
     await FirebaseAuth.instance.signOut();
   }
 
-  Future<bool> _sendEmailVerification({required BuildContext context}) async {
+  Future<bool> changePerfil(
+      {String? email,
+      String? password,
+      String? displayName,
+      String? photoURL}) async {
     try {
-      await _auth.currentUser!.sendEmailVerification();
-      showSnackBar(context, 'Uma email de verificação foi enviádo');
-      return true;
-    } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message!);
+      if (_auth.currentUser == null) return false;
+      if (email != null) await _auth.currentUser?.updateEmail(email);
+      if (password != null) await _auth.currentUser?.updatePassword(password);
+      if (displayName != null)
+        await _auth.currentUser?.updateDisplayName(displayName);
+      if (photoURL != null) await _auth.currentUser?.updatePhotoURL(photoURL);
     } catch (e) {
-      print(e);
+      return false;
     }
-    return false;
+    return true;
   }
 
   Future<void> showSnackBar(BuildContext context, String menssage) async {

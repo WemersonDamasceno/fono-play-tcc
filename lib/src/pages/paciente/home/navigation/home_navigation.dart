@@ -31,12 +31,12 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             UserAccountsDrawerHeader(
               decoration:
                   const BoxDecoration(gradient: ConstantColor.linearColors),
-              accountEmail: const Text(
-                "wemersondamasceno@gmail.com",
+              accountEmail: Text(
+                context.watch<AuthServiceNotifier>().user?.email ?? "wemersondamasceno@gmail.com",
                 style: TextStyle(fontSize: 12),
               ),
-              accountName: const Text(
-                "Wemerson Damasceno",
+              accountName: Text(
+                context.watch<AuthServiceNotifier>().user?.displayName ?? "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
               currentAccountPicture: CircleAvatar(
