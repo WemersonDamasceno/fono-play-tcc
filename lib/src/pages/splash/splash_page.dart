@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:flutter/services.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class SplashPage extends StatefulWidget {
@@ -19,24 +20,21 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  startTime() async {
-    var _duration = const Duration(seconds: 2);
-    return Timer(_duration, navigationPage);
-  }
-
   void navigationPage() {
-    Navigator.popAndPushNamed(context, "/introducao_pages");
+    Navigator.of(context, rootNavigator: true).pop();
+    Navigator.pushNamed(context, "/introducao_pages");
   }
 
   @override
   void initState() {
     super.initState();
     mudarCorStatusBar(Colors.transparent);
-    startTime();
+    Future.delayed(Duration(seconds: 2), () => navigationPage());
   }
 
   @override
   void dispose() {
+    Future.delayed(Duration.zero);
     super.dispose();
   }
 

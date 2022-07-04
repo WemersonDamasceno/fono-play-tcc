@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_da_crianca/dados_da_crianca_mixin.dart';
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
-import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
-import '/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
+import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/input_text_widget.dart';
-import 'package:fonoplay/src/constants/constants_snackbar.dart';
+import 'package:fonoplay/src/services/auth-service.dart';
+import 'package:provider/provider.dart';
+
+import '/src/constants/constants_colors.dart';
 import 'controllers/dados_crianca_controller.dart';
 import 'widgets/escolha_avatars_widget.dart';
 
 final controllerCrianca = ControllerDadosCrianca();
 
 class DadosDaCriancaPage extends StatefulWidget {
-  const DadosDaCriancaPage({Key? key}) : super(key: key);
+  final String email;
+  final String senha;
+  final String nome;
+  const DadosDaCriancaPage({
+    Key? key,
+    required this.email,
+    required this.senha,
+    required this.nome,
+  }) : super(key: key);
   @override
   State<DadosDaCriancaPage> createState() => _DadosDaCriancaPageState();
 }
 
-class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
+class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
+    with DadosDaCriancaMixin {
   final _formKey = GlobalKey<FormState>();
   final nomeCriancaController = TextEditingController();
   final dataNascimentoController = TextEditingController();
@@ -213,26 +225,21 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage> {
                     child: ButtonGradienteWidget(
                       habilitarBotao: true,
                       texto: "Criar conta",
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          if (dataNascimentoController.text !=
-                              "Data de nascimento") {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Processing Data'),
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                            Future.delayed(
-                                const Duration(seconds: 2),
-                                () => Navigator.popAndPushNamed(
-                                    context, "/home"));
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                ConstantsSnackBar.snackBarWidget(
-                                    "Escolha uma data de nascimento.",
-                                    Icons.warning_amber_rounded));
-                          }
+                      onPressed: () async {
+                        if (await Provider.of<AuthServiceNotifier>(context,
+                                listen: false)
+                            .signUpUserWithEmailAndPassword(
+                          email: widget.email,
+                          password: widget.senha,
+                          fullname: widget.nome,
+                          photoURL: controllerCrianca.pathImage,
+                          context: context,
+                        )) {
+                          atualizarDadosDaCrianca(
+                            formKey: _formKey,
+                            dataNascimentoController: dataNascimentoController,
+                            context: context,
+                          );
                         }
                       },
                     ),

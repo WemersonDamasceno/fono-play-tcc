@@ -18,6 +18,11 @@ class NavigationHomePage extends StatefulWidget {
 class _NavigationHomePageState extends State<NavigationHomePage> {
   @override
   Widget build(BuildContext context) {
+    String withoutProfilePhoto =
+        "https://drive.google.com/file/d/1O_xmsLgwLRNBW4daDmRzGW67cRFfOXYK/view?usp=sharing";
+    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ??
+        withoutProfilePhoto;
+
     return Scaffold(
       body: Observer(
         builder: (_) {
@@ -32,16 +37,18 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               decoration:
                   const BoxDecoration(gradient: ConstantColor.linearColors),
               accountEmail: Text(
-                context.watch<AuthServiceNotifier>().user?.email ?? "wemersondamasceno@gmail.com",
+                context.watch<AuthServiceNotifier>().user?.email ??
+                    "wemersondamasceno@gmail.com",
                 style: TextStyle(fontSize: 12),
               ),
               accountName: Text(
-                context.watch<AuthServiceNotifier>().user?.displayName ?? "Wemerson Damasceno",
+                context.watch<AuthServiceNotifier>().user?.displayName ??
+                    "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Image.asset("assets/images/avatar_01.png"),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.network(imageUser),
               ),
             ),
             const Padding(
@@ -134,45 +141,15 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 color: ConstantColor.startGradiente,
               ),
               title: const Text("Sair"),
-              onTap: () async{
-                await Provider.of<AuthServiceNotifier>(context, listen: false).logout(context: context);
+              onTap: () async {
+                await Provider.of<AuthServiceNotifier>(context, listen: false)
+                    .logout(context: context);
                 Navigator.of(context).pushReplacementNamed('/login_entrar');
-                //Navegar para outra página
               },
             ),
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: tabSelecionada,
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       backgroundColor: ConstantColor.startGradiente,
-      //       label: "Inicio",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.menu_book_rounded),
-      //       backgroundColor: ConstantColor.startGradiente,
-      //       label: "Artigos",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.notifications_rounded),
-      //       backgroundColor: ConstantColor.startGradiente,
-      //       label: "Notificações",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       backgroundColor: ConstantColor.startGradiente,
-      //       label: "Perfil",
-      //     ),
-      //   ],
-      //   onTap: (index) {
-      //     setState(() {
-      //       tabSelecionada = index;
-      //     });
-      //   },
-      // ),
     );
   }
 }

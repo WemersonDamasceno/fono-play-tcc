@@ -1,18 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fonoplay/firebase_options.dart';
 import 'package:fonoplay/src/pages/intersection/intersection.dart';
+import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
+import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
+import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
+import 'package:fonoplay/src/pages/paciente/login/entrar/login_entrar_page.dart';
+import 'package:fonoplay/src/pages/screens_intro/view/introducao_page.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
 import 'package:provider/provider.dart';
-
-import 'src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
-import 'src/pages/paciente/home/navigation/home_navigation.dart';
-import 'src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
-import 'src/pages/paciente/login/entrar/login_entrar_page.dart';
-import 'src/pages/screens_intro/view/introducao_page.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
