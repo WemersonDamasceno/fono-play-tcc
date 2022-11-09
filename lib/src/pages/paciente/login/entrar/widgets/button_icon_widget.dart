@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/src/constants/constants_colors.dart';
 
 class ButtonIconWidget extends StatelessWidget {
@@ -20,8 +21,8 @@ class ButtonIconWidget extends StatelessWidget {
       width: size.width,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          onPrimary: ConstantColor.primaryColor,
+          foregroundColor: ConstantColor.primaryColor,
+          backgroundColor: Colors.white,
           alignment: Alignment.centerLeft,
         ),
         onPressed: onPressed,

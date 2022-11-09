@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/src/constants/constants_colors.dart';
 
 class ButtonGradienteWidget extends StatelessWidget {
@@ -29,7 +30,7 @@ class ButtonGradienteWidget extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            primary: Colors.transparent,
+            backgroundColor: Colors.transparent,
           ),
           child: habilitarBotao
               ? Text(
