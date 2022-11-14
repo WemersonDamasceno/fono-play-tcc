@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
 
   void navigationPage() {
     Navigator.of(context, rootNavigator: true).pop();
-    Navigator.pushNamed(context, "/introducao_pages");
+    Navigator.pushNamed(context, "/intersection");
   }
 
   @override
