@@ -18,8 +18,7 @@ class InicioPacientePage extends StatelessWidget {
         const ContainerGradienteWidget(),
         SafeArea(
           child: Padding(
-            padding:
-                EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
+            padding: EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
             child: const CabecalhoWidget(
               isGame: false,
               imagemPerfil: "assets/images/avatar_01.png",
@@ -85,17 +84,16 @@ class InicioPacientePage extends StatelessWidget {
               children: [
                 CardInicialWidget(
                   imagePath: "assets/images/astronauto.gif",
-                  onPressed: () =>
-                      homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
+                  onPressed: () => homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
                   textoBotao: "Jogar",
                   tituloCard: "Meus jogos",
                 ),
                 const SizedBox(height: 20),
                 CardInicialWidget(
                   imagePath: "assets/images/menina_alto.gif",
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, "/toque-para-falar"),
                   textoBotao: "Abrir",
-                  tituloCard: "Fala alto",
+                  tituloCard: "Toque para falar",
                 ),
               ],
             ),

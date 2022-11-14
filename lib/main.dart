@@ -6,6 +6,7 @@ import 'package:fonoplay/firebase_options.dart';
 import 'package:fonoplay/src/pages/intersection/intersection.dart';
 import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
+import 'package:fonoplay/src/pages/paciente/games/3_toque_para_falar/toque_falar_page.dart';
 import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/paciente/login/entrar/login_entrar_page.dart';
@@ -20,8 +21,7 @@ void main() async {
   );
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(
-          create: (context) => AuthServiceNotifier(FirebaseAuth.instance)),
+      ChangeNotifierProvider(create: (context) => AuthServiceNotifier(FirebaseAuth.instance)),
     ],
     child: const MyApp(),
   ));
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const NavigationHomePage(),
         '/jogo_da_memoria': (context) => const JogoDaMemoriaPage(),
         '/jogo_da_imitacao': (context) => const JogoDaImitacaoPage(),
+        '/toque-para-falar': (context) => const ToqueParaFalarPage(),
       },
     );
   }

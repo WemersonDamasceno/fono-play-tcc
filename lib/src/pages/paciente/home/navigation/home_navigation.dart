@@ -18,10 +18,8 @@ class NavigationHomePage extends StatefulWidget {
 class _NavigationHomePageState extends State<NavigationHomePage> {
   @override
   Widget build(BuildContext context) {
-    String withoutProfilePhoto =
-        "https://drive.google.com/file/d/1O_xmsLgwLRNBW4daDmRzGW67cRFfOXYK/view?usp=sharing";
-    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ??
-        withoutProfilePhoto;
+    String withoutProfilePhoto = "https://www.wikiaves.com.br/img/semfoto.png";
+    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ?? withoutProfilePhoto;
 
     return Scaffold(
       body: Observer(
@@ -34,16 +32,13 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              decoration:
-                  const BoxDecoration(gradient: ConstantColor.linearColors),
+              decoration: const BoxDecoration(gradient: ConstantColor.linearColors),
               accountEmail: Text(
-                context.watch<AuthServiceNotifier>().user?.email ??
-                    "wemersondamasceno@gmail.com",
+                context.watch<AuthServiceNotifier>().user?.email ?? "wemersondamasceno@gmail.com",
                 style: TextStyle(fontSize: 12),
               ),
               accountName: Text(
-                context.watch<AuthServiceNotifier>().user?.displayName ??
-                    "Wemerson Damasceno",
+                context.watch<AuthServiceNotifier>().user?.displayName ?? "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
               currentAccountPicture: ClipRRect(
@@ -142,8 +137,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               ),
               title: const Text("Sair"),
               onTap: () async {
-                await Provider.of<AuthServiceNotifier>(context, listen: false)
-                    .logout(context: context);
+                await Provider.of<AuthServiceNotifier>(context, listen: false).logout(context: context);
                 Navigator.of(context).pushReplacementNamed('/login_entrar');
               },
             ),
