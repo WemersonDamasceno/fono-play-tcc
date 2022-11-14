@@ -11,7 +11,7 @@ class ContainerGradienteWidget extends StatelessWidget {
       child: Container(
         height: size.height * 0.25,
         decoration: const BoxDecoration(
-          gradient: ConstantColor.linearColors,
+          gradient: AppColors.linearColors,
         ),
       ),
     );

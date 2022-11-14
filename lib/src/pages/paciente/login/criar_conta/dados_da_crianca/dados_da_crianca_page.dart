@@ -121,7 +121,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                               const Text(
                                 "Toque para escolher o avatar",
                                 style: TextStyle(
-                                  color: ConstantColor.cinzaColor,
+                                  color: AppColors.cinzaColor,
                                 ),
                               ),
                             ],
@@ -141,7 +141,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                               entradaController: nomeCriancaController,
                               prefixIcon: const Icon(
                                 Icons.person_outline,
-                                color: ConstantColor.primaryColor,
+                                color: AppColors.primaryColor,
                               ),
                               entradaTipo: TextInputType.text,
                               mostrarSenha: null,
@@ -150,7 +150,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                             const Text(
                               "Selecione uma opção abaixo.",
                               style: TextStyle(
-                                color: ConstantColor.cinzaTextColor,
+                                color: AppColors.cinzaTextColor,
                               ),
                             ),
                             const SizedBox(
@@ -162,7 +162,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                               height: size.height * 0.07,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                 ),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(7)),
@@ -171,11 +171,11 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                                 value: sintomasDropMenu,
                                 icon: const Icon(
                                   Icons.arrow_downward,
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                 ),
                                 elevation: 16,
                                 style: const TextStyle(
-                                    color: ConstantColor.startGradiente),
+                                    color: AppColors.startGradiente),
                                 underline: Container(
                                   height: 2,
                                   color: Colors.transparent,
@@ -264,7 +264,7 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
             height: size.height * 0.07,
             decoration: BoxDecoration(
               border: Border.all(
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               borderRadius: const BorderRadius.all(Radius.circular(7)),
             ),
@@ -274,13 +274,13 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Icon(
                     Icons.calendar_today_outlined,
-                    color: ConstantColor.primaryColor,
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 Text(
                   dataNascimentoController.text,
                   style: const TextStyle(
-                    color: ConstantColor.startGradiente,
+                    color: AppColors.startGradiente,
                     fontSize: 16,
                   ),
                 ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
+
 import '/src/constants/constantes_avatars.dart';
 import '/src/constants/constants_colors.dart';
-
 import '../dados_da_crianca_page.dart';
 
 class EscolherAvatarWidget extends StatefulWidget {
@@ -32,7 +32,7 @@ class _EscolherAvatarWidgetState extends State<EscolherAvatarWidget> {
           ),
           const Text(
             "Escolha o avatar do perfil",
-            style: TextStyle(fontSize: 16, color: ConstantColor.titlesColor),
+            style: TextStyle(fontSize: 16, color: AppColors.titlesColor),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -103,7 +103,7 @@ class _EscolherAvatarWidgetState extends State<EscolherAvatarWidget> {
         builder: (_) => Container(
           decoration: BoxDecoration(
               color: controllerCrianca.avatar == avatarConstante
-                  ? ConstantColor.primaryColor
+                  ? AppColors.primaryColor
                   : Colors.transparent,
               borderRadius: const BorderRadius.all(Radius.circular(100))),
           height: size.height * 0.16,

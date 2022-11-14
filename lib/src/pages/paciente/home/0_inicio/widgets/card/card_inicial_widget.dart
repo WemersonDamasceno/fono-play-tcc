@@ -29,7 +29,8 @@ class CardInicialWidget extends StatelessWidget {
           height: size.height * .22,
           width: size.width,
           decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(7)), gradient: ConstantColor.linearColors),
+              borderRadius: BorderRadius.all(Radius.circular(7)),
+              gradient: AppColors.linearColors),
           child: Row(
             children: [
               Image.asset(

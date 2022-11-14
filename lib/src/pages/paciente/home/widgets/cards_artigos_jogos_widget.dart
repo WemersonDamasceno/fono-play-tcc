@@ -49,7 +49,7 @@ class CardArtigosJogosWidget extends StatelessWidget {
                     titulo,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: ConstantColor.titlesColor,
+                      color: AppColors.titlesColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -57,7 +57,7 @@ class CardArtigosJogosWidget extends StatelessWidget {
                   const Text(
                     "Descrição",
                     style: TextStyle(
-                      color: ConstantColor.descricaoColor,
+                      color: AppColors.descricaoColor,
                       fontSize: 13,
                     ),
                   ),
@@ -65,7 +65,7 @@ class CardArtigosJogosWidget extends StatelessWidget {
                     descricao,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      color: ConstantColor.cinzaTextColor,
+                      color: AppColors.cinzaTextColor,
                       fontSize: 12,
                     ),
                   ),

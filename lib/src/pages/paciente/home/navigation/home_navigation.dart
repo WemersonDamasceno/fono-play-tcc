@@ -19,7 +19,8 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
   @override
   Widget build(BuildContext context) {
     String withoutProfilePhoto = "https://www.wikiaves.com.br/img/semfoto.png";
-    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ?? withoutProfilePhoto;
+    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ??
+        withoutProfilePhoto;
 
     return Scaffold(
       body: Observer(
@@ -32,13 +33,15 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(gradient: ConstantColor.linearColors),
+              decoration: const BoxDecoration(gradient: AppColors.linearColors),
               accountEmail: Text(
-                context.watch<AuthServiceNotifier>().user?.email ?? "wemersondamasceno@gmail.com",
+                context.watch<AuthServiceNotifier>().user?.email ??
+                    "wemersondamasceno@gmail.com",
                 style: TextStyle(fontSize: 12),
               ),
               accountName: Text(
-                context.watch<AuthServiceNotifier>().user?.displayName ?? "Wemerson Damasceno",
+                context.watch<AuthServiceNotifier>().user?.displayName ??
+                    "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
               currentAccountPicture: ClipRRect(
@@ -50,7 +53,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               padding: EdgeInsets.only(left: 20, top: 10),
               child: Text("Funcionalidades",
                   style: TextStyle(
-                    color: ConstantColor.cinzaTextColor,
+                    color: AppColors.cinzaTextColor,
                     fontSize: 16,
                   )),
             ),
@@ -58,7 +61,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.home,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Pagina Inicial"),
               onTap: () {
@@ -69,7 +72,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.auto_stories,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Artigos para ler"),
               onTap: () {
@@ -80,7 +83,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.person,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Dados da criança"),
               onTap: () {
@@ -91,7 +94,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.notifications,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Notificações"),
               onTap: () {
@@ -103,7 +106,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               padding: EdgeInsets.only(left: 20, top: 10),
               child: Text("Outras opções",
                   style: TextStyle(
-                    color: ConstantColor.cinzaTextColor,
+                    color: AppColors.cinzaTextColor,
                     fontSize: 16,
                   )),
             ),
@@ -111,7 +114,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.email_rounded,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Envie suas sujestões"),
               onTap: () {
@@ -122,7 +125,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.info,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Sobre o FonoPlay"),
               onTap: () {
@@ -133,11 +136,12 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
             ListTile(
               leading: const Icon(
                 Icons.logout,
-                color: ConstantColor.startGradiente,
+                color: AppColors.startGradiente,
               ),
               title: const Text("Sair"),
               onTap: () async {
-                await Provider.of<AuthServiceNotifier>(context, listen: false).logout(context: context);
+                await Provider.of<AuthServiceNotifier>(context, listen: false)
+                    .logout(context: context);
                 Navigator.of(context).pushReplacementNamed('/login_entrar');
               },
             ),

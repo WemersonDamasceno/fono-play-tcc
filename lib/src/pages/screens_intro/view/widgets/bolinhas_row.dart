@@ -24,7 +24,7 @@ class BolinhasLinhas extends StatelessWidget {
                 height: 10,
                 decoration: BoxDecoration(
                   color: paginaEmDestaque == index
-                      ? ConstantColor.primaryColor
+                      ? AppColors.primaryColor
                       : Colors.grey,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(20),

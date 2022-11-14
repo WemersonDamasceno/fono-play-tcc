@@ -63,7 +63,7 @@ class PageSlide extends StatelessWidget {
                     Text(
                       titulo,
                       style: const TextStyle(
-                        color: ConstantColor.titlesColor,
+                        color: AppColors.titlesColor,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -73,7 +73,7 @@ class PageSlide extends StatelessWidget {
                       child: Text(
                         descricao,
                         style: const TextStyle(
-                            color: ConstantColor.descricaoColor, fontSize: 12),
+                            color: AppColors.descricaoColor, fontSize: 12),
                         textAlign: TextAlign.start,
                       ),
                     ),

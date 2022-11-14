@@ -81,7 +81,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                     const Text(
                       "Criar Conta",
                       style: TextStyle(
-                        color: ConstantColor.primaryColor,
+                        color: AppColors.primaryColor,
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
                       ),
@@ -98,7 +98,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                               entradaController: nomePacienteController,
                               prefixIcon: const Icon(
                                 Icons.person_outline,
-                                color: ConstantColor.primaryColor,
+                                color: AppColors.primaryColor,
                               ),
                               entradaTipo: TextInputType.text,
                               mostrarSenha: null,
@@ -111,7 +111,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                                 entradaController: emailPacienteController,
                                 prefixIcon: const Icon(
                                   Icons.email_outlined,
-                                  color: ConstantColor.primaryColor,
+                                  color: AppColors.primaryColor,
                                 ),
                                 entradaTipo: TextInputType.emailAddress,
                                 mostrarSenha: null,
@@ -122,7 +122,7 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                               entradaController: senhaPacienteController,
                               prefixIcon: const Icon(
                                 Icons.lock_outline,
-                                color: ConstantColor.primaryColor,
+                                color: AppColors.primaryColor,
                               ),
                               sufixIcon: mostrarSenha
                                   ? Icons.visibility_off
@@ -161,15 +161,13 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                                           text:
                                               'Ao se inscrever, você concorda com\nnossos ',
                                           style: const TextStyle(
-                                              color:
-                                                  ConstantColor.descricaoColor,
+                                              color: AppColors.descricaoColor,
                                               fontSize: 15),
                                           children: <TextSpan>[
                                             TextSpan(
                                               text: 'termos de uso.',
                                               style: const TextStyle(
-                                                  color: ConstantColor
-                                                      .primaryColor,
+                                                  color: AppColors.primaryColor,
                                                   fontSize: 15),
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () {},
@@ -236,5 +234,5 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
 }
 
 Color getColor(Set<MaterialState> states) {
-  return ConstantColor.primaryColor;
+  return AppColors.primaryColor;
 }

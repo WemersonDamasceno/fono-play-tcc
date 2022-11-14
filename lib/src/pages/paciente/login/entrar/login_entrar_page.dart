@@ -3,11 +3,12 @@ import 'package:fonoplay/src/pages/fonoaudiologo/login/entrar_fonoaudilogo_page.
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
+import 'package:provider/provider.dart';
+
+import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
-import '/src/constants/constants_colors.dart';
 import 'widgets/button_icon_widget.dart';
-import 'package:provider/provider.dart';
 
 class LoginEntrarPage extends StatefulWidget {
   const LoginEntrarPage({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                 const Text(
                   "Login",
                   style: TextStyle(
-                    color: ConstantColor.primaryColor,
+                    color: AppColors.primaryColor,
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
                   ),
@@ -74,7 +75,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                           entradaController: usuarioController,
                           prefixIcon: const Icon(
                             Icons.email_outlined,
-                            color: ConstantColor.primaryColor,
+                            color: AppColors.primaryColor,
                           ),
                           entradaTipo: TextInputType.emailAddress,
                           mostrarSenha: null,
@@ -87,7 +88,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                             entradaController: senhaController,
                             prefixIcon: const Icon(
                               Icons.lock_outline,
-                              color: ConstantColor.primaryColor,
+                              color: AppColors.primaryColor,
                             ),
                             sufixIcon: mostrarSenha
                                 ? Icons.visibility_off
@@ -139,19 +140,19 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                       Container(
                         height: 1,
                         width: size.width * .29,
-                        color: ConstantColor.cinzaColor,
+                        color: AppColors.cinzaColor,
                       ),
                       const Text(
                         "Ou se preferir",
                         style: TextStyle(
                           fontSize: 12,
-                          color: ConstantColor.cinzaTextColor,
+                          color: AppColors.cinzaTextColor,
                         ),
                       ),
                       Container(
                         height: 1,
                         width: size.width * .29,
-                        color: ConstantColor.cinzaColor,
+                        color: AppColors.cinzaColor,
                       ),
                     ],
                   ),
@@ -189,7 +190,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                       "Não possui conta?",
                       style: TextStyle(
                         fontSize: 13,
-                        color: ConstantColor.cinzaTextColor,
+                        color: AppColors.cinzaTextColor,
                       ),
                     ),
                     TextButton(
@@ -207,7 +208,7 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                         style: TextStyle(
                           fontSize: 13,
                           decoration: TextDecoration.underline,
-                          color: ConstantColor.primaryColor,
+                          color: AppColors.primaryColor,
                         ),
                       ),
                     ),

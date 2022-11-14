@@ -46,7 +46,7 @@ class _SplashPageState extends State<SplashPage> {
         height: size.height,
         width: size.width,
         decoration: const BoxDecoration(
-          gradient: ConstantColor.linearColors,
+          gradient: AppColors.linearColors,
         ),
         child: Center(
           child: SizedBox(

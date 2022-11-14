@@ -97,7 +97,7 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
             child: Image.asset("assets/jogo_imitacao/palco.jpg"),
           ),
           Positioned(
-            top: height * 0.43,
+            top: height * 0.48,
             right: 0,
             left: 0,
             child: SizedBox(

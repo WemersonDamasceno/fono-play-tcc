@@ -18,7 +18,8 @@ class InicioPacientePage extends StatelessWidget {
         const ContainerGradienteWidget(),
         SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
+            padding:
+                EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
             child: const CabecalhoWidget(
               isGame: false,
               imagemPerfil: "assets/images/avatar_01.png",
@@ -46,7 +47,7 @@ class InicioPacientePage extends StatelessWidget {
                       Text(
                         "Escolha um jogo",
                         style: TextStyle(
-                          color: ConstantColor.titlesColor,
+                          color: AppColors.titlesColor,
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
                         ),
@@ -54,7 +55,7 @@ class InicioPacientePage extends StatelessWidget {
                       SizedBox(
                         child: Text(
                           "Chame seu filho(a) e \nbrinque com ele.",
-                          style: TextStyle(color: ConstantColor.descricaoColor),
+                          style: TextStyle(color: AppColors.descricaoColor),
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -84,14 +85,16 @@ class InicioPacientePage extends StatelessWidget {
               children: [
                 CardInicialWidget(
                   imagePath: "assets/images/astronauto.gif",
-                  onPressed: () => homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
+                  onPressed: () =>
+                      homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
                   textoBotao: "Jogar",
                   tituloCard: "Meus jogos",
                 ),
                 const SizedBox(height: 20),
                 CardInicialWidget(
                   imagePath: "assets/images/menina_alto.gif",
-                  onPressed: () => Navigator.pushNamed(context, "/toque-para-falar"),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, "/toque-para-falar"),
                   textoBotao: "Abrir",
                   tituloCard: "Toque para falar",
                 ),

@@ -75,7 +75,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
                 style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w800,
-                  color: ConstantColor.titlesColor,
+                  color: AppColors.titlesColor,
                 ),
               )),
         ),

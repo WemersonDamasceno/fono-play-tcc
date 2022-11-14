@@ -23,7 +23,7 @@ class ButtonFloatingWidget extends StatelessWidget {
           topLeft: Radius.circular(24),
           bottomLeft: Radius.circular(24),
         ),
-        gradient: ConstantColor.linearColors,
+        gradient: AppColors.linearColors,
       ),
       child: ElevatedButton.icon(
         onPressed: onPressed,

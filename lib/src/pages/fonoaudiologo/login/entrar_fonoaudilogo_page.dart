@@ -85,7 +85,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                     const Text(
                       "Login",
                       style: TextStyle(
-                        color: ConstantColor.primaryColor,
+                        color: AppColors.primaryColor,
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
                       ),
@@ -116,7 +116,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                         entradaController: userFonoController,
                         prefixIcon: const Icon(
                           Icons.email_outlined,
-                          color: ConstantColor.primaryColor,
+                          color: AppColors.primaryColor,
                         ),
                         entradaTipo: TextInputType.emailAddress,
                         mostrarSenha: null,
@@ -129,7 +129,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                           entradaController: senhaFonoController,
                           prefixIcon: const Icon(
                             Icons.lock_outline,
-                            color: ConstantColor.primaryColor,
+                            color: AppColors.primaryColor,
                           ),
                           sufixIcon: mostrarSenha
                               ? Icons.visibility_off
@@ -168,7 +168,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                               expands: false,
                               showCursor: false,
                               style: const TextStyle(
-                                color: ConstantColor.startGradiente,
+                                color: AppColors.startGradiente,
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 33,
@@ -176,7 +176,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                               decoration: const InputDecoration(
                                 hintText: "***",
                                 hintStyle: TextStyle(
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                   fontSize: 40,
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 40,
@@ -201,7 +201,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                                 Container(
                                   width: size.width * 0.14,
                                   height: 2,
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -209,7 +209,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                                 Container(
                                   width: size.width * 0.14,
                                   height: 2,
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -217,7 +217,7 @@ class _EntrarFonoaudiologoPageState extends State<EntrarFonoaudiologoPage> {
                                 Container(
                                   width: size.width * 0.14,
                                   height: 2,
-                                  color: ConstantColor.startGradiente,
+                                  color: AppColors.startGradiente,
                                 ),
                               ],
                             ),

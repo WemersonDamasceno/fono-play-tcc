@@ -21,7 +21,7 @@ class ButtonIconWidget extends StatelessWidget {
       width: size.width,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          foregroundColor: ConstantColor.primaryColor,
+          foregroundColor: AppColors.primaryColor,
           backgroundColor: Colors.white,
           alignment: Alignment.centerLeft,
         ),

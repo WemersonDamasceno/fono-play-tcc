@@ -60,14 +60,14 @@ class PageSlide extends StatelessWidget {
           Text(
             titulo,
             style: const TextStyle(
-              color: ConstantColor.titlesColor,
+              color: AppColors.titlesColor,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             descricao,
-            style: const TextStyle(color: ConstantColor.descricaoColor),
+            style: const TextStyle(color: AppColors.descricaoColor),
             textAlign: TextAlign.center,
           ),
         ],
