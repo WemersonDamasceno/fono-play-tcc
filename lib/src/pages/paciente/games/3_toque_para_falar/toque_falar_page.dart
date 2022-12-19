@@ -1,11 +1,63 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/paciente/games/3_toque_para_falar/widgets/fala_card_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
-class ToqueParaFalarPage extends StatelessWidget {
+class ToqueParaFalarPage extends StatefulWidget {
   const ToqueParaFalarPage({Key? key}) : super(key: key);
+
+  @override
+  State<ToqueParaFalarPage> createState() => _ToqueParaFalarPageState();
+}
+
+class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
+  late AudioPlayer _player;
+
+  @override
+  void initState() {
+    super.initState();
+    _player = AudioPlayer();
+  }
+
+  tocarSom(String audioEscolhido) {
+    setState(() {
+      _player.play(AssetSource("toque_para_falar/audios/$audioEscolhido"));
+    });
+  }
+
+  escolhaSomParaFalar(String audio) {
+    switch (audio) {
+      case "banheiro":
+        tocarSom("banheiro.mp3");
+        break;
+      case "fome":
+        tocarSom("fome.mp3");
+        break;
+      case "frio":
+        tocarSom("frio.mp3");
+        break;
+      case "dor":
+        tocarSom("dor.mp3");
+        break;
+      case "sono":
+        tocarSom("sono.mp3");
+        break;
+      case "triste":
+        tocarSom("triste.mp3");
+        break;
+      case "banho":
+        tocarSom("banho.mp3");
+        break;
+      case "te_amo":
+        tocarSom("te_amo.mp3");
+        break;
+      case "abraco":
+        tocarSom("abraco.mp3");
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +113,12 @@ class ToqueParaFalarPage extends StatelessWidget {
                   ),
                 ),
                 FalaCardWidget(
-                  image: "tomar_banho",
+                  image: "banho",
                   text: "Banho",
                   onTap: () => dialogFalarMensagem(
                     size,
                     context,
-                    "tomar_banho",
+                    "banho",
                     "Quero tomar banho!",
                   ),
                 ),
@@ -137,6 +189,7 @@ class ToqueParaFalarPage extends StatelessWidget {
   }
 
   dialogFalarMensagem(size, context, image, mensagem) {
+    escolhaSomParaFalar(image);
     return showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(

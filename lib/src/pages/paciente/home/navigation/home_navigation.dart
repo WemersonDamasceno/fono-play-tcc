@@ -116,7 +116,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 Icons.email_rounded,
                 color: AppColors.startGradiente,
               ),
-              title: const Text("Envie suas sujestões"),
+              title: const Text("Envie suas sugestões"),
               onTap: () {
                 Navigator.pop(context);
                 //Navegar para outra página

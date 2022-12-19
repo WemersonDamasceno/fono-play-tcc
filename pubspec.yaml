@@ -44,6 +44,7 @@ flutter:
     - assets/jogo_imitacao/animais/
     - assets/jogo_imitacao/audios/
     - assets/toque_para_falar/
+    - assets/toque_para_falar/audios/
 
   fonts:
     - family: Poppins
