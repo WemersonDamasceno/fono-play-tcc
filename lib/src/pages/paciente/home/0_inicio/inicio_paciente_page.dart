@@ -7,8 +7,18 @@ import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
 import 'widgets/card/card_inicial_widget.dart';
 
-class InicioPacientePage extends StatelessWidget {
+class InicioPacientePage extends StatefulWidget {
   const InicioPacientePage({Key? key}) : super(key: key);
+
+  @override
+  State<InicioPacientePage> createState() => _InicioPacientePageState();
+}
+
+class _InicioPacientePageState extends State<InicioPacientePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,20 +93,25 @@ class InicioPacientePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               children: [
-                CardInicialWidget(
-                  imagePath: "assets/images/astronauto.gif",
-                  onPressed: () =>
-                      homeController.trocarTela(ConstantesPaginas.LISTA_JOGOS),
-                  textoBotao: "Jogar",
-                  tituloCard: "Meus jogos",
+                GestureDetector(
+                  child: CardInicialWidget(
+                    imagePath: "assets/images/astronauto.gif",
+                    onPressed: () => homeController
+                        .trocarTela(ConstantesPaginas.LISTA_JOGOS),
+                    textoBotao: "Jogar",
+                    tituloCard: "Meus jogos",
+                  ),
                 ),
                 const SizedBox(height: 20),
-                CardInicialWidget(
-                  imagePath: "assets/images/menina_alto.gif",
-                  onPressed: () =>
-                      Navigator.pushNamed(context, "/toque-para-falar"),
-                  textoBotao: "Abrir",
-                  tituloCard: "Toque para falar",
+                GestureDetector(
+                  onTap: () {},
+                  child: CardInicialWidget(
+                    imagePath: "assets/images/menina_alto.gif",
+                    onPressed: () =>
+                        Navigator.pushNamed(context, "/toque-para-falar"),
+                    textoBotao: "Abrir",
+                    tituloCard: "Toque para falar",
+                  ),
                 ),
               ],
             ),

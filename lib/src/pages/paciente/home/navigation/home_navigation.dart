@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
@@ -16,6 +17,17 @@ class NavigationHomePage extends StatefulWidget {
 }
 
 class _NavigationHomePageState extends State<NavigationHomePage> {
+  late AudioPlayer _player;
+  bool isPlaying = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _player = AudioPlayer();
+    _player.play(AssetSource("audios/musica_background.mp3"));
+    _player.setVolume(0.1);
+  }
+
   @override
   Widget build(BuildContext context) {
     String withoutProfilePhoto = "https://www.wikiaves.com.br/img/semfoto.png";
@@ -44,6 +56,25 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                     "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
+              otherAccountsPictures: [
+                IconButton(
+                  icon: Icon(
+                    isPlaying ? Icons.music_note : Icons.music_off,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (isPlaying) {
+                        _player.pause();
+                        isPlaying = false;
+                      } else {
+                        _player.resume();
+                        isPlaying = true;
+                      }
+                    });
+                  },
+                ),
+              ],
               currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image.network(imageUser),
