@@ -28,9 +28,9 @@ class GameController {
         valor: "macaco",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/jogo_memoria/cachorro.png",
+        pathImage: "assets/jogo_memoria/gato.png",
         isEscondida: true,
-        valor: "cachorro",
+        valor: "gato",
       ),
       CartaMemoriaModel(
         pathImage: "assets/jogo_memoria/leao.png",
@@ -48,14 +48,14 @@ class GameController {
         valor: "leao",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/jogo_memoria/cachorro.png",
+        pathImage: "assets/jogo_memoria/gato.png",
         isEscondida: true,
-        valor: "cachorro",
+        valor: "gato",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/jogo_memoria/cobra.png",
+        pathImage: "assets/jogo_memoria/peixe.png",
         isEscondida: true,
-        valor: "cobra",
+        valor: "peixe",
       ),
       CartaMemoriaModel(
         pathImage: "assets/jogo_memoria/elefante.png",
@@ -63,9 +63,9 @@ class GameController {
         valor: "elefante",
       ),
       CartaMemoriaModel(
-        pathImage: "assets/jogo_memoria/cobra.png",
+        pathImage: "assets/jogo_memoria/peixe.png",
         isEscondida: true,
-        valor: "cobra",
+        valor: "peixe",
       ),
       CartaMemoriaModel(
         pathImage: "assets/jogo_memoria/elefante.png",

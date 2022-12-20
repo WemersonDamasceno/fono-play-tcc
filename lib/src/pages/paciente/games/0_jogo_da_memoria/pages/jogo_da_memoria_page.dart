@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/components/card_game_widget.dart';
 import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/controllers/game_controller.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
@@ -18,6 +17,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
   int pontos = 0;
   final gameController = GameController();
   bool exibirAnimacao = false;
+  bool canClick = true;
 
   @override
   void initState() {
@@ -51,7 +51,23 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
             ),
           ),
           Positioned(
-            top: size.height * 0.25,
+            top: size.height * 0.19,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, top: 10),
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Pontos: $pontos",
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                    ),
+                  )),
+            ),
+          ),
+          Positioned(
+            top: size.height * 0.22,
             left: 0,
             right: 0,
             child: listaDasCartas(size),
@@ -66,21 +82,8 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20, top: 10),
-          child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Pontos: $pontos",
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.titlesColor,
-                ),
-              )),
-        ),
         SizedBox(
-          height: size.height * .7,
+          height: size.height * .8,
           width: size.width * 0.9,
           child: GridView.builder(
             itemCount: gameController.quantidadeCartas,
@@ -92,7 +95,10 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
             itemBuilder: (context, index) {
               var item = gameController.listaDeCartas[index];
               return GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  if (canClick == false) {
+                    return;
+                  }
                   setState(() {
                     if (gameController.listaDeCartas[index].isEscondida) {
                       gameController.listaDeCartas[index].isEscondida = false;
@@ -103,9 +109,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
                   });
                   //se as cartas forem iguais
                   if (gameController.cartasIguais.length == 2) {
+                    canClick = false;
                     if (gameController.cartasIguais[0].values.first.valor ==
                         gameController.cartasIguais[1].values.first.valor) {
                       pontos += 100;
+                      String nomeAnimal =
+                          gameController.cartasIguais[1].values.first.valor;
+
                       gameController.cartasIguais.clear();
 
                       //Se atingir os 600 pontos, acabou o jogo
@@ -114,10 +124,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
                           exibirAnimacao = true;
                           dialogComemoracao(size);
                         });
+                      } else {
+                        dialogAnimal(size, nomeAnimal);
                       }
                     } else {
                       //Se não forem igual limpa
-                      Future.delayed(const Duration(milliseconds: 500), () {
+                      await Future.delayed(const Duration(milliseconds: 500),
+                          () {
                         setState(() {
                           gameController
                               .listaDeCartas[
@@ -131,6 +144,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
                         });
                       });
                     }
+                    canClick = true;
                   }
                 },
                 child: CardGameWidget(
@@ -145,6 +159,65 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
     );
   }
 
+  dialogAnimal(Size size, String animal) {
+    return showDialog<String>(
+      context: context,
+      builder: (_) => AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(14))),
+        elevation: 0,
+        content: SizedBox(
+          width: double.infinity,
+          height: size.height / 2.3,
+          child: Column(
+            children: [
+              Image.asset(
+                "assets/jogo_memoria/$animal.png",
+                width: size.width * 0.45,
+              ),
+              Text(
+                silabasAnimal(animal),
+                style: TextStyle(
+                  color: Color(0xFFebc600),
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 4,
+                ),
+              ),
+              Spacer(),
+              ButtonGradienteWidget(
+                texto: "Continuar",
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                habilitarBotao: true,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  String silabasAnimal(String animal) {
+    switch (animal) {
+      case "cachorro":
+        return "CA-CHOR-RO";
+      case "peixe":
+        return "PEI-XE";
+      case "elefante":
+        return "E-LE-FAN-TE";
+      case "girafa":
+        return "GI-RA-FA";
+      case "leao":
+        return "LE-ÃO";
+      case "macaco":
+        return "MA-CA-CO";
+      default:
+        return "GA-TO";
+    }
+  }
+
   dialogComemoracao(size) {
     return showDialog<String>(
       context: context,
@@ -154,12 +227,12 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
         elevation: 0,
         content: SizedBox(
           width: double.infinity,
-          height: size.height / 1.8,
+          height: size.height / 1.9,
           child: Column(
             children: [
               LottieBuilder.asset(
                 "assets/images/animations/estrela_oculos_animacao.json",
-                width: size.width * 0.48,
+                width: size.width * 0.45,
               ),
               const Text(
                 "Parabéns!",
@@ -183,24 +256,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
               ButtonGradienteWidget(
                 texto: "Continuar",
                 onPressed: () {
-                  Navigator.pop(context);
-                },
-                habilitarBotao: true,
-              ),
-              TextButton(
-                onPressed: () {
                   setState(() {
                     pontos = 0;
                     Navigator.pop(context);
                     gameController.initGame();
                   });
                 },
-                child: const Text(
-                  "Jogar novamente",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+                habilitarBotao: true,
               ),
             ],
           ),

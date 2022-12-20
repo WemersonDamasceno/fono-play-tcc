@@ -18,13 +18,12 @@ class NavigationHomePage extends StatefulWidget {
 
 class _NavigationHomePageState extends State<NavigationHomePage> {
   late AudioPlayer _player;
-  bool isPlaying = true;
+  bool isPlaying = false;
 
   @override
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    _player.play(AssetSource("audios/musica_background.mp3"));
     _player.setVolume(0.1);
   }
 
@@ -68,7 +67,8 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                         _player.pause();
                         isPlaying = false;
                       } else {
-                        _player.resume();
+                        _player
+                            .play(AssetSource("audios/musica_background.mp3"));
                         isPlaying = true;
                       }
                     });

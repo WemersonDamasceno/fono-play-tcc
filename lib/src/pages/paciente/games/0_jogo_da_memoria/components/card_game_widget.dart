@@ -38,7 +38,7 @@ class _CardGameWidgetState extends State<CardGameWidget> {
               image: widget.isEscondida
                   ? const AssetImage("assets/jogo_memoria/hidden.png")
                   : AssetImage(widget.pathImage),
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
         ),

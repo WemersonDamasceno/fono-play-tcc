@@ -7,6 +7,7 @@ import 'package:fonoplay/src/pages/intersection/intersection.dart';
 import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/3_toque_para_falar/toque_falar_page.dart';
+import 'package:fonoplay/src/pages/paciente/home/1_jogos/list_jogos_page.dart';
 import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/paciente/login/entrar/login_entrar_page.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         '/login_entrar': (context) => const LoginEntrarPage(),
         '/login_criar_conta': (context) => const LoginCriarContaPage(),
         '/home': (context) => const NavigationHomePage(),
+        '/lista_de_jogos': (context) => ListaDosJogosPage(),
         '/jogo_da_memoria': (context) => const JogoDaMemoriaPage(),
         '/jogo_da_imitacao': (context) => const JogoDaImitacaoPage(),
         '/toque-para-falar': (context) => const ToqueParaFalarPage(),

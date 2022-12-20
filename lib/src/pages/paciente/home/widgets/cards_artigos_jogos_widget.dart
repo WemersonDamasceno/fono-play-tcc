@@ -32,7 +32,6 @@ class CardArtigosJogosWidget extends StatelessWidget {
                 Navigator.pushNamed(context, "/jogo_da_imitacao");
                 break;
               case ConstantesIdentificadores.JOGO_BRINCANDO_COM_LINGUA:
-                print("JOGO BRINCANDO COM A LINGUA");
                 break;
             }
           },
@@ -41,7 +40,9 @@ class CardArtigosJogosWidget extends StatelessWidget {
               Image.asset(
                 pathImage,
                 width: size.width * 0.3,
+                fit: BoxFit.contain,
               ),
+              SizedBox(width: 5),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

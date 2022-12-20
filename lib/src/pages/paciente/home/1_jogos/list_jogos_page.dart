@@ -30,10 +30,10 @@ class ListaDosJogosPage extends StatelessWidget {
       ),
       ItemListModel(
         identificador: ConstantesIdentificadores.JOGO_BRINCANDO_COM_LINGUA,
-        titulo: "Brincando com a língua",
+        titulo: "Conhecendo os Animais",
         descricao:
-            "Este jogo também fortalece\na musculatura da lingua\ne da mandibula.",
-        pathImage: "assets/images/brincando_com_a_lingua.png",
+            "Conheça os animais, além de \naprender a pronunciar as palavras",
+        pathImage: "assets/images/conhecendo_animais.png",
       ),
     ];
     Size size = MediaQuery.of(context).size;
@@ -58,24 +58,18 @@ class ListaDosJogosPage extends StatelessWidget {
           left: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SizedBox(
-              height: size.height * 0.65,
-              child: ListView.builder(
-                shrinkWrap: false,
-                itemCount: items.length,
-                itemBuilder: (BuildContext context, int index) {
-                  ItemListModel item = items[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: CardArtigosJogosWidget(
-                      id: item.identificador,
-                      titulo: item.titulo,
-                      descricao: item.descricao,
-                      pathImage: item.pathImage,
-                    ),
-                  );
-                },
-              ),
+            child: Column(
+              children: items.map((item) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: CardArtigosJogosWidget(
+                    id: item.identificador,
+                    titulo: item.titulo,
+                    descricao: item.descricao,
+                    pathImage: item.pathImage,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ),
