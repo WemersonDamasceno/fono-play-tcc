@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class CardGameWidget extends StatefulWidget {
   final bool isEscondida;
@@ -28,20 +29,27 @@ class _CardGameWidgetState extends State<CardGameWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      //onTap: () => flipCard(),
       child: Card(
+        color: AppColors.primaryColor,
         elevation: 6,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(7),
-            image: DecorationImage(
-              image: widget.isEscondida
-                  ? const AssetImage("assets/jogo_memoria/hidden.png")
-                  : AssetImage(widget.pathImage),
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
+        child: widget.isEscondida == false
+            ? Container(
+                margin: EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7),
+                  image: DecorationImage(
+                    image: AssetImage(widget.pathImage),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              )
+            : Container(
+                margin: EdgeInsets.all(20),
+                child: Image.asset(
+                  "assets/jogo_memoria/hidden.png",
+                  color: Colors.white,
+                ),
+              ),
       ),
     );
   }
