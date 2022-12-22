@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/fonoaudiologo/login/entrar_fonoaudilogo_page.dart';
 import 'package:fonoplay/src/pages/paciente/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
@@ -170,19 +169,6 @@ class _LoginEntrarPageState extends State<LoginEntrarPage> {
                       }
                     },
                   ),
-                ),
-                ButtonIconWidget(
-                  pathImagem: "assets/images/logo_profissional.png",
-                  texto: "Entrar como um profissional",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                          transitionDuration: const Duration(seconds: 1),
-                          pageBuilder: (_, __, ___) =>
-                              const EntrarFonoaudiologoPage()),
-                    );
-                  },
                 ),
                 Row(
                   children: [

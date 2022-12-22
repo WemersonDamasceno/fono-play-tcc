@@ -38,6 +38,8 @@ flutter:
   assets:
     - assets/images/
     - assets/images/animations/
+    - assets/images/animais_cores/animais/
+    - assets/images/animais_cores/habitatis/
     - assets/fonts/
     - assets/jogo_memoria/
     - assets/jogo_imitacao/

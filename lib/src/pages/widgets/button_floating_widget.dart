@@ -19,6 +19,13 @@ class ButtonFloatingWidget extends StatelessWidget {
     return Container(
       height: size.height * 0.07,
       decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
           bottomLeft: Radius.circular(24),

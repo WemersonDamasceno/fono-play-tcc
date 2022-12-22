@@ -13,7 +13,8 @@ class ListaDosJogosPage extends StatefulWidget {
   State<ListaDosJogosPage> createState() => _ListaDosJogosPageState();
 }
 
-class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
+class _ListaDosJogosPageState extends State<ListaDosJogosPage>
+    with TickerProviderStateMixin {
   late PageController pageController;
   double viewportFraction = 0.9;
   double pageOffset = 0;
@@ -34,7 +35,12 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      color: Color.fromARGB(255, 236, 236, 236),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/images/background_jogos.png"),
+            fit: BoxFit.cover,
+            opacity: 0.8),
+      ),
       child: Stack(
         children: [
           const ContainerGradienteWidget(),
@@ -87,12 +93,26 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
                               ),
                             ),
                           ),
-                          Text(
-                            "Jogo da Memória",
-                            style: TextStyle(
-                              color: Color(0xFF525252),
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
+                          Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  offset: Offset(0, 3),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "Jogo da Memória",
+                              style: TextStyle(
+                                color: Color(0xFF525252),
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           )
                         ],
@@ -101,7 +121,56 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
                   }
 
                   if (index == 1) {
-                    return Column(
+                    return InkWell(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/jogo_da_imitacao"),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Transform(
+                              transform: Matrix4.identity()
+                                ..setEntry(3, 2, 0.001)
+                                ..rotateY(angle),
+                              alignment: Alignment.center,
+                              child: LottieBuilder.asset(
+                                "assets/images/animations/animal.json",
+                                reverse: true,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  offset: Offset(0, 3),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "Som dos Animais",
+                              style: TextStyle(
+                                color: Color(0xFF525252),
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+
+                  return InkWell(
+                    onTap: () =>
+                        Navigator.pushNamed(context, "/jogo_das_cores"),
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
@@ -112,34 +181,34 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
                               ..rotateY(angle),
                             alignment: Alignment.center,
                             child: LottieBuilder.asset(
-                              "assets/images/animations/animal.json",
+                              "assets/images/animations/colors.json",
                               reverse: true,
                             ),
                           ),
                         ),
-                        Text(
-                          "O Som dos Animais",
-                          style: TextStyle(
-                            color: Color(0xFF525252),
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            "Conhecendo as Cores",
+                            style: TextStyle(
+                              color: Color(0xFF525252),
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         )
                       ],
-                    );
-                  }
-
-                  return Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.001)
-                        ..rotateY(angle),
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        'assets/images/consegue_me_imitar.png',
-                        fit: BoxFit.contain,
-                      ),
                     ),
                   );
                 },
@@ -187,7 +256,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage> {
             ),
           ),
           Positioned(
-              top: size.height * 0.9,
+              top: size.height * 0.92,
               right: 0,
               child: ButtonFloatingWidget(
                 onPressed: () =>

@@ -15,7 +15,6 @@ class CabecalhoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,8 +25,8 @@ class CabecalhoWidget extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  height: size.height * 0.1,
-                  width: size.width * 0.2,
+                  height: 70,
+                  width: 70,
                   child: Card(
                     elevation: 10,
                     color: Colors.white,

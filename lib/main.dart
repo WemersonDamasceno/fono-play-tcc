@@ -6,6 +6,7 @@ import 'package:fonoplay/firebase_options.dart';
 import 'package:fonoplay/src/pages/intersection/intersection.dart';
 import 'package:fonoplay/src/pages/paciente/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
+import 'package:fonoplay/src/pages/paciente/games/2_jogo_das_cores/page/jogo_das_cores_page.dart';
 import 'package:fonoplay/src/pages/paciente/games/3_toque_para_falar/toque_falar_page.dart';
 import 'package:fonoplay/src/pages/paciente/home/1_jogos/list_jogos_page.dart';
 import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         '/lista_de_jogos': (context) => ListaDosJogosPage(),
         '/jogo_da_memoria': (context) => const JogoDaMemoriaPage(),
         '/jogo_da_imitacao': (context) => const JogoDaImitacaoPage(),
+        '/jogo_das_cores': (context) => const JogoDasCoresPage(),
         '/toque-para-falar': (context) => const ToqueParaFalarPage(),
       },
     );
