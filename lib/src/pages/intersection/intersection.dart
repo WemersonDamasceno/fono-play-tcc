@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/paciente/home/navigation/home_navigation.dart';
+import 'package:fonoplay/src/pages/home/navigation/home_navigation.dart';
 import 'package:fonoplay/src/pages/screens_intro/view/introducao_page.dart';
 import 'package:fonoplay/src/pages/splash/splash_page.dart';
 import 'package:provider/provider.dart';
