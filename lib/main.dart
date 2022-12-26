@@ -17,8 +17,6 @@ import 'package:fonoplay/src/pages/splash/splash_page.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
 import 'package:provider/provider.dart';
 
-//TODO: Adicionar um icone para o app
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

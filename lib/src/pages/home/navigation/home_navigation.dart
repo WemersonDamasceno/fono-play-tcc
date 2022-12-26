@@ -112,6 +112,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               ),
               title: const Text("Artigos para ler"),
               onTap: () async {
+                _player.pause();
                 final Uri uri = Uri(scheme: 'https', host: 'apraxiabrasil.org');
 
                 await launchUrl(
@@ -161,6 +162,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               ),
               title: const Text("Envie suas sugestões"),
               onTap: () async {
+                _player.pause();
                 String email = "wemersondamasceno7@gmail.com";
                 String subject = "Sugestões para o FonoPlay";
                 String body =
@@ -180,18 +182,18 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               onTap: () {
                 Navigator.pop(context);
                 showDialog(
-                    context: context,
-                    builder: (context) => AboutDialog(
-                          applicationName: "FonoPlay",
-                          applicationVersion: "1.0.0",
-                          applicationIcon: Image.asset(
-                            "assets/images/logo_fonoplay.png",
-                            height: 80,
-                            width: 80,
-                          ),
-                          applicationLegalese:
-                              "Desenvolvido por Wemerson Damasceno",
-                        ));
+                  context: context,
+                  builder: (context) => AboutDialog(
+                    applicationName: "FonoPlay",
+                    applicationVersion: "1.0.0",
+                    applicationIcon: Image.asset(
+                      "assets/images/logo_fonoplay.png",
+                      height: 80,
+                      width: 80,
+                    ),
+                    applicationLegalese: "Desenvolvido por Wemerson Damasceno",
+                  ),
+                );
               },
             ),
             ListTile(
@@ -201,6 +203,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               ),
               title: const Text("Sair"),
               onTap: () async {
+                _player.pause();
                 await Provider.of<AuthServiceNotifier>(context, listen: false)
                     .logout(context: context);
                 Navigator.of(context).pushReplacementNamed('/login_entrar');
