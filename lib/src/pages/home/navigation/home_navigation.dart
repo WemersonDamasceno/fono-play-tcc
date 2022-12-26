@@ -6,6 +6,7 @@ import 'package:fonoplay/src/constants/constants_paginas.dart';
 import 'package:fonoplay/src/pages/home/navigation/controllers/home_controller.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final homeController = HomeController();
 
@@ -18,7 +19,7 @@ class NavigationHomePage extends StatefulWidget {
 
 class _NavigationHomePageState extends State<NavigationHomePage> {
   late AudioPlayer _player;
-  bool isPlaying = false;
+  bool isPlaying = true;
 
   @override
   void initState() {
@@ -28,6 +29,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
     _player.onPlayerComplete.listen((event) {
       _player.play(AssetSource("audios/musica_background.mp3"));
     });
+    _player.play(AssetSource("audios/musica_background.mp3"));
   }
 
   @override
@@ -109,33 +111,40 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 color: AppColors.startGradiente,
               ),
               title: const Text("Artigos para ler"),
-              onTap: () {
-                Navigator.pop(context);
-                homeController.trocarTela(ConstantesPaginas.ARTIGOS_PARA_LER);
+              onTap: () async {
+                final Uri uri = Uri(scheme: 'https', host: 'apraxiabrasil.org');
+
+                await launchUrl(
+                  uri,
+                  mode: LaunchMode.inAppWebView,
+                  webViewConfiguration: WebViewConfiguration(
+                    enableJavaScript: true,
+                  ),
+                );
               },
             ),
-            ListTile(
-              leading: const Icon(
-                Icons.person,
-                color: AppColors.startGradiente,
-              ),
-              title: const Text("Dados da criança"),
-              onTap: () {
-                Navigator.pop(context);
-                homeController.trocarTela(ConstantesPaginas.PERFIL_DA_CRIANCA);
-              },
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.notifications,
-                color: AppColors.startGradiente,
-              ),
-              title: const Text("Notificações"),
-              onTap: () {
-                Navigator.pop(context);
-                homeController.trocarTela(ConstantesPaginas.NOTIFICACOES);
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(
+            //     Icons.person,
+            //     color: AppColors.startGradiente,
+            //   ),
+            //   title: const Text("Dados da criança"),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //     homeController.trocarTela(ConstantesPaginas.PERFIL_DA_CRIANCA);
+            //   },
+            // ),
+            // ListTile(
+            //   leading: const Icon(
+            //     Icons.notifications,
+            //     color: AppColors.startGradiente,
+            //   ),
+            //   title: const Text("Notificações"),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //     homeController.trocarTela(ConstantesPaginas.NOTIFICACOES);
+            //   },
+            // ),
             const Padding(
               padding: EdgeInsets.only(left: 20, top: 10),
               child: Text("Outras opções",
@@ -151,9 +160,15 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 color: AppColors.startGradiente,
               ),
               title: const Text("Envie suas sugestões"),
-              onTap: () {
-                Navigator.pop(context);
-                //Navegar para outra página
+              onTap: () async {
+                String email = "wemersondamasceno7@gmail.com";
+                String subject = "Sugestões para o FonoPlay";
+                String body =
+                    "Olá Wemerson!\nGostaria de sugerir o seguinte:\n 1- ";
+                final url =
+                    'mailto:$email?subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}';
+
+                await launchUrl(Uri.parse(url));
               },
             ),
             ListTile(
@@ -164,7 +179,19 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               title: const Text("Sobre o FonoPlay"),
               onTap: () {
                 Navigator.pop(context);
-                //Navegar para outra página
+                showDialog(
+                    context: context,
+                    builder: (context) => AboutDialog(
+                          applicationName: "FonoPlay",
+                          applicationVersion: "1.0.0",
+                          applicationIcon: Image.asset(
+                            "assets/images/logo_fonoplay.png",
+                            height: 80,
+                            width: 80,
+                          ),
+                          applicationLegalese:
+                              "Desenvolvido por Wemerson Damasceno",
+                        ));
               },
             ),
             ListTile(

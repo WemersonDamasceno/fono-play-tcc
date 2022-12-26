@@ -161,7 +161,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     );
@@ -263,7 +263,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                     homeController.trocarTela(ConstantesPaginas.PAGINA_INICIAL),
                 icon: Icons.home,
                 size: size,
-                texto: "Pagina Inicial",
+                texto: "Voltar para o inicio",
               ))
         ],
       ),
