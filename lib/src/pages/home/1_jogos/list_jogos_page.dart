@@ -256,7 +256,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
             ),
           ),
           Positioned(
-              top: size.height * 0.92,
+              top: size.height * 0.26,
               right: 0,
               child: ButtonFloatingWidget(
                 onPressed: () =>

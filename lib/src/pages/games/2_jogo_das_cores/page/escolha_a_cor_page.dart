@@ -5,8 +5,8 @@ import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';
 
 class EscolhaACorPage extends StatefulWidget {
-  final AnimalCor animaisCores;
-  final List<AnimalCor> listAnimais;
+  final AnimalModel animaisCores;
+  final List<AnimalModel> listAnimais;
   const EscolhaACorPage(
       {Key? key, required this.animaisCores, required this.listAnimais})
       : super(key: key);

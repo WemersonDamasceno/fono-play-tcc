@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fonoplay/firebase_options.dart';
 import 'package:fonoplay/src/pages/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
-import 'package:fonoplay/src/pages/games/1_jogo_da_imitacao/pages/jogo_da_imitacao_page.dart';
+import 'package:fonoplay/src/pages/games/1_conhecendo_animais/pages/conhecendo_os_animais_page.dart';
 import 'package:fonoplay/src/pages/games/2_jogo_das_cores/page/jogo_das_cores_page.dart';
 import 'package:fonoplay/src/pages/games/3_toque_para_falar/toque_falar_page.dart';
 import 'package:fonoplay/src/pages/home/1_jogos/list_jogos_page.dart';
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const NavigationHomePage(),
         '/lista_de_jogos': (context) => ListaDosJogosPage(),
         '/jogo_da_memoria': (context) => const JogoDaMemoriaPage(),
-        '/jogo_da_imitacao': (context) => const JogoDaImitacaoPage(),
+        '/jogo_da_imitacao': (context) => const ConhecendoOsAnimaisPage(),
         '/jogo_das_cores': (context) => const JogoDasCoresPage(),
         '/toque-para-falar': (context) => const ToqueParaFalarPage(),
       },

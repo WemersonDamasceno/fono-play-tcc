@@ -42,64 +42,64 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
 
   @override
   Widget build(BuildContext context) {
-    final List<AnimalCor> animaisCores = [
-      AnimalCor(
+    final List<AnimalModel> animaisCores = [
+      AnimalModel(
         nome: "baleia",
         corString: "azul",
         imagem: "assets/images/animais_cores/animais/baleia.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
         cor: Color(0xFF4193d1),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "tartaruga",
         corString: "verde",
         imagem: "assets/images/animais_cores/animais/tartaruga.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
         cor: Color(0xFF88bc41),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "porco",
         corString: "salmao",
         imagem: "assets/images/animais_cores/animais/porco.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/fazenda.png",
         cor: Color(0xFFea828b),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "pato",
         corString: "laranja",
         imagem: "assets/images/animais_cores/animais/pato.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/rio.png",
         cor: Color(0xFFf9b12c),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "passaro",
         corString: "azul",
         imagem: "assets/images/animais_cores/animais/passaro.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/rio.png",
         cor: Color(0xFF36a9dc),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "lula",
         corString: "lilas",
         imagem: "assets/images/animais_cores/animais/lula.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
         cor: Color(0xFFa07ab4),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "galo",
         corString: "vermelho",
         imagem: "assets/images/animais_cores/animais/galo.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/fazenda.png",
         cor: Color(0xFFbb1c2e),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "estrela",
         corString: "amarelo",
         imagem: "assets/images/animais_cores/animais/estrela.png",
         backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
         cor: Color(0xFFf8d908),
       ),
-      AnimalCor(
+      AnimalModel(
         nome: "burro",
         corString: "cinza",
         imagem: "assets/images/animais_cores/animais/burro.png",
