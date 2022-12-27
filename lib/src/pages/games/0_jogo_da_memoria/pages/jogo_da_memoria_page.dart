@@ -6,6 +6,8 @@ import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';
 
+//TODO - Gravar audio dos animais
+//TODO - Usar audio de comemoração quando finalizar o jogo
 class JogoDaMemoriaPage extends StatefulWidget {
   const JogoDaMemoriaPage({Key? key}) : super(key: key);
 
@@ -13,17 +15,33 @@ class JogoDaMemoriaPage extends StatefulWidget {
   State<JogoDaMemoriaPage> createState() => _JogoDaMemoriaPageState();
 }
 
-class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
+class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
+    with TickerProviderStateMixin {
   int pontos = 0;
   final gameController = GameController();
   bool exibirAnimacao = false;
   bool canClick = true;
+  bool isLoading = true;
+  late AnimationController animationController;
+  Tween<double> tween = Tween<double>(begin: 0, end: 1);
 
   @override
   void initState() {
     super.initState();
     gameController.initGame();
     gameController.listaDeCartas.shuffle();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+      animationBehavior: AnimationBehavior.preserve,
+      value: 0,
+    )..forward();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
   }
 
   @override
@@ -71,6 +89,43 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage> {
             left: 0,
             right: 0,
             child: listaDasCartas(size),
+          ),
+          Positioned(
+            top: size.height * 0.25,
+            child: Visibility(
+              visible: isLoading,
+              child: Container(
+                color: Colors.black,
+                height: size.height * 0.75,
+                width: size.width,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LottieBuilder.asset(
+                        "assets/images/animations/loading.json",
+                        width: MediaQuery.of(context).size.width * 0.55,
+                      ),
+                      const SizedBox(height: 10),
+                      AnimatedBuilder(
+                          animation: animationController,
+                          builder: (context, _) {
+                            print(tween);
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              child: LinearProgressIndicator(
+                                backgroundColor: Colors.transparent,
+                                color: Colors.white,
+                                value: tween.evaluate(animationController),
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

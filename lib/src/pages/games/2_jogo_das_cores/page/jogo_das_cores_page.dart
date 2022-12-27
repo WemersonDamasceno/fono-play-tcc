@@ -4,6 +4,7 @@ import 'package:fonoplay/src/pages/games/2_jogo_das_cores/models/animais_cores_m
 import 'package:fonoplay/src/pages/games/2_jogo_das_cores/page/escolha_a_cor_page.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class JogoDasCoresPage extends StatefulWidget {
   const JogoDasCoresPage({Key? key}) : super(key: key);
@@ -12,14 +13,31 @@ class JogoDasCoresPage extends StatefulWidget {
   State<JogoDasCoresPage> createState() => _JogoDasCoresPageState();
 }
 
-class _JogoDasCoresPageState extends State<JogoDasCoresPage> {
+class _JogoDasCoresPageState extends State<JogoDasCoresPage>
+    with TickerProviderStateMixin {
   late AudioPlayer _player;
+  bool isLoading = true;
+  late AnimationController animationController;
+  Tween<double> tween = Tween<double>(begin: 0, end: 1);
 
   @override
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    _player.play(AssetSource("images/animais_cores/audios/inicio.mp3"));
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+      animationBehavior: AnimationBehavior.preserve,
+      value: 0,
+    )..forward();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        isLoading = false;
+        _player.play(AssetSource("images/animais_cores/audios/inicio.mp3"));
+      });
+    });
   }
 
   @override
@@ -169,6 +187,43 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage> {
                               )),
                         );
                       },
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: size.height * 0.25,
+                child: Visibility(
+                  visible: isLoading,
+                  child: Container(
+                    color: Colors.black,
+                    height: size.height * 0.75,
+                    width: size.width,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          LottieBuilder.asset(
+                            "assets/images/animations/loading.json",
+                            width: MediaQuery.of(context).size.width * 0.55,
+                          ),
+                          const SizedBox(height: 10),
+                          AnimatedBuilder(
+                              animation: animationController,
+                              builder: (context, _) {
+                                print(tween);
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 50),
+                                  child: LinearProgressIndicator(
+                                    backgroundColor: Colors.transparent,
+                                    color: Colors.white,
+                                    value: tween.evaluate(animationController),
+                                  ),
+                                );
+                              }),
+                        ],
+                      ),
                     ),
                   ),
                 ),

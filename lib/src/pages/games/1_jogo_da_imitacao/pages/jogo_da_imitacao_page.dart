@@ -1,9 +1,15 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:fonoplay/src/pages/games/1_jogo_da_imitacao/components/animal_item_widget.dart';
 import 'package:fonoplay/src/pages/games/1_jogo_da_imitacao/models/animal_item_model.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import 'package:lottie/lottie.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class JogoDaImitacaoPage extends StatefulWidget {
   const JogoDaImitacaoPage({Key? key}) : super(key: key);
@@ -12,7 +18,14 @@ class JogoDaImitacaoPage extends StatefulWidget {
   State<JogoDaImitacaoPage> createState() => _JogoDaImitacaoPageState();
 }
 
-class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
+class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage>
+    with TickerProviderStateMixin {
+  final recorder = FlutterSoundRecorder();
+  bool isRecorderReady = false;
+  bool isLoading = true;
+  late AnimationController animationController;
+  Tween<double> tween = Tween<double>(begin: 0, end: 1);
+
   bool playing = false;
   late AudioPlayer _player;
   // late AudioCache cache;
@@ -27,47 +40,48 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    // cache = AudioCache(fixedPlayer: _player);
-  }
+    initRecorder();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 5),
+      animationBehavior: AnimationBehavior.preserve,
+      value: 0,
+    )..forward();
 
-  escolhaAnimalReproduzirFonema(String animalSom) {
-    switch (animalSom) {
-      case "vaca":
-        tocarSom("fonema_m.mp3");
-        break;
-      case "cobra":
-        tocarSom("fonema_s.mp3");
-        break;
-      case "abelha":
-        tocarSom("fonema_z.mp3");
-        break;
-      case "cabra":
-        tocarSom("fonema_m2.mp3");
-        break;
-      case "galinha":
-        tocarSom("fonema_p.mp3");
-        break;
-    }
-  }
-
-  tocarSom(String fonemaEscolhido) {
-    setState(() async {
-      if (!playing) {
-        iconPlay = Icons.pause_circle_outline_rounded;
-        _player.play(AssetSource("jogo_imitacao/audios/$fonemaEscolhido"));
-        playing = true;
-        Future.delayed(const Duration(milliseconds: 2500)).then((value) {
-          setState(() {
-            iconPlay = Icons.play_circle_outline_rounded;
-            playing = false;
-          });
-        });
-      } else {
-        iconPlay = Icons.play_circle_outline_rounded;
-        _player.pause();
-        playing = false;
-      }
+    Future.delayed(const Duration(seconds: 5), () {
+      setState(() {
+        isLoading = false;
+      });
     });
+  }
+
+  initRecorder() async {
+    final status = await Permission.microphone.request();
+
+    if (status != PermissionStatus.granted) {
+      log("Permission not granted");
+      return;
+    }
+
+    await recorder.openRecorder();
+    isRecorderReady = true;
+    recorder.setSubscriptionDuration(
+      const Duration(milliseconds: 500),
+    );
+  }
+
+  Future<void> recorderAudio() async {
+    await recorder.startRecorder(toFile: 'audio');
+  }
+
+  Future<void> stopAndPlayAudio() async {
+    final path = await recorder.stopRecorder();
+    final audioFile = File(path!);
+
+    //Play audio
+    //TODO Tocar audio gravado
+
+    // log(audioFile.);
   }
 
   @override
@@ -86,7 +100,7 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
                 isGame: true,
                 imagemPerfil: "assets/images/avatar_01.png",
                 nomeCrianca: "Joãozinho",
-                titulo: "Jogo da imitação",
+                titulo: "Conhecendo as cores",
               ),
             ),
           ),
@@ -109,29 +123,32 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
             top: height * 0.7,
             child: SizedBox(
               width: width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      escolhaAnimalReproduzirFonema(animalFoco.som);
-                    },
-                    child: Icon(
-                      iconPlay,
-                      color: Colors.white,
-                      size: 50,
-                    ),
+              child: Align(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.all(5),
                   ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.mic_none_rounded,
-                      color: Colors.white,
-                      size: 50,
-                    ),
+                  onPressed: () async {
+                    if (recorder.isRecording) {
+                      await stopAndPlayAudio();
+                    } else {
+                      await recorderAudio();
+                    }
+                    setState(() {
+                      log("set state");
+                    });
+                  },
+                  child: Icon(
+                    recorder.isRecording
+                        ? Icons.stop_circle_outlined
+                        : Icons.mic,
+                    color: Color.fromARGB(255, 63, 63, 63),
+                    size: 50,
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -206,6 +223,43 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
                     pathImage: "assets/jogo_imitacao/animais/cobra.png",
                   ),
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: height * 0.25,
+            child: Visibility(
+              visible: isLoading,
+              child: Container(
+                color: Colors.black,
+                height: height * 0.75,
+                width: width,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LottieBuilder.asset(
+                        "assets/images/animations/loading.json",
+                        width: MediaQuery.of(context).size.width * 0.55,
+                      ),
+                      const SizedBox(height: 10),
+                      AnimatedBuilder(
+                          animation: animationController,
+                          builder: (context, _) {
+                            print(tween);
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50),
+                              child: LinearProgressIndicator(
+                                backgroundColor: Colors.transparent,
+                                color: Colors.white,
+                                value: tween.evaluate(animationController),
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

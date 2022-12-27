@@ -19,7 +19,7 @@ class NavigationHomePage extends StatefulWidget {
 
 class _NavigationHomePageState extends State<NavigationHomePage> {
   late AudioPlayer _player;
-  bool isPlaying = true;
+  bool isPlaying = false;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
     _player.onPlayerComplete.listen((event) {
       _player.play(AssetSource("audios/musica_background.mp3"));
     });
-    _player.play(AssetSource("audios/musica_background.mp3"));
+    if (isPlaying) _player.play(AssetSource("audios/musica_background.mp3"));
   }
 
   @override
@@ -43,6 +43,26 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
         builder: (_) {
           return homeController.tabs[homeController.tabSelecionada];
         },
+      ),
+      floatingActionButton: Tooltip(
+        message: "Parar ou tocar a música de fundo",
+        child: FloatingActionButton(
+          backgroundColor: AppColors.primaryColor,
+          onPressed: () {
+            setState(() {
+              if (isPlaying) {
+                _player.pause();
+                isPlaying = false;
+              } else {
+                _player.play(AssetSource("audios/musica_background.mp3"));
+                isPlaying = true;
+              }
+            });
+          },
+          child: Icon(
+            isPlaying ? Icons.music_note : Icons.music_off,
+          ),
+        ),
       ),
       endDrawer: Drawer(
         child: ListView(
@@ -60,26 +80,6 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                     "Wemerson Damasceno",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
-              otherAccountsPictures: [
-                IconButton(
-                  icon: Icon(
-                    isPlaying ? Icons.music_note : Icons.music_off,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      if (isPlaying) {
-                        _player.pause();
-                        isPlaying = false;
-                      } else {
-                        _player
-                            .play(AssetSource("audios/musica_background.mp3"));
-                        isPlaying = true;
-                      }
-                    });
-                  },
-                ),
-              ],
               currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image.network(imageUser),
