@@ -164,6 +164,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
     if (isCorrect == false) _player.play(AssetSource("audios/incorrect.mp3"));
     return showDialog<String>(
       context: context,
+      barrierDismissible: false,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),

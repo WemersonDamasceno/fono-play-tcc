@@ -32,12 +32,12 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
     gameController.listaDeCartas.shuffle();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1),
       animationBehavior: AnimationBehavior.preserve,
       value: 0,
     )..forward();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
       });
@@ -217,6 +217,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   dialogAnimal(Size size, String animal) {
     return showDialog<String>(
       context: context,
+      barrierDismissible: false,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
@@ -276,6 +277,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   dialogComemoracao(size) {
     return showDialog<String>(
       context: context,
+      barrierDismissible: false,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),

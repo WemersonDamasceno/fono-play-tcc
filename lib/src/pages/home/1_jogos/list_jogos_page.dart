@@ -154,7 +154,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                               ],
                             ),
                             child: Text(
-                              "Som dos Animais",
+                              "Conhecendo os Animais",
                               style: TextStyle(
                                 color: Color(0xFF525252),
                                 fontSize: 28,

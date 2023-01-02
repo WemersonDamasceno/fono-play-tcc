@@ -4,6 +4,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/games/2_jogo_das_cores/models/animais_cores_model.dart';
+import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';
@@ -123,12 +124,12 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
 
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
       animationBehavior: AnimationBehavior.preserve,
       value: 0,
     )..forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
         //TODO - Tocar audio 'Onde está o cachorro?'
@@ -196,9 +197,12 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                       itemBuilder: (context, index) {
                         return animaisExibidos
                             .map((e) => InkWell(
-                                  onTap: () {
-                                    if (e.nome == animalFoco.nome) {
-                                    } else {}
+                                  onTap: () async {
+                                    _player.stop();
+                                    await Future.delayed(
+                                        Duration(milliseconds: 500));
+                                    final right = e.nome == animalFoco.nome;
+                                    showDialogFeedback(right, context, size);
                                   },
                                   child: Container(
                                       decoration: BoxDecoration(
@@ -221,43 +225,6 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                                 ))
                             .toList()[index];
                       },
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: size.height * 0.25,
-                child: Visibility(
-                  visible: isLoading,
-                  child: Container(
-                    color: Colors.black,
-                    height: size.height * 0.75,
-                    width: size.width,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LottieBuilder.asset(
-                            "assets/images/animations/loading.json",
-                            width: MediaQuery.of(context).size.width * 0.55,
-                          ),
-                          const SizedBox(height: 10),
-                          AnimatedBuilder(
-                              animation: animationController,
-                              builder: (context, _) {
-                                print(tween);
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 50),
-                                  child: LinearProgressIndicator(
-                                    backgroundColor: Colors.transparent,
-                                    color: Colors.white,
-                                    value: tween.evaluate(animationController),
-                                  ),
-                                );
-                              }),
-                        ],
-                      ),
                     ),
                   ),
                 ),
@@ -305,6 +272,108 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                     )),
                   ),
                 ),
+              ),
+              Positioned(
+                top: size.height * 0.25,
+                child: Visibility(
+                  visible: isLoading,
+                  child: Container(
+                    color: Colors.black,
+                    height: size.height * 0.75,
+                    width: size.width,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          LottieBuilder.asset(
+                            "assets/images/animations/loading.json",
+                            width: MediaQuery.of(context).size.width * 0.55,
+                          ),
+                          const SizedBox(height: 10),
+                          AnimatedBuilder(
+                              animation: animationController,
+                              builder: (context, _) {
+                                print(tween);
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 50),
+                                  child: LinearProgressIndicator(
+                                    backgroundColor: Colors.transparent,
+                                    color: Colors.white,
+                                    value: tween.evaluate(animationController),
+                                  ),
+                                );
+                              }),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  showDialogFeedback(bool isCorrect, BuildContext context, Size size) {
+    if (isCorrect == true) _player.play(AssetSource("audios/correct.mp3"));
+    if (isCorrect == false) _player.play(AssetSource("audios/incorrect.mp3"));
+    return showDialog<String>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(14))),
+        elevation: 0,
+        content: SizedBox(
+          width: double.infinity,
+          height: size.height / 1.9,
+          child: Column(
+            children: [
+              Visibility(
+                visible: isCorrect,
+                child: LottieBuilder.asset(
+                  "assets/images/animations/estrela_oculos_animacao.json",
+                  width: size.width * 0.45,
+                ),
+                replacement: LottieBuilder.asset(
+                  "assets/images/animations/failed.json",
+                  width: size.width * 0.45,
+                ),
+              ),
+              Text(
+                isCorrect ? "Parabéns!" : "Que pena!",
+                style: TextStyle(
+                  color: Color(0xFFebc600),
+                  fontSize: 30,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 4,
+                ),
+              ),
+              Text(
+                isCorrect
+                    ? "Agora, escolha outro animal!"
+                    : "Você errou, mas não desista!",
+                style: TextStyle(
+                    color: Color(0xFFebc600),
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              ButtonGradienteWidget(
+                texto: isCorrect ? "Continuar" : "Tentar novamente",
+                onPressed: () {
+                  Navigator.pop(context);
+                  if (isCorrect) {
+                    initGame();
+                    setState(() {});
+                  }
+                },
+                habilitarBotao: true,
               ),
             ],
           ),

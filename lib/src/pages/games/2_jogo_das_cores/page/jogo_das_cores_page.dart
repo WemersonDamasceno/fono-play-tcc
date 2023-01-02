@@ -27,12 +27,12 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
 
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1),
       animationBehavior: AnimationBehavior.preserve,
       value: 0,
     )..forward();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
         _player.play(AssetSource("images/animais_cores/audios/inicio.mp3"));
