@@ -82,7 +82,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               ),
               currentAccountPicture: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Image.network(imageUser),
+                child: Image.network(withoutProfilePhoto),
               ),
             ),
             const Padding(
