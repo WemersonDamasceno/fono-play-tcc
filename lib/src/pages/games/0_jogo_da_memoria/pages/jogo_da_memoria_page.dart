@@ -203,7 +203,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
                   }
                 },
                 child: CardGameWidget(
-                  isEscondida: item.isEscondida,
+                  estaEscondida: item.isEscondida,
                   pathImage: gameController.listaDeCartas[index].pathImage,
                 ),
               );

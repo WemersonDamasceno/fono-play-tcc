@@ -47,7 +47,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
       floatingActionButton: Tooltip(
         message: "Parar ou tocar a música de fundo",
         child: FloatingActionButton(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.endGradiente,
           onPressed: () {
             setState(() {
               if (isPlaying) {

@@ -230,10 +230,11 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                 ),
               ),
               Positioned(
-                top: size.height * .6,
+                top: size.height * .55,
                 child: InkWell(
                   onTap: () {
                     //TODO - Tocar audio 'Onde está o cachorro?'
+                    _player.play(AssetSource("audios/correct.mp3"));
                   },
                   child: Container(
                     height: 50,
@@ -327,9 +328,12 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
-        content: SizedBox(
+        content: Container(
+          constraints: BoxConstraints(
+            minHeight: size.height / 3.5,
+            maxHeight: size.height / 2.1,
+          ),
           width: double.infinity,
-          height: size.height / 1.9,
           child: Column(
             children: [
               Visibility(

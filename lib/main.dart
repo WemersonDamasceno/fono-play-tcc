@@ -13,7 +13,6 @@ import 'package:fonoplay/src/pages/intersection/intersection.dart';
 import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/login/entrar/login_entrar_page.dart';
 import 'package:fonoplay/src/pages/screens_intro/view/introducao_page.dart';
-import 'package:fonoplay/src/pages/splash/splash_page.dart';
 import 'package:fonoplay/src/services/auth-service.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("pt", "BR"),
       ],
-      home: const SplashPage(),
+      home: const NavigationHomePage(),
       initialRoute: '/',
       routes: {
         '/intersection': (context) => const Intersection(),

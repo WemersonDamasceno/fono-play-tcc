@@ -9,6 +9,8 @@ class AppColors {
   static const endGradiente = Color(0xFF1BA76D);
   static const titlesColor = Color(0xFF36455A);
   static const descricaoColor = Color(0xFF6A6F7D);
+  static const white = Color(0xFFFFFFFF);
+  static const black = Color(0xFF000000);
   static const linearColors = LinearGradient(
     colors: [
       AppColors.startGradiente,

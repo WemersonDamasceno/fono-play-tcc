@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
 
 class CardGameWidget extends StatefulWidget {
-  final bool isEscondida;
+  final bool estaEscondida;
   final String pathImage;
 
   const CardGameWidget({
     Key? key,
-    required this.isEscondida,
+    required this.estaEscondida,
     required this.pathImage,
   }) : super(key: key);
 
@@ -32,7 +32,7 @@ class _CardGameWidgetState extends State<CardGameWidget> {
       child: Card(
         color: AppColors.primaryColor,
         elevation: 6,
-        child: widget.isEscondida == false
+        child: widget.estaEscondida == false
             ? Container(
                 margin: EdgeInsets.all(7),
                 decoration: BoxDecoration(
