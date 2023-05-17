@@ -35,8 +35,6 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
   @override
   Widget build(BuildContext context) {
     String withoutProfilePhoto = "https://www.wikiaves.com.br/img/semfoto.png";
-    String imageUser = context.watch<AuthServiceNotifier>().user?.photoURL ??
-        withoutProfilePhoto;
 
     return Scaffold(
       body: Observer(

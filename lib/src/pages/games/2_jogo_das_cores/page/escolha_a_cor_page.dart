@@ -169,9 +169,12 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
-        content: SizedBox(
+        content: Container(
           width: double.infinity,
-          height: size.height / 1.9,
+          constraints: BoxConstraints(
+            minHeight: size.height / 2.8,
+            maxHeight: size.height / 1.9,
+          ),
           child: Column(
             children: [
               Visibility(

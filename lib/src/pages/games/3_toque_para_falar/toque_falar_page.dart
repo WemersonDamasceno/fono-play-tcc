@@ -23,7 +23,10 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
 
   tocarSom(String audioEscolhido) {
     setState(() {
-      _player.play(AssetSource("toque_para_falar/audios/$audioEscolhido"));
+      _player.play(
+        AssetSource("toque_para_falar/audios/$audioEscolhido"),
+        volume: 1,
+      );
     });
   }
 
@@ -192,7 +195,6 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
     escolhaSomParaFalar(image);
     return showDialog<String>(
       context: context,
-      barrierDismissible: false,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),

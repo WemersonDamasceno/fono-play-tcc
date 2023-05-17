@@ -48,18 +48,20 @@ flutter:
   assets:
     - assets/images/
     - assets/images/animations/
-    - assets/images/animais_cores/animais/
-    - assets/images/animais_cores/habitatis/
-    - assets/images/animais_cores/audios/
-    - assets/images/animais_cores/audios/cores/
     - assets/fonts/
     - assets/jogo_memoria/
+    - assets/jogo_memoria/audios/
     - assets/jogo_imitacao/
     - assets/jogo_imitacao/animais/
     - assets/jogo_imitacao/audios/
     - assets/toque_para_falar/
     - assets/toque_para_falar/audios/
     - assets/audios/
+    - assets/animais_cores/animais/
+    - assets/animais_cores/habitatis/
+    - assets/animais_cores/audios/
+    - assets/animais_cores/audios/cores/
+    - assets/conhecendo_animais/
 
   fonts:
     - family: Poppins

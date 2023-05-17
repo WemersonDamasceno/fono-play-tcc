@@ -28,64 +28,64 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     AnimalModel(
       nome: "baleia",
       corString: "azul",
-      imagem: "assets/images/animais_cores/animais/baleia.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
+      imagem: "assets/animais_cores/animais/baleia.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
       cor: Color(0xFF4193d1),
     ),
     AnimalModel(
       nome: "tartaruga",
       corString: "verde",
-      imagem: "assets/images/animais_cores/animais/tartaruga.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
+      imagem: "assets/animais_cores/animais/tartaruga.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
       cor: Color(0xFF88bc41),
     ),
     AnimalModel(
       nome: "porco",
       corString: "salmao",
-      imagem: "assets/images/animais_cores/animais/porco.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/fazenda.png",
+      imagem: "assets/animais_cores/animais/porco.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
       cor: Color(0xFFea828b),
     ),
     AnimalModel(
       nome: "pato",
       corString: "laranja",
-      imagem: "assets/images/animais_cores/animais/pato.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/rio.png",
+      imagem: "assets/animais_cores/animais/pato.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/rio.png",
       cor: Color(0xFFf9b12c),
     ),
     AnimalModel(
       nome: "passaro",
       corString: "azul",
-      imagem: "assets/images/animais_cores/animais/passaro.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/rio.png",
+      imagem: "assets/animais_cores/animais/passaro.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/rio.png",
       cor: Color(0xFF36a9dc),
     ),
     AnimalModel(
-      nome: "lula",
+      nome: "polvo",
       corString: "lilas",
-      imagem: "assets/images/animais_cores/animais/lula.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
+      imagem: "assets/animais_cores/animais/lula.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
       cor: Color(0xFFa07ab4),
     ),
     AnimalModel(
       nome: "galo",
       corString: "vermelho",
-      imagem: "assets/images/animais_cores/animais/galo.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/fazenda.png",
+      imagem: "assets/animais_cores/animais/galo.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
       cor: Color(0xFFbb1c2e),
     ),
     AnimalModel(
       nome: "estrela",
       corString: "amarelo",
-      imagem: "assets/images/animais_cores/animais/estrela.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/baleia.png",
+      imagem: "assets/animais_cores/animais/estrela.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
       cor: Color(0xFFf8d908),
     ),
     AnimalModel(
-      nome: "burro",
+      nome: "cavalo",
       corString: "cinza",
-      imagem: "assets/images/animais_cores/animais/burro.png",
-      backgroundHabitat: "assets/images/animais_cores/habitatis/fazenda.png",
+      imagem: "assets/animais_cores/animais/burro.png",
+      backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
       cor: Color(0xFF444444),
     ),
   ];
@@ -132,8 +132,6 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
-        //TODO - Tocar audio 'Onde está o cachorro?'
-        //_player.play(AssetSource("images/animais_cores/audios/inicio.mp3"));
       });
     });
 
@@ -145,6 +143,7 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     animaisExibidos.clear();
     animalFoco = getAnimalRandomInList();
     animaisExibidos = getAnimaisRandomInList();
+    _player.play(AssetSource("conhecendo_animais/${animalFoco.nome}.mp3"));
   }
 
   @override
@@ -230,11 +229,11 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                 ),
               ),
               Positioned(
-                top: size.height * .55,
+                top: size.height * .6,
                 child: InkWell(
                   onTap: () {
-                    //TODO - Tocar audio 'Onde está o cachorro?'
-                    _player.play(AssetSource("audios/correct.mp3"));
+                    _player.play(AssetSource(
+                        "conhecendo_animais/${animalFoco.nome}.mp3"));
                   },
                   child: Container(
                     height: 50,
@@ -323,15 +322,14 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     if (isCorrect == false) _player.play(AssetSource("audios/incorrect.mp3"));
     return showDialog<String>(
       context: context,
-      barrierDismissible: false,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
         content: Container(
           constraints: BoxConstraints(
-            minHeight: size.height / 3.5,
-            maxHeight: size.height / 2.1,
+            minHeight: size.height / 2.8,
+            maxHeight: size.height / 1.9,
           ),
           width: double.infinity,
           child: Column(

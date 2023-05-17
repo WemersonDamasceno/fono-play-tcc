@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/games/0_jogo_da_memoria/components/card_game_widget.dart';
 import 'package:fonoplay/src/pages/games/0_jogo_da_memoria/controllers/game_controller.dart';
@@ -6,8 +7,6 @@ import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';
 
-//TODO - Gravar audio dos animais
-//TODO - Usar audio de comemoração quando finalizar o jogo
 class JogoDaMemoriaPage extends StatefulWidget {
   const JogoDaMemoriaPage({Key? key}) : super(key: key);
 
@@ -25,6 +24,8 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   late AnimationController animationController;
   Tween<double> tween = Tween<double>(begin: 0, end: 1);
 
+  late AudioPlayer _player;
+
   @override
   void initState() {
     super.initState();
@@ -36,12 +37,17 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
       animationBehavior: AnimationBehavior.preserve,
       value: 0,
     )..forward();
+    _player = AudioPlayer();
 
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
       });
     });
+    _player.play(
+      AssetSource("jogo_memoria/audios/memoria-inicio.mp3"),
+      volume: 1,
+    );
   }
 
   @override
@@ -52,6 +58,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -175,9 +182,15 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
 
                       //Se atingir os 600 pontos, acabou o jogo
                       if (pontos == 600) {
+                        dialogComemoracao(size);
+
+                        _player.play(
+                          AssetSource("audios/correct.mp3"),
+                          volume: 1,
+                        );
+
                         setState(() {
                           exibirAnimacao = true;
-                          dialogComemoracao(size);
                         });
                       } else {
                         dialogAnimal(size, nomeAnimal);
@@ -215,6 +228,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   }
 
   dialogAnimal(Size size, String animal) {
+    tocarSomAnimal(animal);
     return showDialog<String>(
       context: context,
       barrierDismissible: false,
@@ -257,8 +271,6 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
 
   String silabasAnimal(String animal) {
     switch (animal) {
-      case "cachorro":
-        return "CA-CHOR-RO";
       case "peixe":
         return "PEI-XE";
       case "elefante":
@@ -282,9 +294,12 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
-        content: SizedBox(
+        content: Container(
           width: double.infinity,
-          height: size.height / 1.9,
+          constraints: BoxConstraints(
+            minHeight: size.height / 2.8,
+            maxHeight: size.height / 1.9,
+          ),
           child: Column(
             children: [
               LottieBuilder.asset(
@@ -325,6 +340,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
           ),
         ),
       ),
+    );
+  }
+
+  void tocarSomAnimal(String animal) {
+    _player.play(
+      AssetSource("jogo_memoria/audios/$animal.mp3"),
+      volume: 1,
     );
   }
 }

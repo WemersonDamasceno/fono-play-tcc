@@ -119,6 +119,53 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                       ),
                     );
                   }
+                  //TODO Adicionar aqui o jogo dos fonemas
+                  // if (index == 1) {
+                  //   return InkWell(
+                  //     onTap: () =>
+                  //         Navigator.pushNamed(context, "/jogo_da_imitacao"),
+                  //     child: Column(
+                  //       mainAxisAlignment: MainAxisAlignment.center,
+                  //       children: [
+                  //         Container(
+                  //           padding: EdgeInsets.only(left: 10),
+                  //           child: Transform(
+                  //             transform: Matrix4.identity()
+                  //               ..setEntry(3, 2, 0.001)
+                  //               ..rotateY(angle),
+                  //             alignment: Alignment.center,
+                  //             child: LottieBuilder.asset(
+                  //               "assets/images/animations/animal.json",
+                  //               reverse: true,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Container(
+                  //           padding: EdgeInsets.all(8),
+                  //           decoration: BoxDecoration(
+                  //             color: Color.fromARGB(255, 255, 255, 255),
+                  //             borderRadius: BorderRadius.circular(10),
+                  //             boxShadow: [
+                  //               BoxShadow(
+                  //                 color: Color.fromARGB(255, 0, 0, 0),
+                  //                 offset: Offset(0, 3),
+                  //                 blurRadius: 6,
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           child: Text(
+                  //             "Conhecendo os Fonemas",
+                  //             style: TextStyle(
+                  //               color: Color(0xFF525252),
+                  //               fontSize: 28,
+                  //               fontWeight: FontWeight.bold,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   );
+                  // }
 
                   if (index == 1) {
                     return InkWell(
