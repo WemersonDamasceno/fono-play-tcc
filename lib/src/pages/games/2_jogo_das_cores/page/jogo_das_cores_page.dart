@@ -35,7 +35,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
-        _player.play(AssetSource("images/animais_cores/audios/inicio.mp3"));
+        _player.play(AssetSource("animais_cores/audios/inicio.mp3"));
       });
     });
   }
@@ -59,7 +59,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "porco",
-        corString: "salmao",
+        corString: "rosa",
         imagem: "assets/animais_cores/animais/porco.png",
         backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
         cor: Color(0xFFea828b),
@@ -79,8 +79,8 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
         cor: Color(0xFF36a9dc),
       ),
       AnimalModel(
-        nome: "lula",
-        corString: "lilas",
+        nome: "polvo",
+        corString: "roxo",
         imagem: "assets/animais_cores/animais/lula.png",
         backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
         cor: Color(0xFFa07ab4),
@@ -100,7 +100,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
         cor: Color(0xFFf8d908),
       ),
       AnimalModel(
-        nome: "burro",
+        nome: "cavalo",
         corString: "cinza",
         imagem: "assets/animais_cores/animais/burro.png",
         backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",

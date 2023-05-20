@@ -23,7 +23,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
     super.initState();
     _player = AudioPlayer();
     _player.play(AssetSource(
-        "images/animais_cores/audios/${widget.animaisCores.nome}.mp3"));
+        "animais_cores/audios/qual_a_cor/${widget.animaisCores.nome}.mp3"));
   }
 
   @override
@@ -94,9 +94,8 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                               child: InkWell(
                                 onTap: () async {
                                   _player.play(AssetSource(
-                                      "images/animais_cores/audios/cores/${e.nome}.mp3"));
-                                  await Future.delayed(
-                                      Duration(milliseconds: 1000));
+                                      "animais_cores/audios/cores/${e.nome}.mp3"));
+                                  await Future.delayed(Duration(seconds: 2));
 
                                   if (e.corString ==
                                       widget.animaisCores.corString) {
