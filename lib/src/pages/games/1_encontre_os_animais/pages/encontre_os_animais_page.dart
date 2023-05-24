@@ -144,8 +144,10 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     animalFoco = getAnimalRandomInList();
     animaisExibidos = getAnimaisRandomInList();
     _player.stop();
-    _player.play(
-        AssetSource("encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
+    Future.delayed(const Duration(seconds: 1), () {
+      _player.play(AssetSource(
+          "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
+    });
   }
 
   @override
@@ -170,8 +172,9 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: 20, right: 20, top: size.height * 0.01),
-                  child: const CabecalhoWidget(
+                  child: CabecalhoWidget(
                     isGame: true,
+                    onPressed: () => _player.stop(),
                     imagemPerfil: "assets/images/avatar_01.png",
                     nomeCrianca: "Joãozinho",
                     titulo: "Encontre o animal",

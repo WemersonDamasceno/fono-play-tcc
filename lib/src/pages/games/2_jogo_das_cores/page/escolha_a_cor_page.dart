@@ -89,7 +89,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 15),
+                        horizontal: 40, vertical: 15),
                     child: Wrap(
                       children: widget.listAnimais
                           .map(
@@ -217,7 +217,11 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
               ButtonGradienteWidget(
                 texto: isCorrect ? "Continuar" : "Tentar novamente",
                 onPressed: () {
-                  if (isCorrect) Navigator.pop(context);
+                  _player.stop();
+                  if (isCorrect) {
+                    Navigator.pop(context);
+                  }
+
                   Navigator.pop(context);
                 },
                 habilitarBotao: true,

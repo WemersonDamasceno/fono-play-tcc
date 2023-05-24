@@ -30,8 +30,9 @@ class _InicioPacientePageState extends State<InicioPacientePage> {
           child: Padding(
             padding:
                 EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
-            child: const CabecalhoWidget(
+            child: CabecalhoWidget(
               isGame: false,
+              onPressed: () {},
               imagemPerfil: "assets/images/avatar_01.png",
               nomeCrianca: "Joãozinho",
               titulo: "",

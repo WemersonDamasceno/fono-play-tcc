@@ -80,8 +80,9 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
           SafeArea(
             child: Padding(
               padding: EdgeInsets.only(left: 20, right: 20, top: height * 0.01),
-              child: const CabecalhoWidget(
+              child: CabecalhoWidget(
                 isGame: true,
+                onPressed: () => _player.stop(),
                 imagemPerfil: "assets/images/avatar_01.png",
                 nomeCrianca: "Joãozinho",
                 titulo: "Jogo da imitação",

@@ -74,10 +74,11 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
           child: Padding(
             padding:
                 EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
-            child: const CabecalhoWidget(
+            child: CabecalhoWidget(
               isGame: true,
               imagemPerfil: "assets/images/avatar_01.png",
               nomeCrianca: "Joãozinho",
+              onPressed: () => _player.stop(),
               titulo: "Toque para falar",
             ),
           ),
@@ -199,8 +200,11 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
-        content: SizedBox(
-          height: size.height * 0.4,
+        content: Container(
+          constraints: BoxConstraints(
+            minHeight: size.height / 2.8,
+            maxHeight: size.height / 2.3,
+          ),
           child: Column(
             children: [
               Hero(

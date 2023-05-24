@@ -42,12 +42,12 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
+        _player.play(
+          AssetSource("jogo_memoria/audios/memoria-inicio.mp3"),
+          volume: 1,
+        );
       });
     });
-    _player.play(
-      AssetSource("jogo_memoria/audios/memoria-inicio.mp3"),
-      volume: 1,
-    );
   }
 
   @override
@@ -67,8 +67,9 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
             child: Padding(
               padding:
                   EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
-              child: const CabecalhoWidget(
+              child: CabecalhoWidget(
                 isGame: true,
+                onPressed: () => _player.stop(),
                 imagemPerfil: "assets/images/avatar_01.png",
                 nomeCrianca: "Joãozinho",
                 titulo: "Jogo da memória",
@@ -287,6 +288,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   }
 
   dialogComemoracao(size) {
+    gameController.initGame();
     return showDialog<String>(
       context: context,
       barrierDismissible: false,

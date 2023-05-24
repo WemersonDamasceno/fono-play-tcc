@@ -5,12 +5,14 @@ class CabecalhoWidget extends StatelessWidget {
   final String nomeCrianca;
   final String titulo;
   final bool isGame;
+  final VoidCallback onPressed;
   const CabecalhoWidget({
     Key? key,
     required this.imagemPerfil,
     required this.nomeCrianca,
     required this.titulo,
     required this.isGame,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -54,6 +56,7 @@ class CabecalhoWidget extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   if (isGame) {
+                    onPressed();
                     Navigator.pop(context);
                   } else {
                     Scaffold.of(context).openEndDrawer();

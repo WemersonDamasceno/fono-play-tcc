@@ -48,8 +48,9 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
             child: Padding(
               padding:
                   EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
-              child: const CabecalhoWidget(
+              child: CabecalhoWidget(
                 isGame: false,
+                onPressed: () {},
                 imagemPerfil: "assets/images/avatar_01.png",
                 nomeCrianca: "Joãozinho",
                 titulo: "Escolha um jogo",
@@ -110,7 +111,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                               "Jogo da Memória",
                               style: TextStyle(
                                 color: Color(0xFF525252),
-                                fontSize: 28,
+                                fontSize: 23,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -157,7 +158,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                   //             "Conhecendo os Fonemas",
                   //             style: TextStyle(
                   //               color: Color(0xFF525252),
-                  //               fontSize: 28,
+                  //               fontSize: 23,
                   //               fontWeight: FontWeight.bold,
                   //             ),
                   //           ),
@@ -204,7 +205,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                               "Conhecendo os Animais",
                               style: TextStyle(
                                 color: Color(0xFF525252),
-                                fontSize: 28,
+                                fontSize: 23,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -250,7 +251,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                             "Conhecendo as Cores",
                             style: TextStyle(
                               color: Color(0xFF525252),
-                              fontSize: 28,
+                              fontSize: 23,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
