@@ -24,20 +24,18 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
   void initState() {
     super.initState();
     _player = AudioPlayer();
-
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-      animationBehavior: AnimationBehavior.preserve,
-      value: 0,
-    )..forward();
-
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
         _player.play(AssetSource("animais_cores/audios/inicio.mp3"));
       });
     });
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+      animationBehavior: AnimationBehavior.preserve,
+      value: 0,
+    )..forward();
   }
 
   @override
@@ -45,6 +43,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
     final List<AnimalModel> animaisCores = [
       AnimalModel(
         nome: "baleia",
+        label: "Qual é a cor da Baleia?",
         corString: "azul",
         imagem: "assets/animais_cores/animais/baleia.png",
         backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
@@ -52,6 +51,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "tartaruga",
+        label: "Qual é a cor da Tartaruga?",
         corString: "verde",
         imagem: "assets/animais_cores/animais/tartaruga.png",
         backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
@@ -59,6 +59,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "porco",
+        label: "Qual é a cor do Porco?",
         corString: "rosa",
         imagem: "assets/animais_cores/animais/porco.png",
         backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
@@ -66,6 +67,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "pato",
+        label: "Qual é a cor do Pato?",
         corString: "laranja",
         imagem: "assets/animais_cores/animais/pato.png",
         backgroundHabitat: "assets/animais_cores/habitatis/rio.png",
@@ -73,6 +75,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "passaro",
+        label: "Qual é a cor do Passaro?",
         corString: "azul",
         imagem: "assets/animais_cores/animais/passaro.png",
         backgroundHabitat: "assets/animais_cores/habitatis/rio.png",
@@ -80,6 +83,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       ),
       AnimalModel(
         nome: "polvo",
+        label: "Qual é a cor do Polvo?",
         corString: "roxo",
         imagem: "assets/animais_cores/animais/lula.png",
         backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
@@ -88,12 +92,14 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       AnimalModel(
         nome: "galo",
         corString: "vermelho",
+        label: "Qual é a cor do Galo?",
         imagem: "assets/animais_cores/animais/galo.png",
         backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
         cor: Color(0xFFbb1c2e),
       ),
       AnimalModel(
         nome: "estrela",
+        label: "Qual é a cor da Estrela do mar?",
         corString: "amarelo",
         imagem: "assets/animais_cores/animais/estrela.png",
         backgroundHabitat: "assets/animais_cores/habitatis/baleia.png",
@@ -102,6 +108,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
       AnimalModel(
         nome: "cavalo",
         corString: "cinza",
+        label: "Qual é a cor do Cavalo?",
         imagem: "assets/animais_cores/animais/burro.png",
         backgroundHabitat: "assets/animais_cores/habitatis/fazenda.png",
         cor: Color(0xFF444444),
@@ -155,6 +162,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
+                            _player.stop();
                             Navigator.push(
                               context,
                               MaterialPageRoute(

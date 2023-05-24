@@ -143,7 +143,9 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     animaisExibidos.clear();
     animalFoco = getAnimalRandomInList();
     animaisExibidos = getAnimaisRandomInList();
-    _player.play(AssetSource("conhecendo_animais/${animalFoco.nome}.mp3"));
+    _player.stop();
+    _player.play(
+        AssetSource("encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
   }
 
   @override
@@ -233,7 +235,7 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                 child: InkWell(
                   onTap: () {
                     _player.play(AssetSource(
-                        "conhecendo_animais/${animalFoco.nome}.mp3"));
+                        "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
                   },
                   child: Container(
                     height: 50,

@@ -5,9 +5,11 @@ class AnimalModel {
   final String imagem;
   final Color cor;
   final String corString;
+  final String label;
   final String backgroundHabitat;
 
   AnimalModel({
+    this.label = '',
     required this.corString,
     required this.backgroundHabitat,
     required this.nome,

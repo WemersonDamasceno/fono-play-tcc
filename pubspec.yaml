@@ -62,6 +62,7 @@ flutter:
     - assets/animais_cores/audios/
     - assets/animais_cores/audios/qual_a_cor/
     - assets/animais_cores/audios/cores/
+    - assets/encontre_animais/audios/
 
   fonts:
     - family: Poppins

@@ -27,6 +27,11 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -73,10 +78,10 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                         ],
                       ),
                       child: Text(
-                        "Qual a cor do(a) ${widget.animaisCores.nome.toLowerCase()}?",
+                        widget.animaisCores.label,
                         style: TextStyle(
                           color: Color(0xFF525252),
-                          fontSize: 28,
+                          fontSize: 23,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -133,6 +138,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                 padding: const EdgeInsets.only(top: 30, left: 15),
                 child: InkWell(
                     onTap: () {
+                      _player.stop();
                       Navigator.pop(context);
                     },
                     child: Container(
