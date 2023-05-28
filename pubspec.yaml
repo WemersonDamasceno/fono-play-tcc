@@ -57,6 +57,11 @@ flutter:
     - assets/toque_para_falar/
     - assets/toque_para_falar/audios/
     - assets/audios/
+    - assets/fonemas/images/
+    - assets/fonemas/audios/
+    - assets/fonemas/fonemas_b/
+    - assets/fonemas/fonemas_m/
+    - assets/fonemas/fonemas_d/
     - assets/animais_cores/animais/
     - assets/animais_cores/habitatis/
     - assets/animais_cores/audios/

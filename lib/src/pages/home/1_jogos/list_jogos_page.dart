@@ -66,7 +66,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
               width: size.width,
               child: PageView.builder(
                 controller: pageController,
-                itemCount: 3,
+                itemCount: 4,
                 itemBuilder: (context, index) {
                   double angle = (pageOffset - index).abs();
                   if (angle > 0.5) {
@@ -109,6 +109,52 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                             ),
                             child: Text(
                               "Jogo da Memória",
+                              style: TextStyle(
+                                color: Color(0xFF525252),
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                  if (index == 1) {
+                    return InkWell(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/jogo-dos-fonemas"),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Transform(
+                              transform: Matrix4.identity()
+                                ..setEntry(3, 2, 0.001)
+                                ..rotateY(angle),
+                              alignment: Alignment.center,
+                              child: LottieBuilder.asset(
+                                "assets/images/animations/fonemas_game.json",
+                                reverse: true,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  offset: Offset(0, 3),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              "Jogo dos Fonemas",
                               style: TextStyle(
                                 color: Color(0xFF525252),
                                 fontSize: 23,
@@ -168,7 +214,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                   //   );
                   // }
 
-                  if (index == 1) {
+                  if (index == 2) {
                     return InkWell(
                       onTap: () =>
                           Navigator.pushNamed(context, "/jogo_da_imitacao"),

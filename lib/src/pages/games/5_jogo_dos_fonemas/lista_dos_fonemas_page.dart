@@ -1,18 +1,20 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
-import 'package:fonoplay/src/pages/games/3_toque_para_falar/widgets/fala_card_widget.dart';
-import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
+import 'package:fonoplay/src/pages/games/5_jogo_dos_fonemas/fonemas_escolhido_game.dart';
+import 'package:fonoplay/src/pages/games/5_jogo_dos_fonemas/widgets/fonemas_item_list_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 
-class ToqueParaFalarPage extends StatefulWidget {
-  const ToqueParaFalarPage({Key? key}) : super(key: key);
+import '../../widgets/cabecalho_widget.dart';
+
+class ListaDosFonemasPage extends StatefulWidget {
+  const ListaDosFonemasPage({Key? key}) : super(key: key);
 
   @override
-  State<ToqueParaFalarPage> createState() => _ToqueParaFalarPageState();
+  State<ListaDosFonemasPage> createState() => _ListaDosFonemasPageState();
 }
 
-class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
+class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
   late AudioPlayer _player;
 
   @override
@@ -79,7 +81,7 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
               imagemPerfil: "assets/images/avatar_01.png",
               nomeCrianca: "Joãozinho",
               onPressed: () => _player.stop(),
-              titulo: "Toque para falar",
+              titulo: "Escolha um Fonema",
             ),
           ),
         ),
@@ -96,95 +98,80 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
               childAspectRatio: (itemWidth / itemHeight),
               controller: ScrollController(keepScrollOffset: false),
               children: [
-                FalaCardWidget(
-                  image: "banheiro",
-                  text: "Banheiro",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "banheiro",
-                    "Quero ir ao banheiro!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_B",
+                  text: "Fonema B",
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "b",
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                FalaCardWidget(
-                  image: "te_amo",
-                  text: "Amor",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "te_amo",
-                    "Eu te amo!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_M",
+                  text: "Fonema M",
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "m",
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                FalaCardWidget(
-                  image: "banho",
-                  text: "Banho",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "banho",
-                    "Quero tomar banho!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_D",
+                  text: "Fonema D",
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "d",
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                FalaCardWidget(
-                  image: "frio",
-                  text: "Frio",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "frio",
-                    "Estou com frio!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_P",
+                  text: "Fonema P",
+                  onTap: () {},
                 ),
-                FalaCardWidget(
-                  image: "triste",
-                  text: "Triste",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "triste",
-                    "Estou triste!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_F",
+                  text: "Fonema F",
+                  onTap: () {},
                 ),
-                FalaCardWidget(
-                  image: "abraco",
-                  text: "Abraço",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "abraco",
-                    "Quero um abraco!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_T",
+                  text: "Fonema T",
+                  onTap: () {},
                 ),
-                FalaCardWidget(
-                  image: "fome",
-                  text: "Fome",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "fome",
-                    "Estou com fome!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_K",
+                  text: "Fonema K",
+                  onTap: () {},
                 ),
-                FalaCardWidget(
-                  image: "sono",
-                  text: "Sono",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "sono",
-                    "Estou com sono!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_N",
+                  text: "Fonema N",
+                  onTap: () {},
                 ),
-                FalaCardWidget(
-                  image: "dor",
-                  text: "Dor",
-                  onTap: () => dialogFalarMensagem(
-                    size,
-                    context,
-                    "dor",
-                    "Estou com dor!",
-                  ),
+                FonemasItemListWidget(
+                  image: "fonema_NH",
+                  text: "Fonema NH",
+                  onTap: () {},
                 ),
               ]),
         )

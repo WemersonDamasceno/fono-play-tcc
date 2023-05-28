@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/games/2_jogo_das_cores/models/animais_cores_model.dart';
-import 'package:fonoplay/src/pages/games/2_jogo_das_cores/page/escolha_a_cor_page.dart';
+import 'package:fonoplay/src/pages/games/3_jogo_das_cores/models/animais_cores_model.dart';
+import 'package:fonoplay/src/pages/games/3_jogo_das_cores/page/escolha_a_cor_page.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';

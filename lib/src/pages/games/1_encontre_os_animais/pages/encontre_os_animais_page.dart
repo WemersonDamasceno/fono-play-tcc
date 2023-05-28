@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_colors.dart';
-import 'package:fonoplay/src/pages/games/2_jogo_das_cores/models/animais_cores_model.dart';
+import 'package:fonoplay/src/pages/games/3_jogo_das_cores/models/animais_cores_model.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';

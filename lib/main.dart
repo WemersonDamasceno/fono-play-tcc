@@ -5,8 +5,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fonoplay/firebase_options.dart';
 import 'package:fonoplay/src/pages/games/0_jogo_da_memoria/pages/jogo_da_memoria_page.dart';
 import 'package:fonoplay/src/pages/games/1_encontre_os_animais/pages/encontre_os_animais_page.dart';
-import 'package:fonoplay/src/pages/games/2_jogo_das_cores/page/jogo_das_cores_page.dart';
-import 'package:fonoplay/src/pages/games/3_toque_para_falar/toque_falar_page.dart';
+import 'package:fonoplay/src/pages/games/3_jogo_das_cores/page/jogo_das_cores_page.dart';
+import 'package:fonoplay/src/pages/games/5_jogo_dos_fonemas/lista_dos_fonemas_page.dart';
+import 'package:fonoplay/src/pages/games/toque_para_falar/toque_falar_page.dart';
 import 'package:fonoplay/src/pages/home/1_jogos/list_jogos_page.dart';
 import 'package:fonoplay/src/pages/home/navigation/home_navigation.dart';
 import 'package:fonoplay/src/pages/intersection/intersection.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
         '/jogo_da_imitacao': (context) => const ConhecendoOsAnimaisPage(),
         '/jogo_das_cores': (context) => const JogoDasCoresPage(),
         '/toque-para-falar': (context) => const ToqueParaFalarPage(),
+        '/jogo-dos-fonemas': (context) => const ListaDosFonemasPage(),
       },
     );
   }

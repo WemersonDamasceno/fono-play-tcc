@@ -239,12 +239,13 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
         elevation: 0,
         content: SizedBox(
           width: double.infinity,
-          height: size.height / 2.3,
+          height: size.height / 2.5,
           child: Column(
             children: [
               Image.asset(
                 "assets/jogo_memoria/$animal.png",
-                width: size.width * 0.45,
+                width: size.width * 0.4,
+                fit: BoxFit.fill,
               ),
               Text(
                 silabasAnimal(animal),
@@ -259,6 +260,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
               ButtonGradienteWidget(
                 texto: "Continuar",
                 onPressed: () {
+                  _player.stop();
                   Navigator.pop(context);
                 },
                 habilitarBotao: true,
@@ -273,17 +275,17 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   String silabasAnimal(String animal) {
     switch (animal) {
       case "peixe":
-        return "PEI-XE";
+        return "PEIXE";
       case "elefante":
-        return "E-LE-FAN-TE";
+        return "ELEFANTE";
       case "girafa":
-        return "GI-RA-FA";
+        return "GIRAFA";
       case "leao":
-        return "LE-ÃO";
+        return "LEÃO";
       case "macaco":
-        return "MA-CA-CO";
+        return "MACACO";
       default:
-        return "GA-TO";
+        return "GATO";
     }
   }
 
@@ -334,6 +336,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
                     pontos = 0;
                     Navigator.pop(context);
                     gameController.initGame();
+                    _player.stop();
                   });
                 },
                 habilitarBotao: true,

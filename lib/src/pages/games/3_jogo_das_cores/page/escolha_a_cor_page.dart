@@ -1,8 +1,9 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/pages/games/2_jogo_das_cores/models/animais_cores_model.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:lottie/lottie.dart';
+
+import '../models/animais_cores_model.dart';
 
 class EscolhaACorPage extends StatefulWidget {
   final AnimalModel animaisCores;
