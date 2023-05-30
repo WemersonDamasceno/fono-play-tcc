@@ -146,32 +146,92 @@ class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
                 FonemasItemListWidget(
                   image: "fonema_P",
                   text: "Fonema P",
-                  onTap: () {},
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "p",
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 FonemasItemListWidget(
-                  image: "fonema_F",
-                  text: "Fonema F",
-                  onTap: () {},
+                  image: "fonema_G",
+                  text: "Fonema G",
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "g",
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 FonemasItemListWidget(
                   image: "fonema_T",
                   text: "Fonema T",
-                  onTap: () {},
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "t",
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 FonemasItemListWidget(
                   image: "fonema_K",
                   text: "Fonema K",
-                  onTap: () {},
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "k",
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 FonemasItemListWidget(
                   image: "fonema_N",
                   text: "Fonema N",
-                  onTap: () {},
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "n",
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 FonemasItemListWidget(
                   image: "fonema_NH",
                   text: "Fonema NH",
-                  onTap: () {},
+                  onTap: () {
+                    _player.stop();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FonemasEscolhidoGame(
+                          fonemaEscolhido: "nh",
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ]),
         )

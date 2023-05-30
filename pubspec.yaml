@@ -62,6 +62,12 @@ flutter:
     - assets/fonemas/fonemas_b/
     - assets/fonemas/fonemas_m/
     - assets/fonemas/fonemas_d/
+    - assets/fonemas/fonemas_p/
+    - assets/fonemas/fonemas_g/
+    - assets/fonemas/fonemas_k/
+    - assets/fonemas/fonemas_n/
+    - assets/fonemas/fonemas_nh/
+    - assets/fonemas/fonemas_t/
     - assets/animais_cores/animais/
     - assets/animais_cores/habitatis/
     - assets/animais_cores/audios/

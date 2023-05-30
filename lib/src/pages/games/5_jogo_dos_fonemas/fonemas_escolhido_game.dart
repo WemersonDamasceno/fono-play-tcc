@@ -136,11 +136,14 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
             children: [
               Hero(
                 tag: "TAG-$image",
-                child: Image.asset(
-                  "assets/fonemas/fonemas_${widget.fonemaEscolhido}/$image.png",
-                  width: size.width * 0.48,
-                  height: size.height * 0.3,
-                  fit: BoxFit.fitHeight,
+                child: Material(
+                  elevation: 20,
+                  child: Image.asset(
+                    "assets/fonemas/fonemas_${widget.fonemaEscolhido}/$image.png",
+                    width: size.width * 0.48,
+                    height: size.height * 0.3,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Text(
