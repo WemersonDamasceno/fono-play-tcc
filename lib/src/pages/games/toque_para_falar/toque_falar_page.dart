@@ -25,7 +25,7 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
     setState(() {
       _player.play(
         AssetSource("toque_para_falar/audios/$audioEscolhido"),
-        volume: 1,
+        volume: 0.4,
       );
     });
   }

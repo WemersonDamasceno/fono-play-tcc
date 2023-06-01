@@ -27,9 +27,16 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
     _player = AudioPlayer();
     _player.setVolume(0.1);
     _player.onPlayerComplete.listen((event) {
-      _player.play(AssetSource("audios/musica_background.mp3"));
+      _player.play(
+        AssetSource("audios/musica_background.mp3"),
+        volume: 0.4,
+      );
     });
-    if (isPlaying) _player.play(AssetSource("audios/musica_background.mp3"));
+    if (isPlaying)
+      _player.play(
+        AssetSource("audios/musica_background.mp3"),
+        volume: 0.4,
+      );
   }
 
   @override
@@ -52,7 +59,10 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 _player.pause();
                 isPlaying = false;
               } else {
-                _player.play(AssetSource("audios/musica_background.mp3"));
+                _player.play(
+                  AssetSource("audios/musica_background.mp3"),
+                  volume: 0.4,
+                );
                 isPlaying = true;
               }
             });

@@ -25,47 +25,21 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
     super.initState();
     _player = AudioPlayer();
     listFonemas = getFonema(widget.fonemaEscolhido);
-  }
-
-  tocarSom(String audioEscolhido) {
-    setState(() {
-      _player.play(
-        AssetSource("toque_para_falar/audios/$audioEscolhido"),
-        volume: 1,
-      );
-    });
+    _player.play(
+      AssetSource(
+        "fonemas/fonemas_${widget.fonemaEscolhido}/inicio-fonemas-${widget.fonemaEscolhido}.mp3",
+      ),
+      volume: 0.4,
+    );
   }
 
   escolhaSomParaFalar(String audio) {
-    switch (audio) {
-      case "banheiro":
-        tocarSom("banheiro.mp3");
-        break;
-      case "fome":
-        tocarSom("fome.mp3");
-        break;
-      case "frio":
-        tocarSom("frio.mp3");
-        break;
-      case "dor":
-        tocarSom("dor.mp3");
-        break;
-      case "sono":
-        tocarSom("sono.mp3");
-        break;
-      case "triste":
-        tocarSom("triste.mp3");
-        break;
-      case "banho":
-        tocarSom("banho.mp3");
-        break;
-      case "te_amo":
-        tocarSom("te_amo.mp3");
-        break;
-      case "abraco":
-        tocarSom("abraco.mp3");
-        break;
-    }
+    _player.play(
+      AssetSource(
+        "fonemas/fonemas_${widget.fonemaEscolhido}/${audio.toLowerCase()}.mp3",
+      ),
+      volume: 0.4,
+    );
   }
 
   @override
@@ -120,7 +94,7 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
   }
 
   dialogFalarMensagem(size, context, image, mensagem) {
-    escolhaSomParaFalar(image);
+    escolhaSomParaFalar(mensagem);
     return showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(
@@ -136,14 +110,11 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
             children: [
               Hero(
                 tag: "TAG-$image",
-                child: Material(
-                  elevation: 20,
-                  child: Image.asset(
-                    "assets/fonemas/fonemas_${widget.fonemaEscolhido}/$image.png",
-                    width: size.width * 0.48,
-                    height: size.height * 0.3,
-                    fit: BoxFit.contain,
-                  ),
+                child: Image.asset(
+                  "assets/fonemas/fonemas_${widget.fonemaEscolhido}/$image.png",
+                  width: size.width * 0.48,
+                  height: size.height * 0.3,
+                  fit: BoxFit.contain,
                 ),
               ),
               Text(

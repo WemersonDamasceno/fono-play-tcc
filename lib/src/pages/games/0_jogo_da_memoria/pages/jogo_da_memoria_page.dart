@@ -44,7 +44,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
         isLoading = false;
         _player.play(
           AssetSource("jogo_memoria/audios/memoria-inicio.mp3"),
-          volume: 1,
+          volume: 0.4,
         );
       });
     });
@@ -187,7 +187,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
 
                         _player.play(
                           AssetSource("audios/correct.mp3"),
-                          volume: 1,
+                          volume: 0.4,
                         );
 
                         setState(() {
@@ -351,7 +351,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
   void tocarSomAnimal(String animal) {
     _player.play(
       AssetSource("jogo_memoria/audios/$animal.mp3"),
-      volume: 1,
+      volume: 0.4,
     );
   }
 }

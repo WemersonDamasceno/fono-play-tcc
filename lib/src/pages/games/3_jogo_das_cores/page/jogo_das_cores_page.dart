@@ -27,7 +27,10 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
-        _player.play(AssetSource("animais_cores/audios/inicio.mp3"));
+        _player.play(
+          AssetSource("animais_cores/audios/inicio.mp3"),
+          volume: 0.4,
+        );
       });
     });
     animationController = AnimationController(

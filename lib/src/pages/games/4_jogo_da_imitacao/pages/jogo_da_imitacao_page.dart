@@ -52,7 +52,10 @@ class _JogoDaImitacaoPageState extends State<JogoDaImitacaoPage> {
     setState(() {
       if (!playing) {
         iconPlay = Icons.pause_circle_outline_rounded;
-        _player.play(AssetSource("jogo_imitacao/audios/$fonemaEscolhido"));
+        _player.play(
+          AssetSource("jogo_imitacao/audios/$fonemaEscolhido"),
+          volume: 0.4,
+        );
         playing = true;
         Future.delayed(const Duration(milliseconds: 2500)).then((value) {
           setState(() {

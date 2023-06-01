@@ -145,8 +145,10 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
     animaisExibidos = getAnimaisRandomInList();
     _player.stop();
     Future.delayed(const Duration(seconds: 1), () {
-      _player.play(AssetSource(
-          "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
+      _player.play(
+        AssetSource("encontre_animais/audios/encontre-${animalFoco.nome}.mp3"),
+        volume: 0.4,
+      );
     });
   }
 
@@ -237,8 +239,11 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                 top: size.height * .6,
                 child: InkWell(
                   onTap: () {
-                    _player.play(AssetSource(
-                        "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"));
+                    _player.play(
+                      AssetSource(
+                          "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"),
+                      volume: 0.4,
+                    );
                   },
                   child: Container(
                     height: 50,
@@ -323,8 +328,16 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
   }
 
   showDialogFeedback(bool isCorrect, BuildContext context, Size size) {
-    if (isCorrect == true) _player.play(AssetSource("audios/correct.mp3"));
-    if (isCorrect == false) _player.play(AssetSource("audios/incorrect.mp3"));
+    if (isCorrect == true)
+      _player.play(
+        AssetSource("audios/correct.mp3"),
+        volume: 0.4,
+      );
+    if (isCorrect == false)
+      _player.play(
+        AssetSource("audios/incorrect.mp3"),
+        volume: 0.4,
+      );
     return showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(

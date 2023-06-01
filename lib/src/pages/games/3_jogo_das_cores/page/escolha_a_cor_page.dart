@@ -23,8 +23,11 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    _player.play(AssetSource(
-        "animais_cores/audios/qual_a_cor/${widget.animaisCores.nome}.mp3"));
+    _player.play(
+      AssetSource(
+          "animais_cores/audios/qual_a_cor/${widget.animaisCores.nome}.mp3"),
+      volume: 0.4,
+    );
   }
 
   @override
@@ -99,8 +102,11 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                                   EdgeInsets.only(top: 8, left: 8, right: 8),
                               child: InkWell(
                                 onTap: () async {
-                                  _player.play(AssetSource(
-                                      "animais_cores/audios/cores/${e.nome}.mp3"));
+                                  _player.play(
+                                    AssetSource(
+                                        "animais_cores/audios/cores/${e.nome}.mp3"),
+                                    volume: 0.4,
+                                  );
                                   await Future.delayed(Duration(seconds: 2));
 
                                   if (e.corString ==
@@ -166,8 +172,16 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
   }
 
   showDialogFeedback(bool isCorrect, BuildContext context, Size size) {
-    if (isCorrect == true) _player.play(AssetSource("audios/correct.mp3"));
-    if (isCorrect == false) _player.play(AssetSource("audios/incorrect.mp3"));
+    if (isCorrect == true)
+      _player.play(
+        AssetSource("audios/correct.mp3"),
+        volume: 0.4,
+      );
+    if (isCorrect == false)
+      _player.play(
+        AssetSource("audios/incorrect.mp3"),
+        volume: 0.4,
+      );
     return showDialog<String>(
       context: context,
       barrierDismissible: false,

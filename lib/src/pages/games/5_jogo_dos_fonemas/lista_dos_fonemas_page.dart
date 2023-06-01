@@ -1,6 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/games/5_jogo_dos_fonemas/fonemas_escolhido_game.dart';
 import 'package:fonoplay/src/pages/games/5_jogo_dos_fonemas/widgets/fonemas_item_list_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
@@ -21,47 +20,19 @@ class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
   void initState() {
     super.initState();
     _player = AudioPlayer();
+    _player.play(
+      AssetSource("fonemas/audios/inicio.mp3"),
+      volume: 0.4,
+    );
   }
 
   tocarSom(String audioEscolhido) {
     setState(() {
       _player.play(
         AssetSource("toque_para_falar/audios/$audioEscolhido"),
-        volume: 1,
+        volume: 0.4,
       );
     });
-  }
-
-  escolhaSomParaFalar(String audio) {
-    switch (audio) {
-      case "banheiro":
-        tocarSom("banheiro.mp3");
-        break;
-      case "fome":
-        tocarSom("fome.mp3");
-        break;
-      case "frio":
-        tocarSom("frio.mp3");
-        break;
-      case "dor":
-        tocarSom("dor.mp3");
-        break;
-      case "sono":
-        tocarSom("sono.mp3");
-        break;
-      case "triste":
-        tocarSom("triste.mp3");
-        break;
-      case "banho":
-        tocarSom("banho.mp3");
-        break;
-      case "te_amo":
-        tocarSom("te_amo.mp3");
-        break;
-      case "abraco":
-        tocarSom("abraco.mp3");
-        break;
-    }
   }
 
   @override
@@ -236,46 +207,6 @@ class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
               ]),
         )
       ]),
-    );
-  }
-
-  dialogFalarMensagem(size, context, image, mensagem) {
-    escolhaSomParaFalar(image);
-    return showDialog<String>(
-      context: context,
-      builder: (_) => AlertDialog(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(14))),
-        elevation: 0,
-        content: Container(
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 2.3,
-          ),
-          child: Column(
-            children: [
-              Hero(
-                tag: "TAG-$image",
-                child: Image.asset(
-                  "assets/toque_para_falar/$image.png",
-                  width: size.width * 0.48,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Text(
-                "$mensagem",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.titlesColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
