@@ -5,8 +5,7 @@ import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/input_text_widget.dart';
-import 'package:fonoplay/src/services/auth-service.dart';
-import 'package:provider/provider.dart';
+import 'package:fonoplay/src/utils/shared_preferences.dart';
 
 import '/src/constants/constants_colors.dart';
 import 'controllers/dados_crianca_controller.dart';
@@ -35,9 +34,12 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
   final dataNascimentoController = TextEditingController();
   String sintomasDropMenu = "Nenhum desses sintomas";
 
+  late SharedPref sharedPref;
+
   @override
   void initState() {
     super.initState();
+    sharedPref = SharedPref();
     dataNascimentoController.text = "Data de nascimento";
   }
 
@@ -101,8 +103,8 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                           child: Column(
                             children: [
                               SizedBox(
-                                height: size.height * 0.21,
-                                width: size.width * 0.44,
+                                height: 150,
+                                width: 150,
                                 child: Card(
                                   elevation: 10,
                                   color: Colors.white,
@@ -226,21 +228,19 @@ class _DadosDaCriancaPageState extends State<DadosDaCriancaPage>
                       habilitarBotao: true,
                       texto: "Criar conta",
                       onPressed: () async {
-                        if (await Provider.of<AuthServiceNotifier>(context,
-                                listen: false)
-                            .signUpUserWithEmailAndPassword(
-                          email: widget.email,
-                          password: widget.senha,
-                          fullname: widget.nome,
-                          photoURL: controllerCrianca.pathImage,
-                          context: context,
-                        )) {
-                          atualizarDadosDaCrianca(
-                            formKey: _formKey,
-                            dataNascimentoController: dataNascimentoController,
-                            context: context,
-                          );
-                        }
+                        await sharedPref.save(
+                            'avatarKid', controllerCrianca.pathImage);
+                        await sharedPref.save(
+                            'nameKid', nomeCriancaController.text);
+                        await sharedPref.save(
+                            'dataNascimentoKid', dataNascimentoController.text);
+                        await sharedPref.save(
+                          'token',
+                          widget.nome + widget.email,
+                        );
+
+                        Navigator.popAndPushNamed(
+                            context, '/navigation_home_page');
                       },
                     ),
                   ),

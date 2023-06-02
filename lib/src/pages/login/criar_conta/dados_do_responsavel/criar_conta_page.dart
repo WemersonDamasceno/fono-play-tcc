@@ -1,13 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/constants/constants_snackbar.dart';
-import 'package:fonoplay/src/pages/login/entrar/login_entrar_page.dart';
 import 'package:fonoplay/src/pages/widgets/container_gradiente_widget.dart';
+import 'package:fonoplay/src/utils/shared_preferences.dart';
 
 import '/src/constants/constants_colors.dart';
 import '/src/pages/widgets/button_gradiente_widget.dart';
 import '/src/pages/widgets/input_text_widget.dart';
-import '../dados_da_crianca/dados_da_crianca_page.dart';
 
 class LoginCriarContaPage extends StatefulWidget {
   const LoginCriarContaPage({Key? key}) : super(key: key);
@@ -22,12 +21,15 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
   final senhaPacienteController = TextEditingController();
   final nomePacienteController = TextEditingController();
 
+  late SharedPref _sharedPref;
+
   bool mostrarSenha = true;
   bool checkTermosUso = false;
 
   @override
   void initState() {
     super.initState();
+    _sharedPref = SharedPref();
   }
 
   @override
@@ -46,24 +48,6 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
         child: Stack(
           children: [
             const ContainerGradienteWidget(),
-            Padding(
-              padding: EdgeInsets.only(top: size.height * 0.03),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(
-                    context,
-                    PageRouteBuilder(
-                        transitionDuration: const Duration(seconds: 1),
-                        pageBuilder: (_, __, ___) => const LoginEntrarPage()),
-                  );
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                  size: 30,
-                  color: Colors.white,
-                ),
-              ),
-            ),
             SizedBox(
               height: size.height,
               child: Padding(
@@ -77,6 +61,9 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                         "assets/images/logo_sem_texto.png",
                         width: size.width * 0.46,
                       ),
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     const Text(
                       "Criar Conta",
@@ -210,16 +197,15 @@ class _LoginCriarContaPageState extends State<LoginCriarContaPage> {
                           return;
                         }
                         if (!_formKey.currentState!.validate()) return;
-                        Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration: const Duration(seconds: 1),
-                              pageBuilder: (_, __, ___) => DadosDaCriancaPage(
-                                email: emailPacienteController.text,
-                                senha: senhaPacienteController.text,
-                                nome: nomePacienteController.text,
-                              ),
-                            ));
+                        await _sharedPref.save(
+                            'nameUser', nomePacienteController.text);
+                        await _sharedPref.save(
+                            'emailUser', emailPacienteController.text);
+
+                        Navigator.popAndPushNamed(
+                          context,
+                          '/dados_da_crianca',
+                        );
                       },
                     ),
                   ),

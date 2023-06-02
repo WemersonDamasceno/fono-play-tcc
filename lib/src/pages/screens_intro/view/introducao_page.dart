@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fonoplay/src/pages/login/criar_conta/dados_do_responsavel/criar_conta_page.dart';
 import 'package:fonoplay/src/pages/widgets/button_floating_widget.dart';
 
 import '/src/pages/screens_intro/model/slide_list.dart';
@@ -60,7 +61,12 @@ class _IntroducaoPageState extends State<IntroducaoPage> {
               onPressed: () {
                 _currentPage++;
                 if (_currentPage >= slideList.listImagens.length) {
-                  Navigator.of(context).popAndPushNamed('/login_entrar');
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(seconds: 1),
+                        pageBuilder: (_, __, ___) => LoginCriarContaPage(),
+                      ));
                 }
                 _pageController.nextPage(
                     duration: const Duration(milliseconds: 300),

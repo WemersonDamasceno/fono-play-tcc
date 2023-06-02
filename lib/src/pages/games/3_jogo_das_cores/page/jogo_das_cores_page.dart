@@ -23,6 +23,7 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
   @override
   void initState() {
     super.initState();
+
     _player = AudioPlayer();
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
@@ -142,8 +143,6 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
                   child: CabecalhoWidget(
                     isGame: true,
                     onPressed: () => _player.stop(),
-                    imagemPerfil: "assets/images/avatar_01.png",
-                    nomeCrianca: "Joãozinho",
                     titulo: "Conhecendo as cores",
                   ),
                 ),

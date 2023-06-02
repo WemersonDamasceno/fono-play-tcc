@@ -33,8 +33,6 @@ class _InicioPacientePageState extends State<InicioPacientePage> {
             child: CabecalhoWidget(
               isGame: false,
               onPressed: () {},
-              imagemPerfil: "assets/images/avatar_01.png",
-              nomeCrianca: "Joãozinho",
               titulo: "",
             ),
           ),

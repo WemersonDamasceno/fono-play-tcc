@@ -106,8 +106,8 @@ class _EscolherAvatarWidgetState extends State<EscolherAvatarWidget> {
                   ? AppColors.primaryColor
                   : Colors.transparent,
               borderRadius: const BorderRadius.all(Radius.circular(100))),
-          height: size.height * 0.16,
-          width: size.width * 0.33,
+          height: 100,
+          width: 100,
           child: Card(
             elevation: 1,
             color: Colors.white,

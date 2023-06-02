@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     mudarCorStatusBar(Colors.transparent);
-    Future.delayed(Duration(seconds: 2), () => navigationPage());
+    Future.delayed(Duration(milliseconds: 1200), () => navigationPage());
   }
 
   @override

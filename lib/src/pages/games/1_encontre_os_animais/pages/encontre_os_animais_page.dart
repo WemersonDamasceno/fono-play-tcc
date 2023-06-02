@@ -178,8 +178,6 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                   child: CabecalhoWidget(
                     isGame: true,
                     onPressed: () => _player.stop(),
-                    imagemPerfil: "assets/images/avatar_01.png",
-                    nomeCrianca: "Joãozinho",
                     titulo: "Encontre o animal",
                   ),
                 ),

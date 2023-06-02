@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
+import 'package:fonoplay/src/utils/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 
 import '../models/animais_cores_model.dart';
@@ -19,6 +20,9 @@ class EscolhaACorPage extends StatefulWidget {
 class _EscolhaACorPageState extends State<EscolhaACorPage> {
   late AudioPlayer _player;
   bool isClicked = false;
+  late SharedPref _sharedPref;
+  String nomeCrianca = "";
+  String pathImage = 'assets/images/avatar_01.png';
 
   @override
   void initState() {
@@ -29,6 +33,16 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
           "animais_cores/audios/qual_a_cor/${widget.animaisCores.nome}.mp3"),
       volume: 0.4,
     );
+
+    _sharedPref = SharedPref();
+    getDataKid();
+  }
+
+  getDataKid() async {
+    nomeCrianca = await _sharedPref.read("nameKid") ?? "Não definido";
+    pathImage =
+        await _sharedPref.read("avatarKid") ?? "assets/images/avatar_01.png";
+    setState(() {});
   }
 
   @override

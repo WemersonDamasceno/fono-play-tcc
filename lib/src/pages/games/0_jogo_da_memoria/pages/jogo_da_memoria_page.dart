@@ -70,8 +70,6 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
               child: CabecalhoWidget(
                 isGame: true,
                 onPressed: () => _player.stop(),
-                imagemPerfil: "assets/images/avatar_01.png",
-                nomeCrianca: "Joãozinho",
                 titulo: "Jogo da memória",
               ),
             ),

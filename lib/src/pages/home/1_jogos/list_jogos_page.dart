@@ -51,8 +51,6 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
               child: CabecalhoWidget(
                 isGame: false,
                 onPressed: () {},
-                imagemPerfil: "assets/images/avatar_01.png",
-                nomeCrianca: "Joãozinho",
                 titulo: "Escolha um jogo",
               ),
             ),
