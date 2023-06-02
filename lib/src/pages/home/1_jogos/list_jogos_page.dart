@@ -62,7 +62,7 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
             right: 0,
             left: 0,
             child: SizedBox(
-              height: size.height * .8,
+              height: size.height * .79,
               width: size.width,
               child: PageView.builder(
                 controller: pageController,
@@ -107,12 +107,16 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                                 ),
                               ],
                             ),
-                            child: Text(
-                              "Jogo da Memória",
-                              style: TextStyle(
-                                color: Color(0xFF525252),
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Jogo da Memória",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF525252),
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           )
@@ -153,12 +157,16 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                                 ),
                               ],
                             ),
-                            child: Text(
-                              "Jogo dos Fonemas",
-                              style: TextStyle(
-                                color: Color(0xFF525252),
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Jogo dos Fonemas",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF525252),
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           )
@@ -166,53 +174,6 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                       ),
                     );
                   }
-                  //TODO Adicionar aqui o jogo dos fonemas
-                  // if (index == 1) {
-                  //   return InkWell(
-                  //     onTap: () =>
-                  //         Navigator.pushNamed(context, "/jogo_da_imitacao"),
-                  //     child: Column(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Container(
-                  //           padding: EdgeInsets.only(left: 10),
-                  //           child: Transform(
-                  //             transform: Matrix4.identity()
-                  //               ..setEntry(3, 2, 0.001)
-                  //               ..rotateY(angle),
-                  //             alignment: Alignment.center,
-                  //             child: LottieBuilder.asset(
-                  //               "assets/images/animations/animal.json",
-                  //               reverse: true,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         Container(
-                  //           padding: EdgeInsets.all(8),
-                  //           decoration: BoxDecoration(
-                  //             color: Color.fromARGB(255, 255, 255, 255),
-                  //             borderRadius: BorderRadius.circular(10),
-                  //             boxShadow: [
-                  //               BoxShadow(
-                  //                 color: Color.fromARGB(255, 0, 0, 0),
-                  //                 offset: Offset(0, 3),
-                  //                 blurRadius: 6,
-                  //               ),
-                  //             ],
-                  //           ),
-                  //           child: Text(
-                  //             "Conhecendo os Fonemas",
-                  //             style: TextStyle(
-                  //               color: Color(0xFF525252),
-                  //               fontSize: 23,
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   );
-                  // }
 
                   if (index == 2) {
                     return InkWell(
@@ -247,12 +208,16 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                                 ),
                               ],
                             ),
-                            child: Text(
-                              "Conhecendo os Animais",
-                              style: TextStyle(
-                                color: Color(0xFF525252),
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
+                            child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Conhecendo os Animais",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF525252),
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -293,12 +258,15 @@ class _ListaDosJogosPageState extends State<ListaDosJogosPage>
                               ),
                             ],
                           ),
-                          child: Text(
-                            "Conhecendo as Cores",
-                            style: TextStyle(
-                              color: Color(0xFF525252),
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "Conhecendo as Cores",
+                              style: TextStyle(
+                                color: Color(0xFF525252),
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         )

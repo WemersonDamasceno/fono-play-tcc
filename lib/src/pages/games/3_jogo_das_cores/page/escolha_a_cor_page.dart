@@ -18,6 +18,7 @@ class EscolhaACorPage extends StatefulWidget {
 
 class _EscolhaACorPageState extends State<EscolhaACorPage> {
   late AudioPlayer _player;
+  bool isClicked = false;
 
   @override
   void initState() {
@@ -54,15 +55,17 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Hero(
-                    tag: widget.animaisCores.nome,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 25),
-                      child: Image.asset(
-                        widget.animaisCores.imagem,
-                        fit: BoxFit.contain,
-                        width: 250,
-                        height: 250,
+                  FittedBox(
+                    child: Hero(
+                      tag: widget.animaisCores.nome,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 25),
+                        child: Image.asset(
+                          widget.animaisCores.imagem,
+                          fit: BoxFit.contain,
+                          width: size.width * 0.7,
+                          height: size.height * 0.4,
+                        ),
                       ),
                     ),
                   ),
@@ -81,12 +84,15 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                           ),
                         ],
                       ),
-                      child: Text(
-                        widget.animaisCores.label,
-                        style: TextStyle(
-                          color: Color(0xFF525252),
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          widget.animaisCores.label,
+                          style: TextStyle(
+                            color: Color(0xFF525252),
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -102,23 +108,28 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                                   EdgeInsets.only(top: 8, left: 8, right: 8),
                               child: InkWell(
                                 onTap: () async {
-                                  _player.play(
-                                    AssetSource(
-                                        "animais_cores/audios/cores/${e.nome}.mp3"),
-                                    volume: 0.4,
-                                  );
-                                  await Future.delayed(Duration(seconds: 2));
+                                  if (isClicked == false) {
+                                    setState(() {
+                                      isClicked = true;
+                                    });
+                                    _player.play(
+                                      AssetSource(
+                                          "animais_cores/audios/cores/${e.nome}.mp3"),
+                                      volume: 0.4,
+                                    );
+                                    await Future.delayed(Duration(seconds: 2));
 
-                                  if (e.corString ==
-                                      widget.animaisCores.corString) {
-                                    showDialogFeedback(true, context, size);
-                                  } else {
-                                    showDialogFeedback(false, context, size);
+                                    if (e.corString ==
+                                        widget.animaisCores.corString) {
+                                      showDialogFeedback(true, context, size);
+                                    } else {
+                                      showDialogFeedback(false, context, size);
+                                    }
                                   }
                                 },
                                 child: Container(
-                                  width: 80,
-                                  height: 80,
+                                  width: size.width * 0.18,
+                                  height: size.height * 0.09,
                                   decoration: BoxDecoration(
                                     color: e.cor,
                                     borderRadius: BorderRadius.circular(100),
@@ -142,7 +153,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
             ),
             Positioned(
               child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 15),
+                padding: const EdgeInsets.only(top: 40, left: 15),
                 child: InkWell(
                     onTap: () {
                       _player.stop();
@@ -191,40 +202,42 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
         elevation: 0,
         content: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 1.9,
-          ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Visibility(
                 visible: isCorrect,
                 child: LottieBuilder.asset(
                   "assets/images/animations/estrela_oculos_animacao.json",
-                  width: size.width * 0.45,
+                  width: size.width * 0.4,
                 ),
                 replacement: LottieBuilder.asset(
                   "assets/images/animations/failed.json",
-                  width: size.width * 0.45,
+                  width: size.width * 0.4,
                 ),
               ),
-              Text(
-                isCorrect ? "Parabéns!" : "Que pena!",
-                style: TextStyle(
-                  color: Color(0xFFebc600),
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
-                ),
-              ),
-              Text(
-                isCorrect
-                    ? "Agora, escolha outro animal!"
-                    : "Você errou, mas não desista!",
-                style: TextStyle(
+              FittedBox(
+                child: Text(
+                  isCorrect ? "Parabéns!" : "Que pena!",
+                  style: TextStyle(
                     color: Color(0xFFebc600),
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600),
+                    fontSize: 27,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 4,
+                  ),
+                ),
+              ),
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  isCorrect
+                      ? "Agora, escolha outro animal!"
+                      : "Você errou, mas não desista!",
+                  style: TextStyle(
+                      color: Color(0xFFebc600),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               const SizedBox(
                 height: 8,
@@ -233,6 +246,7 @@ class _EscolhaACorPageState extends State<EscolhaACorPage> {
                 texto: isCorrect ? "Continuar" : "Tentar novamente",
                 onPressed: () {
                   _player.stop();
+                  isClicked = false;
                   if (isCorrect) {
                     Navigator.pop(context);
                   }

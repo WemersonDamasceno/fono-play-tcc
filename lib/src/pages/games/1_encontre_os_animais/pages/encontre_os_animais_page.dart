@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fonoplay/src/constants/constants_colors.dart';
 import 'package:fonoplay/src/pages/games/3_jogo_das_cores/models/animais_cores_model.dart';
 import 'package:fonoplay/src/pages/widgets/button_gradiente_widget.dart';
 import 'package:fonoplay/src/pages/widgets/cabecalho_widget.dart';
@@ -155,6 +154,8 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight) / 2.4;
+    final double itemWidth = size.width * 0.6;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -194,19 +195,19 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                     child: GridView.builder(
                       padding: EdgeInsets.only(top: 10),
                       itemCount: 4,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 15,
-                              mainAxisSpacing: 40,
-                              childAspectRatio: 0.85),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 40,
+                        childAspectRatio: (itemWidth / itemHeight),
+                      ),
                       itemBuilder: (context, index) {
                         return animaisExibidos
                             .map((e) => InkWell(
                                   onTap: () async {
                                     _player.stop();
                                     await Future.delayed(
-                                        Duration(milliseconds: 500));
+                                        Duration(milliseconds: 100));
                                     final right = e.nome == animalFoco.nome;
                                     showDialogFeedback(right, context, size);
                                   },
@@ -232,54 +233,6 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
                             .toList()[index];
                       },
                     ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: size.height * .6,
-                child: InkWell(
-                  onTap: () {
-                    _player.play(
-                      AssetSource(
-                          "encontre_animais/audios/encontre-${animalFoco.nome}.mp3"),
-                      volume: 0.4,
-                    );
-                  },
-                  child: Container(
-                    height: 50,
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(7),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                            animalFoco.nome[0].toUpperCase() +
-                                animalFoco.nome
-                                    .substring(1, animalFoco.nome.length),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            )),
-                        SizedBox(width: 10),
-                        Icon(
-                          Icons.volume_up_rounded,
-                          color: Colors.white,
-                        )
-                      ],
-                    )),
                   ),
                 ),
               ),
@@ -339,47 +292,51 @@ class _ConhecendoOsAnimaisPageState extends State<ConhecendoOsAnimaisPage>
         volume: 0.4,
       );
     return showDialog<String>(
+      barrierDismissible: false,
       context: context,
       builder: (_) => AlertDialog(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
         content: Container(
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 1.9,
-          ),
           width: double.infinity,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Visibility(
                 visible: isCorrect,
                 child: LottieBuilder.asset(
                   "assets/images/animations/estrela_oculos_animacao.json",
-                  width: size.width * 0.45,
+                  width: size.width * 0.4,
                 ),
                 replacement: LottieBuilder.asset(
                   "assets/images/animations/failed.json",
-                  width: size.width * 0.45,
+                  width: size.width * 0.4,
                 ),
               ),
-              Text(
-                isCorrect ? "Parabéns!" : "Que pena!",
-                style: TextStyle(
-                  color: Color(0xFFebc600),
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
-                ),
-              ),
-              Text(
-                isCorrect
-                    ? "Agora, escolha outro animal!"
-                    : "Você errou, mas não desista!",
-                style: TextStyle(
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  isCorrect ? "Parabéns!" : "Que pena!",
+                  style: TextStyle(
                     color: Color(0xFFebc600),
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600),
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 4,
+                  ),
+                ),
+              ),
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  isCorrect
+                      ? "Agora, escolha outro animal!"
+                      : "Você errou, mas não desista!",
+                  style: TextStyle(
+                      color: Color(0xFFebc600),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               const SizedBox(
                 height: 8,

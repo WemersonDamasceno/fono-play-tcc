@@ -25,17 +25,17 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
   void initState() {
     super.initState();
     _player = AudioPlayer();
-    _player.setVolume(0.1);
+    _player.setVolume(0.04);
     _player.onPlayerComplete.listen((event) {
       _player.play(
         AssetSource("audios/musica_background.mp3"),
-        volume: 0.4,
+        volume: 0.04,
       );
     });
     if (isPlaying)
       _player.play(
         AssetSource("audios/musica_background.mp3"),
-        volume: 0.4,
+        volume: 0.04,
       );
   }
 
@@ -61,7 +61,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
               } else {
                 _player.play(
                   AssetSource("audios/musica_background.mp3"),
-                  volume: 0.4,
+                  volume: 0.04,
                 );
                 isPlaying = true;
               }
@@ -132,28 +132,6 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                 );
               },
             ),
-            // ListTile(
-            //   leading: const Icon(
-            //     Icons.person,
-            //     color: AppColors.startGradiente,
-            //   ),
-            //   title: const Text("Dados da criança"),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     homeController.trocarTela(ConstantesPaginas.PERFIL_DA_CRIANCA);
-            //   },
-            // ),
-            // ListTile(
-            //   leading: const Icon(
-            //     Icons.notifications,
-            //     color: AppColors.startGradiente,
-            //   ),
-            //   title: const Text("Notificações"),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     homeController.trocarTela(ConstantesPaginas.NOTIFICACOES);
-            //   },
-            // ),
             const Padding(
               padding: EdgeInsets.only(left: 20, top: 10),
               child: Text("Outras opções",

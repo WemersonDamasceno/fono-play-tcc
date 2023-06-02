@@ -345,10 +345,10 @@ List<FonemaModel> getFonema(String fonema) {
         ),
         //coelho
         FonemaModel(
-          fonema: "COELHO",
+          fonema: "VACA",
           fonemaPath: 'fonemas_k',
-          fonemaImage: "coelho",
-          fonemaAudio: "coelho.mp3",
+          fonemaImage: "vaca",
+          fonemaAudio: "vaca.mp3",
         ),
         //cavalo
         FonemaModel(
@@ -366,10 +366,10 @@ List<FonemaModel> getFonema(String fonema) {
         ),
         //esquilo
         FonemaModel(
-          fonema: "ESQUILO",
+          fonema: "CAFÉ",
           fonemaPath: 'fonemas_k',
-          fonemaImage: "esquilo",
-          fonemaAudio: "esquilo.mp3",
+          fonemaImage: "cafe",
+          fonemaAudio: "cafe.mp3",
         ),
       ];
 

@@ -192,7 +192,7 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
     );
   }
 
-  dialogFalarMensagem(size, context, image, mensagem) {
+  dialogFalarMensagem(Size size, context, image, mensagem) {
     escolhaSomParaFalar(image);
     return showDialog<String>(
       context: context,
@@ -201,10 +201,7 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
         content: Container(
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 2.3,
-          ),
+          height: size.height * 0.39,
           child: Column(
             children: [
               Hero(
@@ -212,19 +209,25 @@ class _ToqueParaFalarPageState extends State<ToqueParaFalarPage> {
                 child: Image.asset(
                   "assets/toque_para_falar/$image.png",
                   width: size.width * 0.48,
-                  fit: BoxFit.cover,
+                  height: size.height * 0.3,
+                  fit: BoxFit.contain,
                 ),
               ),
-              Text(
-                "$mensagem",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.titlesColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 4,
+              const Spacer(),
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  "$mensagem",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.titlesColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 4,
+                  ),
                 ),
               ),
+              SizedBox(height: 20),
             ],
           ),
         ),

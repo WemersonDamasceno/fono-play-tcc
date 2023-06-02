@@ -119,6 +119,8 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
     ];
 
     Size size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight) / 2.4;
+    final double itemWidth = size.width * 0.6;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -157,12 +159,12 @@ class _JogoDasCoresPageState extends State<JogoDasCoresPage>
                     child: GridView.builder(
                       padding: EdgeInsets.only(top: 10),
                       itemCount: 9,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 15,
-                              mainAxisSpacing: 15,
-                              childAspectRatio: 0.85),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        childAspectRatio: (itemWidth / itemHeight),
+                      ),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {

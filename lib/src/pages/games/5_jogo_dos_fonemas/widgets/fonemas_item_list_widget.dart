@@ -30,7 +30,7 @@ class FonemasItemListWidget extends StatelessWidget {
           children: [
             Image.asset(
               "assets/fonemas/images/$image.png",
-              height: 90,
+              height: size.height * 0.11,
               width: size.width,
               fit: BoxFit.fill,
             ),
@@ -48,13 +48,16 @@ class FonemasItemListWidget extends StatelessWidget {
                 ),
                 child: Hero(
                   tag: "TAG-$image",
-                  child: Text(
-                    "$text",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      "$text",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),

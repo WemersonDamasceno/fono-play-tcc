@@ -29,28 +29,34 @@ class FalaCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/toque_para_falar/$image.png"),
+            Image.asset(
+              "assets/toque_para_falar/$image.png",
+              height: size.height * 0.11,
+            ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Container(
-                width: size.width * 0.25,
-                margin: EdgeInsets.only(top: 10),
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(100),
-                      topLeft: Radius.circular(100)),
-                ),
-                child: Hero(
-                  tag: "TAG-$image",
-                  child: Text(
-                    "$text",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: Container(
+                  width: size.width * 0.25,
+                  margin: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(100),
+                        topLeft: Radius.circular(100)),
+                  ),
+                  child: Hero(
+                    tag: "TAG-$image",
+                    child: Text(
+                      "$text",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),

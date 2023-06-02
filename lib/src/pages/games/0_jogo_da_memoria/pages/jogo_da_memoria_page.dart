@@ -77,22 +77,6 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
             ),
           ),
           Positioned(
-            top: size.height * 0.19,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, top: 10),
-              child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Pontos: $pontos",
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white,
-                    ),
-                  )),
-            ),
-          ),
-          Positioned(
             top: size.height * 0.22,
             left: 0,
             right: 0,
@@ -145,15 +129,16 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        // SizedBox(height: size.height * 0.03),
         SizedBox(
-          height: size.height * .8,
+          height: size.height,
           width: size.width * 0.9,
           child: GridView.builder(
             itemCount: gameController.quantidadeCartas,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 5,
-              mainAxisSpacing: 3,
+              mainAxisSpacing: 5,
             ),
             itemBuilder: (context, index) {
               var item = gameController.listaDeCartas[index];
@@ -237,15 +222,16 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
-        content: SizedBox(
+        content: Container(
           width: double.infinity,
-          height: size.height / 2.5,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
                 "assets/jogo_memoria/$animal.png",
                 width: size.width * 0.4,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               Text(
                 silabasAnimal(animal),
@@ -256,7 +242,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
                   letterSpacing: 4,
                 ),
               ),
-              Spacer(),
+              SizedBox(height: 20),
               ButtonGradienteWidget(
                 texto: "Continuar",
                 onPressed: () {
@@ -300,21 +286,18 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
         elevation: 0,
         content: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 1.9,
-          ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               LottieBuilder.asset(
                 "assets/images/animations/estrela_oculos_animacao.json",
-                width: size.width * 0.45,
+                width: size.width * 0.4,
               ),
               const Text(
                 "Parabéns!",
                 style: TextStyle(
                   color: Color(0xFFebc600),
-                  fontSize: 30,
+                  fontSize: 27,
                   fontWeight: FontWeight.w800,
                   letterSpacing: 4,
                 ),
@@ -323,7 +306,7 @@ class _JogoDaMemoriaPageState extends State<JogoDaMemoriaPage>
                 "Seu exercício foi concluido!",
                 style: TextStyle(
                   color: Color(0xFFebc600),
-                  fontSize: 14,
+                  fontSize: 16,
                 ),
               ),
               const SizedBox(

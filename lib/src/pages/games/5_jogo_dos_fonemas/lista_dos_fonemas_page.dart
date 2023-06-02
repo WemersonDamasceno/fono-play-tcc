@@ -38,8 +38,8 @@ class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight) / 2.5;
-    final double itemWidth = size.width * 0.5;
+    final double itemHeight = (size.height - kToolbarHeight) / 2.4;
+    final double itemWidth = size.width * 0.6;
     return Scaffold(
       body: Stack(children: [
         const ContainerGradienteWidget(),
@@ -57,14 +57,14 @@ class _ListaDosFonemasPageState extends State<ListaDosFonemasPage> {
           ),
         ),
         Positioned(
-          top: size.height * 0.24,
+          top: size.height * 0.25,
           right: 10,
           left: 10,
           child: GridView.count(
               crossAxisCount: 3,
               shrinkWrap: true,
               crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
+              mainAxisSpacing: 18,
               scrollDirection: Axis.vertical,
               childAspectRatio: (itemWidth / itemHeight),
               controller: ScrollController(keepScrollOffset: false),

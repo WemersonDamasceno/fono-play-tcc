@@ -73,7 +73,7 @@ class CabecalhoWidget extends StatelessWidget {
           titulo,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: 22,
           ),
         )
       ],

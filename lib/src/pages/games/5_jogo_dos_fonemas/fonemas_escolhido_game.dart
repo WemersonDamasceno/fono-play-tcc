@@ -25,6 +25,7 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
     super.initState();
     _player = AudioPlayer();
     listFonemas = getFonema(widget.fonemaEscolhido);
+    listFonemas.shuffle();
     _player.play(
       AssetSource(
         "fonemas/fonemas_${widget.fonemaEscolhido}/inicio-fonemas-${widget.fonemaEscolhido}.mp3",
@@ -45,56 +46,65 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight) / 2.5;
-    final double itemWidth = size.width * 0.5;
+    final double itemHeight = (size.height - kToolbarHeight) / 2.6;
+    final double itemWidth = size.width * 0.6;
     return Scaffold(
-      body: Stack(children: [
-        const ContainerGradienteWidget(),
-        SafeArea(
-          child: Padding(
-            padding:
-                EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
-            child: CabecalhoWidget(
-              isGame: true,
-              imagemPerfil: "assets/images/avatar_01.png",
-              nomeCrianca: "Joãozinho",
-              onPressed: () => _player.stop(),
-              titulo: "Fonema ${widget.fonemaEscolhido.toUpperCase()}",
+      body: GestureDetector(
+        onTap: () {
+          _player.pause();
+        },
+        child: Stack(children: [
+          const ContainerGradienteWidget(),
+          SafeArea(
+            child: Padding(
+              padding:
+                  EdgeInsets.only(left: 20, right: 20, top: size.height * 0.01),
+              child: CabecalhoWidget(
+                isGame: true,
+                imagemPerfil: "assets/images/avatar_01.png",
+                nomeCrianca: "Joãozinho",
+                onPressed: () => _player.stop(),
+                titulo: "Fonema ${widget.fonemaEscolhido.toUpperCase()}",
+              ),
             ),
           ),
-        ),
-        Positioned(
-          top: size.height * 0.24,
-          right: 10,
-          left: 10,
-          child: GridView.count(
-            crossAxisCount: 3,
-            shrinkWrap: true,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            scrollDirection: Axis.vertical,
-            childAspectRatio: (itemWidth / itemHeight),
-            controller: ScrollController(keepScrollOffset: false),
-            children: listFonemas
-                .where((element) =>
-                    element.fonemaPath == "fonemas_" + widget.fonemaEscolhido)
-                .map((e) {
-              return FonemasItemWidget(
-                image: e.fonemaImage,
-                text: e.fonema,
-                pathFonema: e.fonemaPath,
-                onTap: () =>
-                    dialogFalarMensagem(size, context, e.fonemaImage, e.fonema),
-              );
-            }).toList(),
-          ),
-        )
-      ]),
+          Positioned(
+            top: size.height * 0.25,
+            right: 10,
+            left: 10,
+            child: GridView.count(
+              crossAxisCount: 3,
+              shrinkWrap: true,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 20,
+              scrollDirection: Axis.vertical,
+              childAspectRatio: (itemWidth / itemHeight),
+              controller: ScrollController(keepScrollOffset: false),
+              children: listFonemas
+                  .where((element) =>
+                      element.fonemaPath == "fonemas_" + widget.fonemaEscolhido)
+                  .map((e) {
+                return FonemasItemWidget(
+                  image: e.fonemaImage,
+                  text: e.fonema,
+                  pathFonema: e.fonemaPath,
+                  onTap: () => dialogFalarMensagem(
+                    size: size,
+                    context: context,
+                    image: e.fonemaImage,
+                    mensagem: e.fonema,
+                  ),
+                );
+              }).toList(),
+            ),
+          )
+        ]),
+      ),
     );
   }
 
-  dialogFalarMensagem(size, context, image, mensagem) {
-    escolhaSomParaFalar(mensagem);
+  dialogFalarMensagem({size, context, image, mensagem}) {
+    escolhaSomParaFalar(image);
     return showDialog<String>(
       context: context,
       builder: (_) => AlertDialog(
@@ -102,11 +112,8 @@ class _FonemasEscolhidoGameState extends State<FonemasEscolhidoGame> {
             borderRadius: BorderRadius.all(Radius.circular(14))),
         elevation: 0,
         content: Container(
-          constraints: BoxConstraints(
-            minHeight: size.height / 2.8,
-            maxHeight: size.height / 2.7,
-          ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Hero(
                 tag: "TAG-$image",

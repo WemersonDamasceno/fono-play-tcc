@@ -36,10 +36,10 @@ class CardInicialWidget extends StatelessWidget {
               Image.asset(
                 imagePath,
                 fit: BoxFit.cover,
-                width: size.width * .45,
+                width: size.width * .4,
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
@@ -48,7 +48,7 @@ class CardInicialWidget extends StatelessWidget {
                       tituloCard,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

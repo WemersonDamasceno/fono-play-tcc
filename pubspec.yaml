@@ -51,9 +51,6 @@ flutter:
     - assets/fonts/
     - assets/jogo_memoria/
     - assets/jogo_memoria/audios/
-    - assets/jogo_imitacao/
-    - assets/jogo_imitacao/animais/
-    - assets/jogo_imitacao/audios/
     - assets/toque_para_falar/
     - assets/toque_para_falar/audios/
     - assets/audios/
